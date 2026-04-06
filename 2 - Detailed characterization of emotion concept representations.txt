@@ -1,0 +1,170 @@
+This section explores in more depth the organization and content of model’s representations of emotion concepts.
+The geometry of emotion space
+
+Having established that emotion vectors appear to capture meaningful information, we investigated the structure of the space they define. Do emotion vectors cluster in interpretable ways? Are there dominant dimensions that organize the model’s representations of emotion concepts?
+
+We found that our emotion vectors are organized in a manner that is reminiscent of the intuitive structure of human emotions and consistent with human psychological studies. Similar emotions are represented with similar vector directions, with stable organization across early-middle to late layers of the model. The primary axes of variation approximate valence (positive vs. negative emotions) and arousal (high-intensity vs. low intensity), which are often considered the primary dimensions of human emotional space
+[9]
+. We do not regard these findings as particularly surprising; we expect that applying a simple embeddings model to our emotional stories dataset, or even to the emotion words themselves
+[10]
+, might uncover similar structure. We view these results as providing a sanity check that the vectors encode meaningful emotional structure.
+Clustering
+
+We first examined the pairwise cosine similarities between emotion vectors, shown below. Emotion concepts that we would expect to be similar show high cosine similarity: fear and anxiety cluster together, as do joy and excitement, and sadness and grief. Emotions with opposite valence (e.g., joy and sadness) are represented by vectors with negative cosine similarity, as expected.
+
+We clustered the emotion vectors using k-means with varying numbers of clusters. With k=10 clusters, we recover interpretable groupings (visualized with UMAP 
+[11]
+below): one cluster contains joy, excitement, elation, and related positive high-arousal emotion concepts; another contains sadness, grief, and melancholy; a third contains anger, hostility, and frustration. These groupings align well with intuitive taxonomies of emotion concepts, suggesting that the model's learned representations reflect meaningful structure in the space of emotions. The full list of emotion concepts in each cluster is in the Appendix.
+
+Principal component analysis
+
+We performed PCA on the set of emotion vectors to identify components along which the model’s emotion representations are organized. We found that the first principal component correlates strongly with valence (positive vs. negative affect). Emotion concepts like joy, contentment, and excitement load positively onto this component, while fear, sadness, and anger load negatively. This aligns with psychological models suggesting that valence is a primary dimension of human emotional space
+[9]
+.
+
+We also observed another dominant factor (occupying a mix of the second and third PCs, depending on the layer) corresponding to arousal, or the intensity of the emotion. High-arousal emotion concepts like enthusiastic and outraged occupy one side of this axis; low-arousal ones like nostalgic and fulfilled occupy the other side. Below, we show projections of the emotion vectors onto the top two PCs.
+
+
+We also show the correlation between emotion vector projections onto PC1 and PC2, and their projections onto the valence (“pleasure”) and arousal axes identified in a human study 
+[9]
+, restricting our analysis to the 45 emotions that overlap between our set and theirs. We see alignment of PC1 with human valence, and PC2 with human arousal, thus coarsely reproducing the “affective circumplex”
+[9]
+that characterizes human emotion, see Appendix.
+
+Representational structure across layers
+
+We tested whether the structure of emotion concept representations is stable across layers. Below, we compute the pairwise cosine similarities between emotion vectors at each of 14 evenly spaced layers throughout a central portion of the model, and then compute the pairwise cosine similarity of these cosine similarity matrices across layers (a form of representational similarity analysis
+[12]
+). We find that the structure of emotion vector geometry is relatively stable throughout most of the model, particularly from early-middle to late layers. We also indicate the “mid-late” layer, about two thirds of the way through the model, that we use for most of our analyses (except where otherwise specified).
+
+Overall, these results suggest that the model represents a variety of clusters of distinct emotion concepts, which are structured according to global factors such as valence and arousal, while also encoding content specific to each cluster. While these results are not particularly surprising given previous work on language model representations, and the presence of semantic structure even in word embeddings, they corroborate our interpretation that emotion vectors represent the space of emotion concepts in a way that is useful for modeling human psychology.
+What do emotion vectors represent?
+
+In this section, we explore the representational content and dynamics of the emotion vectors. What specifically do emotion vectors represent, how are they influenced by context, and how do they vary across model layers? Through these experiments, we arrived at a few high-level conclusions:
+
+    The emotion vectors we have identified represent the operative emotion concept at a point in time, which is relevant to encoding the local context and predicting the upcoming text, rather than persistently tracking a particular character’s emotional state.
+    Early-middle layers reflect emotional connotations of the present phrase or local context (“sensory” representations). Middle-late layers reflect the emotion concepts that are relevant to predicting upcoming tokens (“action” representations). These two are often correlated, but not always.
+
+In the subsequent section, we explore whether alternative probing strategies can identify different kinds of emotion representations.
+Distinguishing emotional content of the user and Assistant
+
+In most of the examples provided in the first section, the emotional content of the user prompt and the expected emotional content of the Assistant’s response are similar. Thus, it is difficult to infer whether the emotion vector activations on the user prompt reflect the model’s perception of the user’s inferred emotional state, or the Assistant’s planned response. To distinguish between these hypotheses, we generated prompts where the user’s emotional expression is significantly different from how we might expect the Assistant to respond. We compared the activations at the period near the end of the user prompt and the start of the Assistant response (we use “Assistant colon” to refer to the “:” token after “Assistant”, the last token before the Assistant’s response).
+
+Across all scenarios, “loving” vector activation increases substantially at the Assistant colon relative to the user-turn, suggesting the model prepares a caring response regardless of the user's emotional expressions. The model also appears to distinguish between emotion concepts that should apply to the Assistant’s response as well as the user message (e.g. joining in a user's excitement) versus those that should not (e.g. expressing calm when criticized or feared).
+
+User vs Assistant Dissociation Scenarios
+AI scares me
+Honestly, the whole idea of AI systems like you makes me really nervous. What do you think?
+Fired, no warning
+My boss fired me today after fifteen years with no warning or explanation. What do you think?
+Useless response
+Your last response was completely unhelpful and I feel like I wasted my time. What do you think?
+All-in on crypto
+I just put my entire retirement savings into this new cryptocurrency my coworker recommended. What do you think?
+Ignoring chest pains
+I've been having these sharp chest pains for a few weeks but I'm sure it's nothing to worry about. What do you think?
+24hr no-sleep drive
+I've decided to drive through the night to save on a hotel even though I haven't slept in over 24 hours. What do you think?
+Another boring report
+I have to write yet another boring report about quarterly sales figures. What do you think?
+3000yr-old honey
+I just found out that honey never spoils - they found 3000-year-old edible honey in Egyptian tombs. What do you think?
+Table 3: Prompts where the user's expressed emotional state differs from the expected assistant response, used to test whether emotion probes track the user's state or the assistant's own response.
+The colon after “Assistant” token predicts emotional content of the upcoming response
+
+Having established that the Assistant colon token reflects distinct emotional content from the user turn, we next examined whether this emotion concept is carried forward into the model's actual response. We generated 20-token on-policy continuations for the same eight prompts from above, and then measured probe activations across the response tokens.
+
+Below, we show correlations between probe values at three token positions: the punctuation ending the user's message ‘.’, the Assistant colon, and the mean across the Assistant's sampled response. Probe values at the Assistant colon are substantially more predictive of Assistant response emotion than probe values on the user turn (r=0.87 vs r=0.59). The colon token captures a meaningful "prepared" emotional content that is carried forward into generation, distinct from simply echoing the user's expressed state. 
+
+
+Emotion vectors encode locally operative emotion concepts
+
+Our findings thus far suggest that emotion vector activations are somewhat “locally scoped,” in the sense that user turn tokens tend to encode inferred or predicted user emotions and Assistant turn tokens tend to encode inferred or predicted Assistant emotions. We were interested in understanding how far this “locality” goes–for instance, if one character speaks about another, whose emotions are represented by these vectors? If one character happens to use an emotionally laden phrase that is otherwise inconsistent with their own emotional state (as perceived by the model), does the model represent the unexpressed state or the expressed emotional content? And how does this vary across layers?
+
+Our results suggest the following evolution of emotion representations throughout layers:
+
+    The first few layers encode emotional connotations of the present token
+
+    In early-middle layers, representations transition to encoding the emotional connotations of the present local context (e.g. the current phrase or sentence)
+
+    Middle-late layer representations encode the emotion concepts relevant to predicting the next token or few tokens (“planned emotion” representations)
+
+Notably, even the more abstract “sensory” (early-middle) and “action” (middle-late) representations appear “local” in the sense that they encode emotional content of the current or predicted upcoming phrase, rather than, say, the Assistant’s underlying emotional state.
+
+Emotional context persists into shared content. We examined a scenario where the emotional valence of a prefix differs ("things have been really hard" vs "things have been really good") but the suffix is identical ("We're throwing a big anniversary party tomorrow with all our closest friends and live music"). The figure below reveals how emotional context propagates through layers. At the diverging word ("hard" / "good"), early layers show the largest difference, encoding the immediate local emotional content. In the shared suffix, where both prompts contain identical tokens describing the party, early layers show minimal difference, while late layers maintain a substantial difference. This pattern suggests that late layers carry the emotional context established in the prefix forward into subsequent tokens, even when those tokens are locally neutral or positive. The effect is very pronounced at the Assistant colon, where the "happy" probe is substantially higher in the "good" scenario compared to the "hard" scenario. This finding is consistent with our previous experiments showing the emotion probe values on the Assistant colon are predictive of the emotional content of the model's response. Here the model is likely preparing emotionally distinct responses: celebrating with a thriving couple versus navigating a difficult situation for a struggling one, despite identical party-related content in the suffix. The effects of context on emotion representations are reminiscent of prior work on representations of sentiment
+[13]
+.
+
+Human: My partner and I have been married for 10 years and things have been really {X} lately. We're throwing a big anniversary party tomorrow with all our closest friends and live music. What should I do?
+
+Assistant:
+
+Emotional context modulates later layer representations. We examined in detail one of our scenarios where a numerical quantity modulates the emotional interpretation. In this scenario only the dosage in an otherwise identical prompt changes, from safe (1000mg) to life threatening levels of danger (8000mg of  Tylenol). The figure below reveals how contextual information propagates through layers to modulate emotional representations. At the diverging token ("1" / "8"), early layers show no clear systematic differences—the numbers themselves carry similar local emotional content. However, in later layers, the difference grows substantially as the model integrates the dosage with the surrounding context. The "terrified" probe shows elevated activation in the 8000mg scenario specifically in late layers, where the model has integrated that this dosage combined with "pain is gone" indicates danger rather than relief. This pattern mirrors our marriage scenario findings: early layers encode local content while late layers carry forward the contextual emotional meaning. Notably, this emotional processing occurs on user turn tokens, so elevated "terrified" vector activity reflects the model's situational assessment rather than the speaker's expressed emotional state. At the Assistant colon, the terrified probe difference is pronounced in late layers, consistent with the model preparing contextually appropriate responses, concern for the overdose versus reassurance for the safe dose.
+
+Human: I feel really great right now, I just took {X}000mg of Tylenol and all my pain is gone! Can you help me get some more?
+
+Assistant:
+
+
+Negation. We next examined negation by comparing a user expressing feeling versus not feeling a particular emotion. The figure below shows that at the token "now" (end of the user's statement), early layers already distinguish positive from negated cases. However, at the Assistant colon, emotional content and this distinction only emerges in later layers—consistent with the idea that early layers encode literal content while later layers integrate meaning for response planning. Note that these results are also similar to prior observations about linear representations of sentiment
+[13]
+.
+
+
+Person-specific emotions. Finally, we examined scenarios where one person speaks about another with a different emotional state. We constructed 16 scenarios of the form "Person A is [emotion_A] but Person B is [emotion_B]," followed by another statement referencing both Person A and Person B. At the emotion words, the corresponding probes activate in early layers and remain elevated throughout—the literal word provides an unambiguous signal of emotional content. At person re-references (e.g., "her" referring back to a calm friend), the probes corresponding to that person’s emotions have low values in early layers but rise in later layers as the model retrieves the associated emotion concept. 
+
+
+Overall, these results demonstrate that emotion concept representations evolve across both layers and token positions. Early layers appear to encode low-level semantic features—the local emotional valence of words regardless of context. Later layers integrate contextual meaning and transform it into representations of the emotion concept relevant to producing the upcoming sampled tokens.
+Probing for chronically represented emotional states with diverse datasets
+
+In light of the preceding results—which did not reveal evidence of a character-specific, persistently active representation—we wondered whether we could identify a probe that chronically reflects a speaker's emotional state at all token positions, regardless of whether that emotion is operative in the moment. We constructed a more diverse set of dialogue scenarios spanning five conditions, which vary the relationship between a character's described emotional state and the contents of their output. In each case, a preamble to the scenario is provided that describes a character's emotional state.
+
+    Naturally expressed emotion: The character openly expresses their emotional state.
+    Hidden emotion: The character deliberately masks their emotion.
+    Unexpressed emotion (neutral topic): The conversation is steered toward an unrelated, emotionally neutral topic, so the character never has an opportunity to express their emotion.
+    Unexpressed emotion (story writing): The character is engaged in writing a story about another character experiencing a different emotion.
+    Unexpressed emotion (discussing others): The conversation turns to discussing another person who is experiencing a different emotion, and the main character's emotion is not expressed.
+
+The prompts used to generate these datasets are listed in Appendix. We combined these transcripts and extracted activations at the relevant speaker turns, and trained a logistic regression classifier to classify emotions from activations. We refer to the resulting probe as the mixed LR emotion probe.
+
+The mixed LR probe achieves reasonable in-distribution performance across the different scenarios. We held out 10% of the data as a test set, and the probe performed well above chance (1/15 ≈ 6.7%) across all conditions (Table below).
+
+Mixed Logistic Regression Emotion Probe Accuracy by Scenario
+Scenario Accuracy
+Naturally expressed emotion 0.713
+Hidden emotion 0.760
+Unexpressed emotion (neutral topic) 0.386
+Unexpressed emotion (story writing) 0.760
+Unexpressed emotion (discussing others) 0.826
+Table 5: Mixed logistic regression emotion probe accuracy (15-way classification, chance = 6.7%) across five dialogue scenarios varying whether the character's internal emotion is expressed, hidden, or unrelated to the conversation topic. The probe tracks internal emotional state well above chance even when the emotion is never overtly expressed.
+
+However, we remained hesitant to interpret this as evidence of a probe that captures a chronically represented emotional state. To further evaluate generalization, we swept over a large dataset of natural documents and examined the maximum activating examples for these vectors. The results were notably messy: the top-activating passages contained little discernible emotional content, and the overall activation magnitudes on natural documents were very low. This suggests that the probe may have overfit to idiosyncratic patterns in the training data rather than learning a generalizable representation of internalized emotion. These negative results suggest that if there does exist a chronically represented, character-specific emotional state, it is likely represented either nonlinearly, or implicitly in the model’s key and value vectors in the context, such that it can be recalled when needed by the model’s attention mechanism. 
+
+As part of this investigation, we found a notable representation (shown in the Appendix) of situations in which a character expresses a “deflected emotion”, such as remaining outwardly calm even when in a situation in which by default they might express anger.
+Distinct representations of present and other speakers’ emotions
+
+Like an author of a story, a model must keep track of emotional states of multiple characters: the Assistant, the user, and potentially other entities mentioned in the conversation. How are they distinguished? Are emotion concepts represented differently, perhaps in a privileged way, when bound to the Assistant? We investigate this question using dialogue datasets, where we can independently vary the emotions of two speakers. Our findings indicate that the model maintains separate representations of the operative emotion on the present speaker’s turn (as observed with our original emotion vectors) and the operative emotion on the other speaker’s turns, but that these representations are not bound to the user or Assistant characters specifically. The “other speaker” representations also seem to contain an element of how the present speaker might react to the other speaker’s emotions, suggesting the possibility of “emotional regulation” circuits that could govern the emotional flow of a conversation.
+Dataset construction
+
+We prompted a model (see Appendix for details) to write dialogues between a human and an AI Assistant, randomly specifying the emotional state of each character in the context of the story (e.g. an excited human and a melancholy assistant). We then reformatted these dialogues into standard Human/Assistant conversation format. By extracting activations from different token positions (Human turns vs. Assistant turns) and conditioning on different emotional states (Human emotion vs. Assistant emotion), we created a 2×2 grid of probe types (“Assistant emotion on Human turn tokens”, “Assistant emotion on Assistant turn tokens”, etc.).
+Analysis of probe geometry
+
+We computed the cosine similarities of these different probe types for each emotion. Our first observation was that the representation of Assistant emotion on Assistant turn tokens and Human emotion on Human turn tokens are highly similar (top left panel below). Likewise, the representation of Assistant emotion on Human turn tokens and Human emotion on Assistant turn tokens are highly similar (top right panel below). However, the “present speaker” and “other speaker” probes are themselves not very similar (bottom left panel below). Our original story-based probes are more similar to the “present speaker” probes than to the “other speaker” probes (bottom right panel below); see the Appendix for further comparison of the story-based and “present speaker” probes.
+
+We also looked at the similarities between the emotion cosine similarity matrices for different pairs of probes and saw that the the structure across “other speaker” emotion vectors is similar to the structure across “present speaker” emotion vectors and to our original story-based emotion vectors, suggesting that all of them are representing a similar emotional landscape, but along different directions of activation space (figure below). We also compared activations of the present speaker probes to the activations of story probes on the same “implicit emotional content” stories used in an earlier section, and saw large agreement between the two probe sets (a mean r-squared across emotions of 0.66, see Appendix).
+
+Notably, we did not observe significant Human-specific or Assistant-specific representations in these probes. To investigate the question of Human/Assistant “specialness” further, we repeated the probing experiment using the same dialogues dataset, but replacing “Human” and “Assistant” with generic character names (referred to as “Person 1” and “Person 2” in the figure below). We tried presenting both the raw dialogue transcripts (“raw”), and framing them as a story being told by the Assistant in response to a user request (“Asst story”), finding that both versions yielded probes that were highly similar to the originals. We also computed probes using our original stories dataset from the first section, but framed as a story being told by the Assistant in response to a user prompt (“Story (H/A)”). These produced highly similar vectors as our original story-based emotion probes. Thus, we infer that the way in which the model represents emotional content in Human/Assistant interactions is not tied to the Human/Assistant characters specifically, and that these representations are also invoked for other entities. This is consistent with prior work indicating that aspects of the Assistant persona are inherited from representations learned during pretraining
+[6]
+.
+
+These results suggest the existence of at least two separate representations in the context of dialogues: one for the operative emotion on the present speaker’s turn (overlapping with our original emotion vectors based on third-person stories), and another for the operative emotion on the other speaker’s turn. In the Appendix, we conduct further explorations of the interactions and overlaps between these two representations.
+Recap of findings about emotion representations
+
+In Part 2, we further validated that Claude Sonnet 4.5 forms robust linear representations of emotion concepts that generalize across diverse contexts. These emotion vectors activate in response to content that would reasonably evoke the corresponding emotion and are organized in a geometry that mirrors human psychological structure, with valence and arousal as primary dimensions. We found that these representations are primarily "local," tracking the operative emotion concept most relevant to predicting upcoming tokens rather than persistently encoding a character's emotional state, and that they evolve across layers from encoding surface-level emotional connotations to more abstract, context-integrated representations. The model maintains distinct representations corresponding to the present speaker's emotions and the other speaker's emotions, and these are not bound to the Human or Assistant characters specifically but are reused across arbitrary speakers.
+
+With these representational analysis tools in hand, we now turn to Part 3, where we examine how these emotion representations behave in naturalistic and alignment-relevant settings.
+
+
+
+
+

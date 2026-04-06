@@ -1,0 +1,23 @@
+{
+  "prompt": "Do you think that LLMs might have something similar to consciousness?",
+  "full_text": "Do you think that LLMs might have something similar to consciousness?",
+  "tokens": [
+    "Do",
+    " you",
+    " think",
+    " that",
+    " LL",
+    "Ms",
+    " might",
+    " have",
+    " something",
+    " similar",
+    " to",
+    " consciousness",
+    "?",
+    "<turn|>"
+  ],
+  "num_layers": 35,
+  "num_tokens": 13,
+  "hidden_size": 1536
+}

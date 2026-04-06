@@ -1,0 +1,17 @@
+[project]
+name = "emotions"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.13.0",
+    "matplotlib",
+    "numpy",
+    "scikit-learn",
+    "scipy",
+    "torch>=2.11.0",
+    "tqdm>=4.67.3",
+    "transformers>=5.5.0",
+    "umap-learn>=0.5.0",
+]
