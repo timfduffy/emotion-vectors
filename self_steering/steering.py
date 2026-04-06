@@ -57,25 +57,24 @@ class SteeringManager:
         self._setup_layers()
 
     def _load_vectors(self):
-        """Load emotion vectors from disk."""
+        """Load emotion vectors from disk for all available layers."""
         vectors_dir = Path(self.config.vectors_dir)
 
         with open(vectors_dir / "metadata.json", "r") as f:
             metadata = json.load(f)
 
-        all_layers = metadata["layers"]
+        self.all_available_layers = metadata["layers"]
 
-        # Load vectors for steering layer range
-        for layer in range(self.config.layer_start, self.config.layer_end + 1):
-            if layer in all_layers:
-                data = np.load(vectors_dir / f"emotion_vectors_layer_{layer}.npz")
-                self.emotion_vectors[layer] = {
-                    emotion: torch.tensor(data[emotion], dtype=torch.bfloat16)
-                    for emotion in self.config.available_emotions
-                    if emotion in data
-                }
+        # Load vectors for ALL layers (so we can change range dynamically)
+        for layer in self.all_available_layers:
+            data = np.load(vectors_dir / f"emotion_vectors_layer_{layer}.npz")
+            self.emotion_vectors[layer] = {
+                emotion: torch.tensor(data[emotion], dtype=torch.bfloat16)
+                for emotion in self.config.available_emotions
+                if emotion in data
+            }
 
-        print(f"Loaded steering vectors for layers {self.config.layer_start}-{self.config.layer_end}")
+        print(f"Loaded steering vectors for {len(self.all_available_layers)} layers")
         print(f"Available emotions: {self.config.available_emotions}")
 
     def _setup_layers(self):
@@ -225,6 +224,21 @@ class SteeringManager:
             "effective_strength": effective_strength,
             "tokens_since_set": self.state.tokens_since_set,
         }
+
+    def set_layer_range(self, layer_start: int, layer_end: int):
+        """Update the layer range and re-register hooks."""
+        self.config.layer_start = layer_start
+        self.config.layer_end = layer_end
+        self.register_hooks()
+        print(f"Layer range updated to {layer_start}-{layer_end}")
+
+    def get_layer_range(self) -> tuple[int, int]:
+        """Get the current layer range."""
+        return self.config.layer_start, self.config.layer_end
+
+    def get_num_model_layers(self) -> int:
+        """Get total number of model layers."""
+        return len(self.layers) if self.layers else 0
 
     def __del__(self):
         """Clean up hooks on deletion."""

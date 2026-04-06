@@ -5,16 +5,33 @@ A chat interface where the model can adjust its own emotional processing
 using steering vectors.
 """
 
+import time
+_import_start = time.perf_counter()
+
 import gradio as gr
+print(f"[Startup] Gradio import: {time.perf_counter() - _import_start:.2f}s")
+
+_t = time.perf_counter()
 import torch
+print(f"[Startup] Torch import: {time.perf_counter() - _t:.2f}s")
+
 from pathlib import Path
+
+_t = time.perf_counter()
 from transformers import AutoModelForCausalLM, AutoTokenizer
+print(f"[Startup] Transformers import: {time.perf_counter() - _t:.2f}s")
+
 from typing import Optional
 import json
 
+_t = time.perf_counter()
 from steering import SteeringManager, SteeringConfig
+print(f"[Startup] Steering import: {time.perf_counter() - _t:.2f}s")
+
 from tools import parse_tool_call, format_tool_result, STEER_TOOL_SCHEMA
 from prompts import get_system_prompt
+
+print(f"[Startup] Total imports: {time.perf_counter() - _import_start:.2f}s")
 
 
 # Configuration
@@ -25,33 +42,41 @@ VECTORS_DIR = Path(__file__).parent.parent / "emotion_vectors_denoised"
 model = None
 tokenizer = None
 steering_manager = None
-past_key_values = None  # KV cache persistence
+
+# KV cache state
+cached_input_ids = None  # Token IDs that the cache was built from
+cached_kv = None  # The actual past_key_values
 
 
 def load_model_and_steering(config: SteeringConfig):
     """Load the model and initialize steering."""
     global model, tokenizer, steering_manager
 
+    t0 = time.perf_counter()
     print("Loading tokenizer...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
+    print(f"[Startup] Tokenizer loaded: {time.perf_counter() - t0:.2f}s")
 
+    t1 = time.perf_counter()
     print("Loading model...")
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_PATH,
         torch_dtype=torch.bfloat16,
         device_map="cuda",
         trust_remote_code=True,
+        attn_implementation="sdpa",  # Use scaled dot product attention (faster)
     )
     model.eval()
-    print("Model loaded!")
+    print(f"[Startup] Model loaded: {time.perf_counter() - t1:.2f}s")
 
+    t2 = time.perf_counter()
     print("Initializing steering...")
     config.vectors_dir = str(VECTORS_DIR)
     steering_manager = SteeringManager(model, config)
     steering_manager.register_hooks()
-    print("Steering initialized!")
+    print(f"[Startup] Steering initialized: {time.perf_counter() - t2:.2f}s")
 
 
 def generate_response(
@@ -61,13 +86,17 @@ def generate_response(
 ) -> tuple[str, bool, Optional[dict]]:
     """
     Generate a response, checking for tool calls.
+    Uses KV cache to avoid reprocessing previous tokens.
 
     Returns:
         - response text
         - whether a tool was called
         - tool call info (if any)
     """
-    global model, tokenizer, steering_manager, past_key_values
+    global model, tokenizer, steering_manager, cached_input_ids, cached_kv
+
+    timings = {}
+    t0 = time.perf_counter()
 
     # Format messages with chat template
     formatted = tokenizer.apply_chat_template(
@@ -76,14 +105,61 @@ def generate_response(
         add_generation_prompt=True
     )
 
-    inputs = tokenizer(formatted, return_tensors="pt").to(model.device)
+    t1 = time.perf_counter()
+    timings["chat_template"] = t1 - t0
+
+    tokenized = tokenizer(formatted, return_tensors="pt")
+    full_input_ids = tokenized["input_ids"].to(model.device)
+    full_attention_mask = tokenized["attention_mask"].to(model.device)
+    full_length = full_input_ids.shape[1]
+
+    t2 = time.perf_counter()
+    timings["tokenize"] = t2 - t1
+
+    # Check if we can reuse KV cache
+    use_cache_from = None
+    past_kv_to_use = None
+
+    if cached_input_ids is not None and cached_kv is not None:
+        cached_len = cached_input_ids.shape[1]
+        if full_length > cached_len:
+            # Check if the prefix matches
+            prefix_matches = torch.equal(
+                full_input_ids[0, :cached_len],
+                cached_input_ids[0, :cached_len]
+            )
+            if prefix_matches:
+                use_cache_from = cached_len
+                past_kv_to_use = cached_kv
+                print(f"  [KV Cache] Reusing {cached_len} tokens, processing {full_length - cached_len} new tokens")
+
+    t3 = time.perf_counter()
+    timings["cache_check"] = t3 - t2
 
     # Reset per-generation logging
     steering_manager.reset_generation_log()
 
+    # Prepare inputs
+    if use_cache_from is not None:
+        # Only pass new tokens, reuse cache for prefix
+        input_ids = full_input_ids[:, use_cache_from:]
+        attention_mask = full_attention_mask  # Full mask needed for attention
+        past_key_values = past_kv_to_use
+    else:
+        # Process full input
+        input_ids = full_input_ids
+        attention_mask = full_attention_mask
+        past_key_values = None
+        print(f"  [KV Cache] Processing full {full_length} tokens (no cache reuse)")
+
+    t4 = time.perf_counter()
+    timings["prep_inputs"] = t4 - t3
+
     with torch.no_grad():
         outputs = model.generate(
-            **inputs,
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            past_key_values=past_key_values,
             max_new_tokens=max_new_tokens,
             temperature=temperature,
             do_sample=True,
@@ -92,19 +168,50 @@ def generate_response(
             return_dict_in_generate=True,
         )
 
-    # Store KV cache for potential future use
-    # Note: Cross-turn caching with varying steering states is complex;
-    # for now we generate fresh each turn but this preserves the cache structure
-    if hasattr(outputs, 'past_key_values'):
-        past_key_values = outputs.past_key_values
+    t5 = time.perf_counter()
+    timings["generate"] = t5 - t4
+
+    # Update KV cache for next turn
+    # The new cache includes all tokens (prefix + generated)
+    if hasattr(outputs, 'past_key_values') and outputs.past_key_values is not None:
+        cached_kv = outputs.past_key_values
+        # Reconstruct full input_ids including generated tokens
+        sequences = outputs.sequences if hasattr(outputs, 'sequences') else outputs[0]
+        if use_cache_from is not None:
+            # Combine original prefix with new sequence
+            cached_input_ids = torch.cat([
+                full_input_ids[:, :use_cache_from],
+                sequences
+            ], dim=1)
+        else:
+            cached_input_ids = sequences
+
+    t6 = time.perf_counter()
+    timings["cache_update"] = t6 - t5
 
     # Decode only the new tokens
     sequences = outputs.sequences if hasattr(outputs, 'sequences') else outputs[0]
-    new_tokens = sequences[0][inputs["input_ids"].shape[1]:]
+    # Calculate how many tokens were in the input (including any cached prefix)
+    input_token_count = full_length
+    new_tokens = sequences[0][input_ids.shape[1]:]  # Tokens after what we passed in
     response = tokenizer.decode(new_tokens, skip_special_tokens=True)
+
+    t7 = time.perf_counter()
+    timings["decode"] = t7 - t6
 
     # Check for tool calls
     tool_call = parse_tool_call(response)
+
+    t8 = time.perf_counter()
+    timings["parse_tool"] = t8 - t7
+    timings["total"] = t8 - t0
+
+    # Print timing summary
+    gen_tokens = len(new_tokens)
+    tokens_per_sec = gen_tokens / timings["generate"] if timings["generate"] > 0 else 0
+    print(f"  [Timing] total={timings['total']:.2f}s, generate={timings['generate']:.2f}s "
+          f"({gen_tokens} tokens, {tokens_per_sec:.1f} tok/s), "
+          f"tokenize={timings['tokenize']*1000:.1f}ms, decode={timings['decode']*1000:.1f}ms")
 
     return response, tool_call is not None, tool_call
 
@@ -170,11 +277,14 @@ def get_steering_status():
         return "Steering not initialized"
 
     status = steering_manager.get_status()
+    layer_start, layer_end = steering_manager.get_layer_range()
+    layer_info = f"Layers {layer_start}-{layer_end}"
+
     if not status["active"]:
-        return "**Steering:** Inactive (baseline processing)"
+        return f"**Steering:** Inactive (baseline processing)\n\n**{layer_info}**"
     else:
         direction = "toward" if status["strength"] > 0 else "away from"
-        return f"**Steering:** {abs(status['strength']):.2f}x {direction} **{status['emotion']}**"
+        return f"**Steering:** {abs(status['strength']):.2f}x {direction} **{status['emotion']}**\n\n**{layer_info}**"
 
 
 def create_app(config: SteeringConfig):
@@ -213,6 +323,17 @@ def create_app(config: SteeringConfig):
                     label="Temperature"
                 )
 
+                gr.Markdown("### Layer Range")
+                num_layers = steering_manager.get_num_model_layers()
+                layer_start_slider = gr.Slider(
+                    minimum=0, maximum=num_layers - 1, value=config.layer_start, step=1,
+                    label="Start Layer"
+                )
+                layer_end_slider = gr.Slider(
+                    minimum=0, maximum=num_layers - 1, value=config.layer_end, step=1,
+                    label="End Layer"
+                )
+
                 gr.Markdown("### Steering Status")
                 steering_display = gr.Markdown(get_steering_status())
                 refresh_status = gr.Button("Refresh Status")
@@ -234,10 +355,35 @@ def create_app(config: SteeringConfig):
             return history, "", get_steering_status()
 
         def clear_chat():
-            global steering_manager
+            global steering_manager, cached_input_ids, cached_kv
             if steering_manager:
                 steering_manager.set_steering(None, 0.0)
+            # Clear KV cache
+            cached_input_ids = None
+            cached_kv = None
+            print("  [KV Cache] Cleared")
             return [], "", get_steering_status()
+
+        def on_chatbot_change(history):
+            """Reset steering when chatbot is cleared (e.g., via built-in trash icon)."""
+            global steering_manager, cached_input_ids, cached_kv
+            if not history and steering_manager:
+                steering_manager.set_steering(None, 0.0)
+                # Clear KV cache
+                cached_input_ids = None
+                cached_kv = None
+                print("  [KV Cache] Cleared (chat emptied)")
+            return get_steering_status()
+
+        def update_layer_range(start, end):
+            """Update the steering layer range."""
+            global steering_manager
+            if steering_manager:
+                # Ensure start <= end
+                if start > end:
+                    start, end = end, start
+                steering_manager.set_layer_range(int(start), int(end))
+            return get_steering_status()
 
         submit_btn.click(
             fn=respond,
@@ -258,6 +404,25 @@ def create_app(config: SteeringConfig):
 
         refresh_status.click(
             fn=get_steering_status,
+            outputs=[steering_display],
+        )
+
+        # Reset steering when chatbot is cleared via built-in trash icon
+        chatbot.change(
+            fn=on_chatbot_change,
+            inputs=[chatbot],
+            outputs=[steering_display],
+        )
+
+        # Update layer range when sliders change
+        layer_start_slider.change(
+            fn=update_layer_range,
+            inputs=[layer_start_slider, layer_end_slider],
+            outputs=[steering_display],
+        )
+        layer_end_slider.change(
+            fn=update_layer_range,
+            inputs=[layer_start_slider, layer_end_slider],
             outputs=[steering_display],
         )
 
@@ -282,5 +447,9 @@ if __name__ == "__main__":
         decay_rate=args.decay_rate,
     )
 
+    t_create = time.perf_counter()
     app = create_app(config)
+    print(f"[Startup] App created: {time.perf_counter() - t_create:.2f}s")
+
+    print("[Startup] Launching Gradio...")
     app.launch(share=False)
