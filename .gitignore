@@ -5,6 +5,10 @@ build/
 dist/
 wheels/
 *.egg-info
+0 - Introduction and Table of Contents.txt
+1 - Identifying and validating emotion concept representations.txt
+2 - Detailed characterization of emotion concept representations.txt
+3 - Appendix.txt
 
 # Virtual environments
 .venv
