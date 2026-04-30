@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -o NRC-VAD-Lexicon.zip)",
+      "Bash(uv run python -c ' *)",
+      "Bash(uv run *)"
+    ]
+  }
+}

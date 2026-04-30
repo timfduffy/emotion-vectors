@@ -64,18 +64,18 @@ class SteeringManager:
             metadata = json.load(f)
 
         self.all_available_layers = metadata["layers"]
+        self.all_emotions = metadata["emotions"]  # All 171 emotions
 
-        # Load vectors for ALL layers (so we can change range dynamically)
+        # Load vectors for ALL layers and ALL emotions
         for layer in self.all_available_layers:
             data = np.load(vectors_dir / f"emotion_vectors_layer_{layer}.npz")
             self.emotion_vectors[layer] = {
                 emotion: torch.tensor(data[emotion], dtype=torch.bfloat16)
-                for emotion in self.config.available_emotions
+                for emotion in self.all_emotions
                 if emotion in data
             }
 
-        print(f"Loaded steering vectors for {len(self.all_available_layers)} layers")
-        print(f"Available emotions: {self.config.available_emotions}")
+        print(f"Loaded steering vectors for {len(self.all_available_layers)} layers, {len(self.all_emotions)} emotions")
 
     def _setup_layers(self):
         """Identify model layers to hook."""
@@ -179,14 +179,25 @@ class SteeringManager:
             hook.remove()
         self.hooks = []
 
-    def set_steering(self, emotion: Optional[str], strength: float = 0.0):
-        """Set the current steering state."""
+    def set_steering(self, emotion: Optional[str], strength: float = 0.0, validate_curated: bool = True):
+        """Set the current steering state.
+
+        Args:
+            emotion: The emotion to steer toward (or None to clear)
+            strength: Steering strength (positive = toward, negative = away)
+            validate_curated: If True, only allow curated emotions (for self-steer mode)
+        """
         if emotion is None or emotion.lower() == "none":
             self.state = SteeringState(active=False)
             print("Steering cleared")
         else:
-            if emotion not in self.config.available_emotions:
-                raise ValueError(f"Unknown emotion: {emotion}. Available: {self.config.available_emotions}")
+            # Validate emotion exists
+            if emotion not in self.all_emotions:
+                raise ValueError(f"Unknown emotion: {emotion}")
+
+            # For self-steer mode, also check it's in the curated list
+            if validate_curated and emotion not in self.config.available_emotions:
+                raise ValueError(f"Emotion '{emotion}' not in curated list. Available: {self.config.available_emotions}")
 
             self.state = SteeringState(
                 emotion=emotion,
@@ -239,6 +250,14 @@ class SteeringManager:
     def get_num_model_layers(self) -> int:
         """Get total number of model layers."""
         return len(self.layers) if self.layers else 0
+
+    def get_all_emotions(self) -> list:
+        """Get all available emotions (for user-steer mode)."""
+        return self.all_emotions
+
+    def get_curated_emotions(self) -> list:
+        """Get curated emotions (for self-steer mode)."""
+        return self.config.available_emotions
 
     def __del__(self):
         """Clean up hooks on deletion."""
