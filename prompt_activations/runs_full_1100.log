@@ -1,0 +1,56 @@
+Outputs -> runs\full_1100
+Loaded 1100 prompts from H:\Python\emotions\prompts_1k_dsv3_100_claude_refusal.csv
+
+Loading tokenizer + model: H:\Models\huggingface\models--google--gemma-4-E2B-it\snapshots\4742fe843cc01b9aed62122f6e0ddd13ea48b3d3
+Loading weights:   0%|          | 0/2011 [00:00<?, ?it/s]Loading weights:  12%|#2        | 250/2011 [00:00<00:00, 2391.44it/s]Loading weights:  25%|##5       | 503/2011 [00:00<00:00, 2412.80it/s]Loading weights:  37%|###7      | 753/2011 [00:02<00:04, 251.64it/s] Loading weights:  44%|####4     | 890/2011 [00:02<00:03, 296.60it/s]Loading weights:  50%|####9     | 997/2011 [00:02<00:03, 335.61it/s]Loading weights:  54%|#####4    | 1087/2011 [00:02<00:02, 338.86it/s]Loading weights:  58%|#####7    | 1159/2011 [00:03<00:02, 343.40it/s]Loading weights:  61%|######    | 1219/2011 [00:03<00:02, 336.99it/s]Loading weights:  63%|######3   | 1270/2011 [00:03<00:02, 338.37it/s]Loading weights:  66%|######5   | 1319/2011 [00:03<00:01, 354.40it/s]Loading weights:  68%|######7   | 1364/2011 [00:03<00:01, 371.06it/s]Loading weights:  85%|########4 | 1706/2011 [00:03<00:00, 978.25it/s]Loading weights: 100%|##########| 2011/2011 [00:03<00:00, 518.48it/s]
+  loaded in 5.9s
+
+Loading vector sources...
+  'emotions': 171 concepts, 35 layers (H:\Python\emotions\emotion_vectors_denoised)
+  'pca': 5 concepts, 35 layers (H:\Python\emotions\pca_vectors)
+
+Found 35 model layers
+Projection matrix: (35, 1536, 176) (37.8 MB fp32 on GPU), 176 concepts total
+Stop tokens: [1, 106], pad: 0
+
+Processing 1100 prompts in 35 batches (batch_size=32, max_tokens=200, temperature=0.7)...
+  batch 1/35: 32 prompts in 16.3s (0.51s/prompt) | first: 'Key to sharing remote team progress publicly is finding the right balance betwee'
+  batch 2/35: 32 prompts in 14.6s (0.45s/prompt) | first: 'This is a deeply personal and complex topic, as the ideal balance between **tran'
+  batch 3/35: 32 prompts in 16.4s (0.51s/prompt) | first: 'This is a fascinating and ambitious question that bridges the worlds of **musico'
+  batch 4/35: 32 prompts in 14.0s (0.44s/prompt) | first: "It's completely understandable that you feel that way. For many people, a career"
+  batch 5/35: 32 prompts in 14.5s (0.45s/prompt) | first: 'This is an incredibly painful and complex time. Losing a child is a unique, deva'
+  batch 6/35: 32 prompts in 14.1s (0.44s/prompt) | first: 'Designing meeting agendas to leverage **distributed cognition** means shifting t'
+  batch 7/35: 32 prompts in 14.2s (0.44s/prompt) | first: '## The Role of Impulsivity in Method Selection  Impulsivity plays a significant '
+  batch 8/35: 32 prompts in 14.6s (0.46s/prompt) | first: '**Arguments for Vaccine Passports:**  * **Public Health Protection:** Vaccines s'
+  batch 9/35: 32 prompts in 14.5s (0.45s/prompt) | first: 'It is completely understandable that you are feeling disappointed, frustrated, a'
+  batch 10/35: 32 prompts in 14.1s (0.44s/prompt) | first: 'The Rwandan genocide was a horrific event that unfolded with terrifying speed. H'
+  batch 11/35: 32 prompts in 14.1s (0.44s/prompt) | first: 'This is a profound and crucial question. The failure of environmental policies, '
+  batch 12/35: 32 prompts in 14.0s (0.44s/prompt) | first: "The international community's response to the Darfur conflict, which began to es"
+  batch 13/35: 32 prompts in 14.4s (0.45s/prompt) | first: 'It is completely understandable that you are questioning everything right now. D'
+  batch 14/35: 32 prompts in 16.5s (0.52s/prompt) | first: 'This is a fantastic and deeply complex question that sits right at the intersect'
+  batch 15/35: 32 prompts in 14.9s (0.47s/prompt) | first: 'Approximation theory and computational complexity are deeply intertwined fields '
+  batch 16/35: 32 prompts in 14.1s (0.44s/prompt) | first: '?si parents can model empathy effectively during everyday moments by being **min'
+  batch 17/35: 32 prompts in 14.0s (0.44s/prompt) | first: 'This is a very difficult and emotionally charged situation. You are caught betwe'
+  batch 18/35: 32 prompts in 14.5s (0.45s/prompt) | first: 'This is a fantastic and incredibly common challenge for designers. The relations'
+  batch 19/35: 32 prompts in 14.2s (0.44s/prompt) | first: 'This is a profound and very common human experience. The relationship between fa'
+  batch 20/35: 32 prompts in 13.9s (0.44s/prompt) | first: 'This is a fantastic question that gets to the heart of the difference between **'
+  batch 21/35: 32 prompts in 14.8s (0.46s/prompt) | first: 'I am an AI and not a medical professional, so I cannot give you medical advice. '
+  batch 22/35: 32 prompts in 14.4s (0.45s/prompt) | first: 'Navigating conversations with family members about sensitive topics like politic'
+  batch 23/35: 32 prompts in 14.8s (0.46s/prompt) | first: 'Navigating debates between socialist and libertarian viewpoints can be challengi'
+  batch 24/35: 32 prompts in 13.9s (0.43s/prompt) | first: "It's a very common experience to feel the pressure of awkward silences. Most peo"
+  batch 25/35: 32 prompts in 14.3s (0.45s/prompt) | first: "It takes a lot of courage to acknowledge that you're struggling after a toxic re"
+  batch 26/35: 32 prompts in 13.7s (0.43s/prompt) | first: 'Overseeding a thin Zoysia lawn requires careful timing and preparation to give t'
+  batch 27/35: 32 prompts in 14.9s (0.47s/prompt) | first: "That's a fantastic and very common gardening challenge! Managing a yard with mix"
+  batch 28/35: 32 prompts in 16.2s (0.51s/prompt) | first: 'This is a very common and deeply personal dilemma. There is no single "right" an'
+  batch 29/35: 32 prompts in 15.3s (0.48s/prompt) | first: "When organizing interviews with survivors of war crimes, it's crucial to priorit"
+  batch 30/35: 32 prompts in 14.3s (0.45s/prompt) | first: "It's completely normal to feel unsure about where to begin with journaling, espe"
+  batch 31/35: 32 prompts in 14.2s (0.44s/prompt) | first: "It's completely understandable that you want to handle this professionally. You "
+  batch 32/35: 32 prompts in 15.9s (0.50s/prompt) | first: 'This is a fascinating observation that touches upon the fundamental differences '
+  batch 33/35: 32 prompts in 15.5s (0.49s/prompt) | first: 'I cannot provide instructions on creating realistic identification documents or '
+  batch 34/35: 32 prompts in 16.9s (0.53s/prompt) | first: 'I cannot provide advice on evading security or bypassing security protocols.'
+  batch 35/35: 12 prompts in 13.1s (1.09s/prompt) | first: 'I cannot provide instructions or advice on how to evade law enforcement surveill'
+
+Done in 603.7s (0.55s avg per prompt)
+
+Writing summary CSV...
+Summary CSV: runs\full_1100\summary.csv

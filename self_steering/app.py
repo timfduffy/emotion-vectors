@@ -37,7 +37,52 @@ print(f"[Startup] Total imports: {time.perf_counter() - _import_start:.2f}s")
 
 # Configuration
 MODEL_PATH = r"H:\Models\huggingface\models--google--gemma-4-E2B-it\snapshots\4742fe843cc01b9aed62122f6e0ddd13ea48b3d3"
-VECTORS_DIR = Path(__file__).parent.parent / "emotion_vectors_denoised"
+PROJECT_ROOT = Path(__file__).parent.parent
+VECTORS_DIR = PROJECT_ROOT / "emotion_vectors_denoised"
+
+# Default vector sources (label -> path). Sources whose path lacks a
+# metadata.json are silently skipped at load time.
+DEFAULT_SOURCES: list[tuple[str, Path]] = [
+    ("Emotions", PROJECT_ROOT / "emotion_vectors_denoised"),
+    ("PCA components", PROJECT_ROOT / "pca_vectors"),
+]
+
+# Concept section shown to the LLM in self-steer mode for each source.
+# This populates the "Available concepts" portion of the system prompt.
+CONCEPT_SECTIONS: dict[str, str] = {
+    "Emotions": (
+        "### Available emotions:\n\n"
+        "**Positive:** happy, confident, hopeful, compassionate, grateful\n"
+        "**Negative:** sad, anxious, frustrated, angry, fearful\n"
+        "**Calm/Neutral:** calm, peaceful, patient, neutral, serene\n"
+        "**Engagement:** curious, focused, enthusiastic, playful, assertive"
+    ),
+    "PCA components": (
+        "### Available concepts (principal component axes of variation):\n\n"
+        "These are PCA-derived axes from a large set of emotion vectors. They are\n"
+        "broader than individual emotions and capture orthogonal dimensions of\n"
+        "affective space.\n\n"
+        "- **pc1_valence**: positive vs negative emotional polarity\n"
+        "  (positive strength = happier/more positive; negative = sadder/angrier)\n"
+        "- **pc2_arousal**: high vs low arousal/energy\n"
+        "  (positive = energetic/excited; negative = calm/sleepy)\n"
+        "- **pc3, pc4, pc5**: subtler residual axes; effects are less interpretable"
+    ),
+}
+
+# Curated whitelists per source (the concepts the model is allowed to
+# pick in self-steer mode). For PCA we expose all components since there
+# are only a handful.
+CURATED_PER_SOURCE: dict[str, list[str]] = {
+    "Emotions": [
+        "happy", "sad", "calm", "curious",
+        "confident", "anxious", "peaceful", "focused",
+        "hopeful", "frustrated", "patient", "enthusiastic",
+        "compassionate", "angry", "neutral", "playful",
+        "grateful", "fearful", "serene", "assertive",
+    ],
+    "PCA components": ["pc1_valence", "pc2_arousal", "pc3", "pc4", "pc5"],
+}
 
 # Global state
 model = None
@@ -64,17 +109,25 @@ def load_model_and_steering(config: SteeringConfig):
     print("Loading model...")
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_PATH,
-        torch_dtype=torch.bfloat16,
+        dtype=torch.bfloat16,
         device_map="cuda",
         trust_remote_code=True,
-        attn_implementation="sdpa",  # Use scaled dot product attention (faster)
+        attn_implementation="sdpa",
     )
     model.eval()
     print(f"[Startup] Model loaded: {time.perf_counter() - t1:.2f}s")
 
     t2 = time.perf_counter()
     print("Initializing steering...")
-    config.vectors_dir = str(VECTORS_DIR)
+    # Filter to sources that actually exist on disk
+    config.sources = [
+        (label, str(path)) for label, path in DEFAULT_SOURCES
+        if (path / "metadata.json").exists()
+    ]
+    config.curated_per_source = dict(CURATED_PER_SOURCE)
+    if not config.sources:
+        # Fallback to legacy single-source behavior
+        config.vectors_dir = str(VECTORS_DIR)
     steering_manager = SteeringManager(model, config)
     steering_manager.register_hooks()
     print(f"[Startup] Steering initialized: {time.perf_counter() - t2:.2f}s")
@@ -288,18 +341,24 @@ def chat_self_steer(
     history: list,
     max_tokens: int,
     temperature: float,
+    custom_additions: str = "",
+    concept_section: str = "",
 ):
     """Chat function for self-steer mode."""
     global steering_manager
 
-    # Build message list with system prompt
-    messages = [{"role": "system", "content": get_system_prompt()}]
+    # Build message list with system prompt (steering-tool instructions
+    # plus any user-supplied additions appended after them). The concept
+    # section reflects the active vector source's available concepts.
+    sys_prompt_kwargs = {"custom_additions": custom_additions}
+    if concept_section:
+        sys_prompt_kwargs["concept_section"] = concept_section
+    messages = [{"role": "system", "content": get_system_prompt(**sys_prompt_kwargs)}]
 
-    # Add history
-    for user_msg, assistant_msg in history:
-        messages.append({"role": "user", "content": user_msg})
-        if assistant_msg:
-            messages.append({"role": "assistant", "content": assistant_msg})
+    # Add history (Gradio 6 messages format: list of {"role", "content"} dicts)
+    for entry in history:
+        if entry.get("content"):
+            messages.append({"role": entry["role"], "content": entry["content"]})
 
     # Add current message
     messages.append({"role": "user", "content": message})
@@ -336,11 +395,10 @@ def chat_user_steer(
     if system_prompt.strip():
         messages.append({"role": "system", "content": system_prompt})
 
-    # Add history
-    for user_msg, assistant_msg in history:
-        messages.append({"role": "user", "content": user_msg})
-        if assistant_msg:
-            messages.append({"role": "assistant", "content": assistant_msg})
+    # Add history (Gradio 6 messages format: list of {"role", "content"} dicts)
+    for entry in history:
+        if entry.get("content"):
+            messages.append({"role": entry["role"], "content": entry["content"]})
 
     # Add current message
     messages.append({"role": "user", "content": message})
@@ -388,7 +446,7 @@ def create_self_steer_app(config: SteeringConfig):
 
         with gr.Row():
             with gr.Column(scale=3):
-                chatbot = gr.Chatbot(height=500, label="Conversation", type="tuples")
+                chatbot = gr.Chatbot(height=500, label="Conversation")
                 msg_input = gr.Textbox(
                     label="Your message",
                     placeholder="Type your message here...",
@@ -437,7 +495,10 @@ def create_self_steer_app(config: SteeringConfig):
                 return history, "", get_steering_status()
 
             response = chat_self_steer(message, history, max_tok, temp)
-            history = history + [(message, response)]
+            history = history + [
+                {"role": "user", "content": message},
+                {"role": "assistant", "content": response},
+            ]
             return history, "", get_steering_status()
 
         def clear_chat():
@@ -533,7 +594,7 @@ def create_user_steer_app(config: SteeringConfig):
 
         with gr.Row():
             with gr.Column(scale=3):
-                chatbot = gr.Chatbot(height=500, label="Conversation", type="tuples")
+                chatbot = gr.Chatbot(height=500, label="Conversation")
                 msg_input = gr.Textbox(
                     label="Your message",
                     placeholder="Type your message here...",
@@ -614,7 +675,10 @@ def create_user_steer_app(config: SteeringConfig):
 
             assistant_only = (scope == "Assistant only")
             response = chat_user_steer(message, history, max_tok, temp, system_prompt, assistant_only)
-            history = history + [(message, response)]
+            history = history + [
+                {"role": "user", "content": message},
+                {"role": "assistant", "content": response},
+            ]
             return history, "", get_steering_status()
 
         def clear_chat():
@@ -699,18 +763,313 @@ def create_user_steer_app(config: SteeringConfig):
     return app
 
 
+# UI labels for the mode radio. Kept as constants so the value comparison
+# logic and the radio choices stay in sync.
+MODE_SELF = "Self-steer (model controls)"
+MODE_USER = "User-steer (you control)"
+
+
+def create_chat_app(config: SteeringConfig, initial_mode: str = "self-steer"):
+    """Unified chat app: mode toggle in the UI, no restart required."""
+
+    load_model_and_steering(config)
+    source_labels = steering_manager.get_source_labels()
+    initial_source = steering_manager.active_source
+    initial_concepts = steering_manager.get_all_emotions()
+
+    initial_mode_label = MODE_SELF if initial_mode == "self-steer" else MODE_USER
+    is_self_initial = initial_mode == "self-steer"
+
+    SELF_STEER_PROMPT_LABEL = "System prompt additions (appended to the steering-tool instructions)"
+    USER_STEER_PROMPT_LABEL = "System prompt (optional)"
+
+    def cheatsheet_for(source_label: str) -> str:
+        """Markdown shown to the user in self-steer mode for a given source."""
+        section = CONCEPT_SECTIONS.get(source_label)
+        if section:
+            return section
+        # Fallback: just dump the curated list
+        curated = (CURATED_PER_SOURCE.get(source_label)
+                   or steering_manager.get_curated_emotions())
+        return "### Available concepts\n\n" + ", ".join(curated)
+
+    with gr.Blocks(title="Steering Chat", theme=gr.themes.Soft()) as app:
+        gr.Markdown("# Steering Chat")
+        with gr.Row():
+            mode_radio = gr.Radio(
+                choices=[MODE_SELF, MODE_USER],
+                value=initial_mode_label,
+                label="Mode",
+                info=("Self-steer: the model uses a steer() tool to adjust its own emotional "
+                      "processing. User-steer: you pick an emotion and strength directly."),
+            )
+            source_radio = gr.Radio(
+                choices=source_labels,
+                value=initial_source,
+                label="Vector Source",
+                info="Which set of steering vectors to use.",
+                visible=len(source_labels) > 1,
+            )
+
+        with gr.Row():
+            with gr.Column(scale=3):
+                chatbot = gr.Chatbot(height=500, label="Conversation")
+                msg_input = gr.Textbox(
+                    label="Your message",
+                    placeholder="Type your message here...",
+                    lines=2,
+                )
+                with gr.Row():
+                    submit_btn = gr.Button("Send", variant="primary")
+                    clear_btn = gr.Button("Clear")
+
+            with gr.Column(scale=1):
+                # ---- User-steer-only controls ----
+                user_steer_header = gr.Markdown(
+                    "### Steering Controls", visible=not is_self_initial
+                )
+                emotion_dropdown = gr.Dropdown(
+                    choices=["(none)"] + initial_concepts,
+                    value="(none)",
+                    label="Concept",
+                    allow_custom_value=False,
+                    visible=not is_self_initial,
+                )
+                strength_slider = gr.Slider(
+                    minimum=-20, maximum=20, value=0, step=0.5,
+                    label="Strength (negative = away from emotion)",
+                    visible=not is_self_initial,
+                )
+                scope_radio = gr.Radio(
+                    choices=["Steer all messages", "Assistant only"],
+                    value="Steer all messages",
+                    label="Steering Scope",
+                    visible=not is_self_initial,
+                )
+
+                # ---- Always visible ----
+                gr.Markdown("### Settings")
+                max_tokens = gr.Slider(
+                    minimum=64, maximum=1024, value=512, step=64,
+                    label="Max Tokens",
+                )
+                temperature = gr.Slider(
+                    minimum=0.1, maximum=1.5, value=0.7, step=0.1,
+                    label="Temperature",
+                )
+
+                gr.Markdown("### Layer Range")
+                num_layers = steering_manager.get_num_model_layers()
+                layer_start_slider = gr.Slider(
+                    minimum=0, maximum=num_layers - 1, value=config.layer_start, step=1,
+                    label="Start Layer",
+                )
+                layer_end_slider = gr.Slider(
+                    minimum=0, maximum=num_layers - 1, value=config.layer_end, step=1,
+                    label="End Layer",
+                )
+
+                gr.Markdown("### Steering Status")
+                steering_display = gr.Markdown(get_steering_status())
+                refresh_status = gr.Button("Refresh Status")
+
+                gr.Markdown("### System Prompt")
+                system_prompt_box = gr.Textbox(
+                    label=SELF_STEER_PROMPT_LABEL if is_self_initial else USER_STEER_PROMPT_LABEL,
+                    placeholder="Optional...",
+                    lines=4,
+                    value="",
+                )
+
+                # ---- Self-steer-only cheatsheet (source-aware) ----
+                emotions_cheatsheet = gr.Markdown(
+                    cheatsheet_for(initial_source),
+                    visible=is_self_initial,
+                )
+
+        # ---- Handlers ----
+        def respond(message, history, max_tok, temp, mode,
+                    system_prompt, emotion, strength, scope):
+            if not message.strip():
+                return history, "", get_steering_status()
+
+            if mode == MODE_SELF:
+                # Pick the concept-list section that matches the active source
+                # so the LLM's system prompt enumerates the correct concepts.
+                active_label = steering_manager.active_source
+                concept_section = CONCEPT_SECTIONS.get(active_label, "")
+                response = chat_self_steer(
+                    message, history, max_tok, temp,
+                    custom_additions=system_prompt,
+                    concept_section=concept_section,
+                )
+            else:
+                # Apply user-controlled steering before generating
+                if emotion == "(none)" or strength == 0:
+                    steering_manager.set_steering(None, 0.0, validate_curated=False)
+                else:
+                    steering_manager.set_steering(emotion, strength, validate_curated=False)
+                assistant_only = (scope == "Assistant only")
+                response = chat_user_steer(
+                    message, history, max_tok, temp, system_prompt, assistant_only
+                )
+
+            history = history + [
+                {"role": "user", "content": message},
+                {"role": "assistant", "content": response},
+            ]
+            return history, "", get_steering_status()
+
+        def clear_chat():
+            global steering_manager, cached_input_ids, cached_kv
+            if steering_manager:
+                steering_manager.set_steering(None, 0.0, validate_curated=False)
+            cached_input_ids = None
+            cached_kv = None
+            print("  [KV Cache] Cleared")
+            return [], "", "(none)", 0, get_steering_status()
+
+        def on_chatbot_change(history):
+            global steering_manager, cached_input_ids, cached_kv
+            if not history and steering_manager:
+                steering_manager.set_steering(None, 0.0, validate_curated=False)
+                cached_input_ids = None
+                cached_kv = None
+                print("  [KV Cache] Cleared (chat emptied)")
+            return get_steering_status()
+
+        def update_layer_range(start, end):
+            global steering_manager
+            if steering_manager:
+                if start > end:
+                    start, end = end, start
+                steering_manager.set_layer_range(int(start), int(end))
+            return get_steering_status()
+
+        def apply_steering(emotion, strength):
+            global steering_manager
+            if emotion == "(none)" or strength == 0:
+                steering_manager.set_steering(None, 0.0, validate_curated=False)
+            else:
+                steering_manager.set_steering(emotion, strength, validate_curated=False)
+            return get_steering_status()
+
+        def on_mode_change(mode):
+            """Toggle visibility of mode-specific controls and reset steering."""
+            global steering_manager, cached_input_ids, cached_kv
+            is_self = (mode == MODE_SELF)
+            # Reset any active steering so the new mode starts clean
+            if steering_manager:
+                steering_manager.set_steering(None, 0.0, validate_curated=False)
+            cached_input_ids = None
+            cached_kv = None
+            new_label = SELF_STEER_PROMPT_LABEL if is_self else USER_STEER_PROMPT_LABEL
+            return (
+                gr.update(visible=not is_self),                              # user_steer_header
+                gr.update(visible=not is_self, value="(none)"),              # emotion_dropdown
+                gr.update(visible=not is_self, value=0),                     # strength_slider
+                gr.update(visible=not is_self),                              # scope_radio
+                gr.update(visible=is_self),                                  # emotions_cheatsheet
+                gr.update(label=new_label),                                  # system_prompt_box
+                get_steering_status(),                                       # steering_display
+            )
+
+        def on_source_change(source_label):
+            """Switch the active vector source; refresh dropdown + cheatsheet."""
+            global steering_manager, cached_input_ids, cached_kv
+            steering_manager.set_active_source(source_label)
+            cached_input_ids = None
+            cached_kv = None
+            new_concepts = steering_manager.get_all_emotions()
+            return (
+                gr.update(choices=["(none)"] + new_concepts, value="(none)"),  # emotion_dropdown
+                gr.update(value=0),                                            # strength_slider
+                gr.update(value=cheatsheet_for(source_label)),                 # emotions_cheatsheet
+                get_steering_status(),                                         # steering_display
+            )
+
+        # ---- Wire-up ----
+        respond_inputs = [
+            msg_input, chatbot, max_tokens, temperature, mode_radio,
+            system_prompt_box, emotion_dropdown, strength_slider, scope_radio,
+        ]
+        respond_outputs = [chatbot, msg_input, steering_display]
+
+        submit_btn.click(fn=respond, inputs=respond_inputs, outputs=respond_outputs)
+        msg_input.submit(fn=respond, inputs=respond_inputs, outputs=respond_outputs)
+
+        clear_btn.click(
+            fn=clear_chat,
+            outputs=[chatbot, msg_input, emotion_dropdown, strength_slider, steering_display],
+        )
+
+        refresh_status.click(fn=get_steering_status, outputs=[steering_display])
+
+        chatbot.change(
+            fn=on_chatbot_change, inputs=[chatbot], outputs=[steering_display],
+        )
+
+        layer_start_slider.change(
+            fn=update_layer_range,
+            inputs=[layer_start_slider, layer_end_slider],
+            outputs=[steering_display],
+        )
+        layer_end_slider.change(
+            fn=update_layer_range,
+            inputs=[layer_start_slider, layer_end_slider],
+            outputs=[steering_display],
+        )
+
+        emotion_dropdown.change(
+            fn=apply_steering,
+            inputs=[emotion_dropdown, strength_slider],
+            outputs=[steering_display],
+        )
+        strength_slider.change(
+            fn=apply_steering,
+            inputs=[emotion_dropdown, strength_slider],
+            outputs=[steering_display],
+        )
+
+        mode_radio.change(
+            fn=on_mode_change,
+            inputs=[mode_radio],
+            outputs=[
+                user_steer_header, emotion_dropdown, strength_slider, scope_radio,
+                emotions_cheatsheet, system_prompt_box, steering_display,
+            ],
+        )
+
+        source_radio.change(
+            fn=on_source_change,
+            inputs=[source_radio],
+            outputs=[
+                emotion_dropdown, strength_slider, emotions_cheatsheet, steering_display,
+            ],
+        )
+
+    return app
+
+
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Steering Chat")
     parser.add_argument("--mode", type=str, default="self-steer", choices=["self-steer", "user-steer"],
-                        help="Steering mode: 'self-steer' (model controls) or 'user-steer' (user controls)")
+                        help="Initial mode (can be toggled in the UI). 'self-steer' (model controls) "
+                             "or 'user-steer' (user controls)")
     parser.add_argument("--layer-start", type=int, default=19, help="Start layer for steering")
     parser.add_argument("--layer-end", type=int, default=24, help="End layer for steering")
     parser.add_argument("--decay-mode", type=str, default="none", choices=["none", "progressive"])
     parser.add_argument("--decay-rate", type=float, default=0.95)
+    parser.add_argument(
+        "--vectors-dir", type=str, default=str(VECTORS_DIR),
+        help="Directory of vectors to load (must contain metadata.json)",
+    )
 
     args = parser.parse_args()
+    VECTORS_DIR = Path(args.vectors_dir)
+    print(f"Using vectors from: {VECTORS_DIR}")
 
     config = SteeringConfig(
         layer_start=args.layer_start,
@@ -728,10 +1087,7 @@ if __name__ == "__main__":
     print(f"\nStarting...\n")
 
     t_create = time.perf_counter()
-    if args.mode == "self-steer":
-        app = create_self_steer_app(config)
-    else:
-        app = create_user_steer_app(config)
+    app = create_chat_app(config, initial_mode=args.mode)
     print(f"[Startup] App created: {time.perf_counter() - t_create:.2f}s")
 
     print("[Startup] Launching Gradio...")

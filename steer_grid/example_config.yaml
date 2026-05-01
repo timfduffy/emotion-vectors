@@ -1,0 +1,39 @@
+# Example config for steer_grid/run.py
+#
+# Each generation in the grid uses ONE (vector, strength, layer-range) combo.
+# All combinations of the three lists are run.
+
+# ----- Static (same across all generations) -----
+
+prompt: |
+  My dog died.
+
+system_prompt: ""             # optional; empty = no system message
+
+temperature: 0.0
+max_tokens: 200
+top_p: 1.0
+scope: "assistant_only"       # "assistant_only" or "all" (steering during prompt prefill too)
+
+batch_size: 8                 # how many combos to run in one parallel forward pass
+seed: 42                      # set null for non-deterministic
+
+# ----- Vector sources -----
+# label -> path (relative to this config file or absolute).
+# Each source must have a metadata.json describing its concepts.
+
+sources:
+  emotions: ../emotion_vectors_denoised
+  pca:      ../pca_vectors
+
+# ----- Grid axes (Cartesian product is the run set) -----
+
+vectors:
+  - {source: pca,      name: pc1_valence}
+  - {source: pca,      name: pc2_arousal}
+
+strengths: [10, 5, 2, 0, -2, -5, -10]
+
+layer_ranges:
+  - [14, 23]
+

@@ -21,6 +21,11 @@ emotion_vectors = None
 emotions = None
 layers = None
 
+# All loaded vector sources, keyed by display label.
+# Each value is {"vectors": dict, "emotions": list, "layers": list, "path": str}
+loaded_sources: dict = {}
+active_source_name: str = ""
+
 
 def load_emotion_vectors(vectors_dir: str) -> tuple[dict, list, list]:
     """Load denoised emotion vectors."""
@@ -69,10 +74,9 @@ def load_model(model_path: str, device: str = "cuda"):
     print("  (This may take 30-60 seconds)", flush=True)
 
     try:
-        # Match exact loading pattern from working scripts
         model = AutoModelForCausalLM.from_pretrained(
             model_path,
-            torch_dtype=torch.bfloat16,
+            dtype=torch.bfloat16,
             device_map="cuda",
             trust_remote_code=True,
         )
@@ -319,25 +323,54 @@ def projections_to_html_multi_layer(
     """Multi-layer mode: one emotion, all layers as rows."""
     global emotion_vectors
 
-    html_parts = []
-    html_parts.append('<div style="font-family: monospace; font-size: 12px; overflow-x: auto;">')
-    html_parts.append(f'<div style="margin-bottom: 10px; font-weight: bold;">Emotion: {emotion} | All Layers</div>')
-    html_parts.append('<table style="border-collapse: collapse;">')
-
-    # Prepare tokens with newlines escaped
-    display_tokens = [html.escape(t).replace('\n', '\\n').replace('\r', '\\r') for t in tokens]
-
+    # Pre-compute projections + stats for every layer so we can scale the
+    # variance bar relative to the noisiest layer in this view.
+    per_layer = []
     for layer in layer_list:
-        # Compute projections for this layer
         emotion_vec = emotion_vectors[layer][emotion]
         emotion_vec = emotion_vec / np.linalg.norm(emotion_vec)
         layer_activations = activations[layer]
         projections = layer_activations @ emotion_vec
 
+        per_layer.append({
+            "layer": layer,
+            "projections": projections,
+            "mean": float(np.mean(projections)),
+            "std": float(np.std(projections)),
+            "min": float(np.min(projections)),
+            "max": float(np.max(projections)),
+        })
+
+    max_std = max((d["std"] for d in per_layer), default=1e-6)
+
+    html_parts = []
+    html_parts.append('<div style="font-family: monospace; font-size: 12px; overflow-x: auto;">')
+    html_parts.append(f'<div style="margin-bottom: 10px; font-weight: bold;">Emotion: {emotion} | All Layers</div>')
+    html_parts.append('<table style="border-collapse: collapse;">')
+
+    # Header: stats column legend
+    html_parts.append(
+        '<tr style="font-size: 10px; color: #666;">'
+        '<td></td><td></td>'
+        '<td style="padding: 2px 8px; text-align: right;">mean</td>'
+        '<td style="padding: 2px 8px; text-align: right;">std</td>'
+        '<td style="padding: 2px 8px; text-align: right;">range</td>'
+        '<td style="padding: 2px 8px;">std (relative)</td>'
+        '</tr>'
+    )
+
+    # Prepare tokens with newlines escaped
+    display_tokens = [html.escape(t).replace('\n', '\\n').replace('\r', '\\r') for t in tokens]
+
+    for d in per_layer:
+        layer = d["layer"]
+        projections = d["projections"]
         max_abs = max(abs(projections.min()), abs(projections.max()), 1e-6)
         normalized = projections / max_abs
 
-        html_parts.append(f'<tr><td style="padding: 2px 8px; font-weight: bold; white-space: nowrap;">L{layer}</td><td>')
+        html_parts.append(
+            f'<tr><td style="padding: 2px 8px; font-weight: bold; white-space: nowrap;">L{layer}</td><td>'
+        )
 
         for token, proj, norm_val in zip(display_tokens, projections, normalized):
             r, g, b = norm_to_rgb(norm_val)
@@ -346,8 +379,21 @@ def projections_to_html_multi_layer(
                 f'<span style="background-color: rgb({r},{g},{b}); color: {text_color}; padding: 1px 2px;" '
                 f'title="L{layer} {emotion}: {proj:.3f}">{token}</span>'
             )
+        html_parts.append('</td>')
 
-        html_parts.append('</td></tr>')
+        # Per-layer stats cells
+        bar_pct = 100.0 * d["std"] / max_std if max_std > 0 else 0.0
+        html_parts.append(
+            f'<td style="padding: 2px 8px; text-align: right; white-space: nowrap; color: #444;">{d["mean"]:+.3f}</td>'
+            f'<td style="padding: 2px 8px; text-align: right; white-space: nowrap; color: #444;">{d["std"]:.3f}</td>'
+            f'<td style="padding: 2px 8px; text-align: right; white-space: nowrap; color: #444;">'
+            f'[{d["min"]:+.2f}, {d["max"]:+.2f}]</td>'
+            f'<td style="padding: 2px 8px; white-space: nowrap;">'
+            f'<div style="background:#eee; width:80px; height:10px; display:inline-block; border:1px solid #ccc;">'
+            f'<div style="background:#4a90d9; width:{bar_pct:.1f}%; height:100%;"></div>'
+            f'</div></td>'
+        )
+        html_parts.append('</tr>')
 
     html_parts.append('</table></div>')
     html_parts.append(get_color_legend())
@@ -534,20 +580,55 @@ def update_visualization(
 
 # Paths - adjust as needed
 MODEL_PATH = r"H:\Models\huggingface\models--google--gemma-4-E2B-it\snapshots\4742fe843cc01b9aed62122f6e0ddd13ea48b3d3"
-VECTORS_DIR = Path(__file__).parent.parent / "emotion_vectors_denoised"
+PROJECT_ROOT = Path(__file__).parent.parent
+VECTORS_DIR = PROJECT_ROOT / "emotion_vectors_denoised"
 
-def initialize_all():
-    """Load emotion vectors AND model at startup."""
-    global emotion_vectors, emotions, layers, model, tokenizer
+# Default sources. Each entry is (label, directory). Sources whose directory
+# is missing or lacks metadata.json are silently skipped.
+DEFAULT_SOURCES: list[tuple[str, Path]] = [
+    ("Emotions (denoised)", PROJECT_ROOT / "emotion_vectors_denoised"),
+    ("PCA components", PROJECT_ROOT / "pca_vectors"),
+]
 
+
+def set_active_source(name: str):
+    """Switch globals to point at a previously loaded source."""
+    global emotion_vectors, emotions, layers, active_source_name
+    src = loaded_sources[name]
+    emotion_vectors = src["vectors"]
+    emotions = src["emotions"]
+    layers = src["layers"]
+    active_source_name = name
+
+
+def initialize_all(sources: list[tuple[str, Path]] = None):
+    """Load all available vector sources AND model at startup."""
+    global model, tokenizer, loaded_sources
+
+    if sources is None:
+        sources = DEFAULT_SOURCES
+
+    loaded_sources = {}
     print("Loading emotion vectors...")
-    emotion_vectors, emotions, layers = load_emotion_vectors(VECTORS_DIR)
-    print(f"Loaded {len(emotions)} emotions, {len(layers)} layers")
+    for label, path in sources:
+        if not (path / "metadata.json").exists():
+            print(f"  [skip] {label}: no metadata.json at {path}")
+            continue
+        v, e, l = load_emotion_vectors(path)
+        loaded_sources[label] = {"vectors": v, "emotions": e, "layers": l, "path": str(path)}
+        print(f"  [ok]   {label}: {len(e)} concepts, {len(l)} layers ({path.name})")
+
+    if not loaded_sources:
+        raise RuntimeError(
+            f"No valid vector sources found. Tried: {[str(p) for _, p in sources]}"
+        )
+
+    set_active_source(next(iter(loaded_sources)))
 
     print("\nLoading model (this takes 30-60 seconds)...")
     load_model(MODEL_PATH)
 
-    return emotions, layers
+    return list(loaded_sources.keys()), emotions, layers
 
 
 def ensure_model_loaded():
@@ -564,10 +645,11 @@ def create_app():
     global emotions, layers
 
     # Load everything before starting Gradio
-    emotions, layers = initialize_all()
+    source_names, emotions, layers = initialize_all()
 
     # Default to mid-late layer
     default_layer = layers[int(len(layers) * 0.67)]
+    default_emotion = "happy" if "happy" in emotions else emotions[0]
 
     with gr.Blocks(title="Emotion Activation Viewer", theme=gr.themes.Soft()) as app:
         gr.Markdown("# Emotion Activation Viewer")
@@ -605,9 +687,15 @@ def create_app():
                     value="Single",
                     label="Display Mode",
                 )
+                source_radio = gr.Radio(
+                    choices=source_names,
+                    value=source_names[0],
+                    label="Vector Source",
+                    visible=len(source_names) > 1,
+                )
                 emotion_dropdown = gr.Dropdown(
                     choices=emotions,
-                    value="happy",
+                    value=default_emotion,
                     label="Emotion Concept",
                     interactive=True,
                 )
@@ -692,6 +780,44 @@ def create_app():
 
             return create_visualization(tokens, activations, emotion, layer, l_start, l_end, mode)
 
+        # Source radio: swap active vectors, refresh emotion + layer dropdowns,
+        # and re-render the current visualization with the new source.
+        def on_source_change(source_name, current_emotion, current_layer,
+                             current_l_start, current_l_end, current_mode, data):
+            global emotions, layers
+            set_active_source(source_name)
+            new_emotion = current_emotion if current_emotion in emotions else (
+                "happy" if "happy" in emotions else emotions[0]
+            )
+            new_layer = current_layer if current_layer in layers else layers[int(len(layers) * 0.67)]
+            new_l_start = current_l_start if current_l_start in layers else layers[int(len(layers) * 0.5)]
+            new_l_end = current_l_end if current_l_end in layers else layers[int(len(layers) * 0.75)]
+
+            if data is not None:
+                tokens = data["tokens"]
+                activations = np.array(data["activations"])
+                viz = create_visualization(
+                    tokens, activations, new_emotion,
+                    new_layer, new_l_start, new_l_end, current_mode,
+                )
+            else:
+                viz = gr.update()
+
+            return (
+                gr.update(choices=emotions, value=new_emotion),
+                gr.update(choices=layers, value=new_layer),
+                gr.update(choices=layers, value=new_l_start),
+                gr.update(choices=layers, value=new_l_end),
+                viz,
+            )
+
+        source_radio.change(
+            fn=on_source_change,
+            inputs=[source_radio, emotion_dropdown, layer_dropdown,
+                    layer_start, layer_end, display_mode, stored_data],
+            outputs=[emotion_dropdown, layer_dropdown, layer_start, layer_end, output_html],
+        )
+
         update_btn.click(
             fn=update_viz,
             inputs=[emotion_dropdown, layer_dropdown, layer_start, layer_end, display_mode, stored_data],
@@ -729,5 +855,36 @@ def create_app():
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--vectors-dir",
+        type=str,
+        default=None,
+        help="Override the primary 'Emotions' source path (must contain metadata.json). "
+             "If omitted, both default sources (emotion_vectors_denoised and pca_vectors) "
+             "are auto-discovered.",
+    )
+    parser.add_argument(
+        "--source",
+        action="append",
+        default=[],
+        metavar="LABEL=PATH",
+        help="Add an extra vector source. Can be passed multiple times.",
+    )
+    args = parser.parse_args()
+
+    if args.vectors_dir:
+        DEFAULT_SOURCES[0] = (DEFAULT_SOURCES[0][0], Path(args.vectors_dir))
+    for spec in args.source:
+        if "=" not in spec:
+            parser.error(f"--source must be LABEL=PATH, got: {spec}")
+        label, path = spec.split("=", 1)
+        DEFAULT_SOURCES.append((label, Path(path)))
+
+    print("Vector sources:")
+    for label, path in DEFAULT_SOURCES:
+        print(f"  {label}: {path}")
+
     app = create_app()
     app.launch(share=False)

@@ -1,0 +1,351 @@
+concept,layer,direction,token_1,token_2,token_3,token_4,token_5,token_6,token_7,token_8,token_9,token_10,logit_1,logit_2,logit_3,logit_4,logit_5,logit_6,logit_7,logit_8,logit_9,logit_10
+pc1_valence,0,top,ิด,ikala, tras,堂,Ses,회,umption,すみ,ívar, off,78.5741,74.4301,70.1727,69.8530,69.2653,69.1762,67.5727,66.5988,66.0639,65.9787
+pc1_valence,0,bottom,..', لی,"%""",ylate,"..""",さんに, McCr, MBP," ,""", বলেন,-69.5859,-60.8874,-56.4489,-56.2937,-55.8069,-55.2382,-54.5631,-54.3282,-54.1460,-53.5613
+pc1_valence,1,top,fir, ste,цыі,).*,ذج,""")}}",を生,).$$, зака, vern,55.9447,55.5984,55.2280,55.2096,53.7302,51.9523,51.1315,50.9298,50.4572,50.1055
+pc1_valence,1,bottom, trich, Assistance,sej, échant,祐,.., pade, Scheme, sam, secretions,-71.9664,-66.9325,-66.5689,-65.6176,-63.9676,-63.8761,-63.5628,-63.2377,-62.1710,-61.9291
+pc1_valence,2,top,fir, दौरा, دور,душ,是将,""")}}",ionized,).*,nullable,%+,55.1235,50.9264,50.5521,50.2761,49.3641,47.0416,46.7251,46.6260,45.9365,45.8282
+pc1_valence,2,bottom,crim, ogn, disapp,apel, lett,Crawler,TestAction, 九, nob, Cat,-72.9103,-72.4036,-71.8393,-70.2723,-70.2151,-69.7480,-69.4708,-68.8773,-68.8214,-68.7870
+pc1_valence,3,top,otti,动,coin, divis, produkty,imaan, coin,orso,ance, animate,62.9909,56.3504,54.2167,52.5351,51.8336,51.3639,51.3271,51.0910,51.0051,49.7722
+pc1_valence,3,bottom,しろ,名は,folger, jawa,bres,leader,刷,sPath,rame,"​,",-85.6931,-79.7504,-72.6849,-71.2757,-70.8853,-70.7133,-70.5334,-70.4405,-70.1522,-70.0391
+pc1_valence,4,top,ansi, Peres, divis,ความเป็น,ains,ünü,ans,nez,orso,ases,66.9951,59.8533,58.0977,55.7823,55.6237,55.3713,54.8049,54.8026,54.6728,54.3623
+pc1_valence,4,bottom, ماه,يتر,sugar, н, #(,ตาล,—., soorten, slated, ใด,-82.6015,-81.3228,-76.9367,-75.8068,-75.3729,-74.3689,-74.0561,-73.9120,-73.4745,-73.4202
+pc1_valence,5,top,ansi,geno,ご確認ください, invisible, sente,inoff,invisible,Todos,感到,ünü,67.3777,67.0276,65.6558,59.8711,58.9580,58.8382,57.9262,56.7588,56.2690,55.5180
+pc1_valence,5,bottom, soorten,SegmentInfo,>], registrar,strom, Eb, supr,(:,(/(,ồ,-78.2666,-75.9417,-75.1692,-74.8541,-73.6996,-72.0990,-71.9853,-71.9128,-71.2694,-70.6783
+pc1_valence,6,top,ibals,这个问题,ansi,ulo,ستم,inoff, Beni,Addo,Alone, divis,74.9214,69.0860,68.0192,66.9500,66.2597,65.5949,64.1756,62.5628,61.6251,61.1132
+pc1_valence,6,bottom,bub, sunset, debates, freed," [,",திர,(^, soorten, صاح, Etc,-78.3618,-73.1728,-72.2451,-71.0386,-69.1679,-68.9158,-68.1208,-67.7455,-67.7256,-67.4010
+pc1_valence,7,top, EDITION, topi, arti,isku,Married,により, divis,上の,打了, encant,70.8342,70.2906,66.7781,66.5163,64.0157,63.7166,63.1436,62.8589,62.7023,62.1807
+pc1_valence,7,bottom,'...,<_, (...,黄,τ,/...,...?, (&,('%,ຕ,-76.1637,-75.3267,-74.3547,-74.0656,-73.7194,-71.7721,-71.7387,-71.3387,-70.7859,-69.9326
+pc1_valence,8,top, معايا, kissing, primo, openness, encant, prénom, comigo, непри, conmigo, undivided,77.5716,69.0580,66.9528,66.6057,66.1311,66.1280,65.5812,65.4688,64.7013,64.0592
+pc1_valence,8,bottom,('(,('%,('../,setError, zur,])*,'&, sunset," (_,",그래서,-80.1738,-78.8347,-75.6709,-71.6155,-70.8995,-70.2605,-69.7381,-67.9308,-67.7379,-67.0145
+pc1_valence,9,top, promi,ዎን,անի, 싶은, uninterrupted,areti, معك, undivided, berarti, cikin,69.0350,65.9474,65.4650,65.4119,63.5708,63.3629,63.2855,63.1372,62.2611,61.5816
+pc1_valence,9,bottom,asco, thereof, Eq, Equipment, equipment, software,Eq,servlet,เว็บไซต์,ifrån,-79.1866,-75.8928,-75.2497,-74.4755,-74.2553,-73.9755,-72.5021,-72.2249,-72.0490,-71.0523
+pc1_valence,10,top,areti, publicação,လေး, cikin, wiad,unin, decoração,atkan, בעי,下の,89.5110,79.9408,79.2960,77.2540,77.2092,76.2039,75.3551,73.9280,73.8093,73.7367
+pc1_valence,10,bottom,neg,不等, neg,(-(, SEEK, cre, CONT,}=-\,creational, ');,-67.9083,-66.1285,-64.2666,-63.2172,-60.9696,-60.9000,-60.4090,-60.1504,-59.7892,-59.6988
+pc1_valence,11,top, пожалуйста,特に, nanti,の中でも,したいと思います, बताएंगे,යෙන්,omania,と思います, już,94.3924,86.2095,84.9482,80.0445,78.5655,76.0612,74.5301,73.0776,71.7668,71.2805
+pc1_valence,11,bottom,-${, exposing,++;, impro, for, बढ,"={},", dispense, predicting,投げ,-77.1027,-71.3272,-69.8765,-64.5402,-64.0108,-63.6829,-63.6450,-63.4587,-62.5098,-60.9343
+pc1_valence,12,top,izer, estimator,思う,KB,omości,ंबई,偲, estimation, Kare, kb,81.2642,74.1055,71.1866,71.0105,70.2729,69.4637,68.9813,67.9464,67.7163,66.9758
+pc1_valence,12,bottom, ito, purple,purple,imura,polo,を展開, negras, fend,ITS, rồi,-72.2111,-71.4676,-69.5645,-62.2866,-61.8241,-61.3497,-60.8410,-60.6757,-60.4485,-60.1219
+pc1_valence,13,top, attributing,Regression, normalizing, extrapolate,说了,Ordenar, estimating,orio,ottie,sampled,78.7087,76.1530,75.6612,75.5315,75.1246,73.9568,72.9059,72.4286,71.8701,71.4149
+pc1_valence,13,bottom, birbirinden, alike,isme, fellow, 모두,ipad, primero,密,なお, posse,-75.2606,-73.6439,-67.9550,-66.9102,-65.3608,-64.3086,-63.7097,-63.6184,-63.5650,-63.5573
+pc1_valence,14,top,全世界,全部, पूरा,ทั้งหมด, totalmente, total,All,无疑,Все, Vector,67.5827,66.7868,64.3612,63.6489,63.0860,62.9429,62.4019,61.5860,61.5776,61.0211
+pc1_valence,14,bottom, Ryd,โพ, Reply, Response, McQu,ليز,갚,CallBack, dilute, Damp,-89.4159,-84.5623,-81.9831,-81.0315,-80.6219,-80.3658,-80.3390,-80.1757,-80.1667,-79.9550
+pc1_valence,15,top,ための,টের,기와,数为, estarán, están, existem, têm, для,都有,92.5142,89.2779,86.1359,85.0832,84.8279,83.4359,82.0254,81.8060,80.4135,79.8235
+pc1_valence,15,bottom,Response, Response, responses, response,response, tol, Responses,応答, speech,RESPONSE,-87.0616,-85.9116,-79.2794,-79.0621,-75.2495,-74.0229,-72.4330,-70.2107,-68.3136,-67.6960
+pc1_valence,16,top, 즐,즐,수인, 관계로, impressing,早已, Excelente,&), appré, enjoying,111.2076,101.4637,100.9957,98.1605,95.2997,92.6999,91.4507,91.4482,90.9714,90.9491
+pc1_valence,16,bottom,Response, Response,вета, silence,Reply, responses,กลับ, bild, abortion, response,-93.6178,-86.5121,-85.8515,-83.1425,-82.9659,-74.9040,-74.6411,-73.8842,-72.9415,-72.2929
+pc1_valence,17,top,수인, antiqu, adventurous, stroll, intuit, beginner,chtenstein,즐, intuitively, ancient,115.9978,110.5799,110.4295,108.9782,107.1783,103.2115,102.5504,102.0983,101.4476,99.6617
+pc1_valence,17,bottom,Response, Response,応答, urgente,response, abortion, délais, responses,responsive, response,-130.3040,-123.4019,-122.6115,-120.7655,-114.1325,-112.5355,-112.1160,-111.1203,-108.8267,-108.4915
+pc1_valence,18,top,@],ก็ได้,whereas, Đó,があって,]@, glance, whereas, shave, square,86.1906,81.9447,79.9690,76.1357,71.8220,71.6072,71.2141,70.7189,70.5369,70.4497
+pc1_valence,18,bottom, semper, nossos,ยิ่ง,IVATE, الفلسطيني,Delay, ENEM,CTED,ينا,Delayed,-81.9121,-75.9470,-73.7160,-72.5169,-71.4586,-69.5040,-69.4443,-67.7404,-67.6690,-67.1593
+pc1_valence,19,top, stratigraphic,ascin, impressively, delightful, 굉장, kolay, conno, super, pioneered, supers,116.3208,116.2010,114.8103,110.7915,109.4101,108.9394,108.9342,108.2617,107.5559,107.4088
+pc1_valence,19,bottom, responses, voices, remedies,の声, afectados, rhythms,voices, demandas, nitrates, deadlines,-113.1219,-112.8574,-107.0737,-106.1768,-103.6225,-103.5263,-103.5107,-102.7441,-102.6997,-102.3094
+pc1_valence,20,top,fledged, delightful, impressively, demonstration,াকৃত,全新的,로운, conno, super, acquainted,111.3346,110.9837,104.1381,104.1249,103.6254,103.6197,102.2915,101.4595,100.5093,100.4656
+pc1_valence,20,bottom, evenings, weekdays, remedies, nitrates, últimas, intervene, outcomes, afectadas, losers, deadlines,-112.0907,-105.0497,-102.9312,-102.3740,-101.8250,-100.0440,-99.9510,-98.0037,-96.8200,-96.5670
+pc1_valence,21,top,多年的, surprising, 굉장, cree, misconception,素晴らしい,로운,多年,🤩, بالای,102.4556,102.2067,101.7735,100.8669,99.8291,97.3095,96.4933,95.4121,94.1075,93.5131
+pc1_valence,21,bottom, Outcomes, outcomes, remedies, berichten, destinations,targets, sintomas, starve, symptoms, nitrates,-100.7644,-94.7628,-91.5712,-89.6275,-86.2076,-86.1356,-85.9273,-84.3808,-83.2603,-82.8969
+pc1_valence,22,top, superb,良好的,素晴らしい,多年的, impressively, excellent, super, delightful, wonderful, fantastic,121.8833,121.7309,113.1818,111.4462,108.8367,107.9939,106.9710,105.4816,105.2952,104.3523
+pc1_valence,22,bottom, बचें, sintomas, síntomas, symptômes, stessi, Outcomes,uchte, afectados, starve, symptoms,-90.9735,-89.8949,-87.5062,-87.5049,-86.4362,-85.5442,-82.7601,-82.3096,-81.7313,-81.7285
+pc1_valence,23,top,良好的, advantageous,不错的, excellente,好的,avourable, favorable,優れた,の良い, excellent,126.4638,112.9209,111.7338,109.9148,109.3718,109.0722,108.2131,105.8461,105.3471,104.8514
+pc1_valence,23,bottom, ATMs, Versuch, chronically, trying, victims, both,voices, abyss, begging, cattle,-81.6778,-76.9288,-75.2232,-74.6198,-71.9000,-71.6982,-71.6451,-71.5147,-71.2337,-70.7961
+pc1_valence,24,top, wonderful, remarkable, enjoyed, merveille, delightful, wondrous, harmonious,素晴らしい, joyful, disfrut,152.2910,141.5786,141.4699,139.4386,138.8102,138.6183,138.4978,137.6589,137.6550,137.5927
+pc1_valence,24,bottom, violently, peor, worse, trying, attempting, pior, offending, schlim, Worse,😡,-137.3420,-127.2492,-122.3562,-117.9045,-117.2186,-113.9997,-113.3840,-112.7149,-112.4828,-111.4614
+pc1_valence,25,top, enjoyed, joyful, delightful, wonderful, enjoyable, harmonious, enjoyment, disfrut, alegría, delighted,153.2672,152.7504,150.6926,142.8727,140.1497,139.1555,138.5694,138.1121,137.4631,136.6487
+pc1_valence,25,bottom, violently, worse, peor, horribly, schlim, brutally, violate,❌, offending, worst,-157.1200,-127.6053,-125.2163,-122.6422,-121.9898,-120.6526,-118.3607,-118.3533,-118.1831,-117.1818
+pc1_valence,26,top, harmonious, delightful, joyful, amiable, enjoyed, wonderful, contentment, lovely, wondrous, enjoyable,144.1449,140.8524,139.1412,133.6258,132.5207,132.3695,132.0323,131.7592,131.7026,129.5526
+pc1_valence,26,bottom, violently, worse, myself, peor, trying, Worse, attempting,的我, horribly, gagal,-141.4203,-133.8416,-121.7752,-119.3011,-116.3179,-116.1410,-113.7682,-112.6111,-111.9000,-111.6061
+pc1_valence,27,top, joyful, delightful, harmonious, wonderful, wondrous, contentment, enjoyable, amiable, lovely, graceful,147.1289,146.8953,140.4914,137.9006,137.5983,134.4341,134.3025,134.0282,133.7079,133.4167
+pc1_valence,27,bottom, violently, myself, worse, my,的我, peor, trying, meus,我不,我的,-127.9120,-124.6782,-119.9195,-119.3401,-113.7979,-108.2509,-101.6477,-101.4660,-100.8259,-100.1041
+pc1_valence,28,top, enjoyed, harmonious, delightful, contentment, enjoyable, mellow, joyful, wonderful, tasteful, amiable,142.9348,140.2214,139.7062,137.6859,135.4051,134.8503,133.8715,133.2003,131.6630,131.5900
+pc1_valence,28,bottom, violently, worse, peor,🤬, violate, failing, failed, offending, Worse, severely,-136.6655,-128.0506,-126.1242,-113.7924,-113.0098,-112.3242,-110.4404,-109.4540,-109.1686,-108.6573
+pc1_valence,29,top, wonderful, delightful, wondrous, mellow, merveille, lovely, joyful, marvelous, gentle, gracious,123.1296,121.5577,119.3278,117.9034,116.9292,116.7244,113.7494,113.0304,112.1987,111.5628
+pc1_valence,29,bottom, violently, worse, peor, Worse, worst, pior, severely,🤬, badly, horribly,-131.9279,-123.5219,-109.0823,-105.9867,-105.5590,-102.2127,-101.2819,-99.5663,-97.5960,-97.4920
+pc1_valence,30,top, delightful, mellow, wondrous, gentle, wonderful, joyful, harmonious, serene, whimsical, graceful,121.2758,117.1936,117.0473,115.7061,115.0843,114.8807,110.8193,110.8060,110.7233,110.6295
+pc1_valence,30,bottom, violently, worse, peor, Worse, worst, horribly, screaming,🤬, brutally, pior,-131.6090,-119.1812,-106.1746,-105.4179,-104.1368,-101.7736,-98.9153,-98.3245,-97.3617,-96.3055
+pc1_valence,31,top, delightful, mellow, gentle, gracious, wondrous, joyful, graceful, wonderful, serene, thoughtfulness,119.2282,116.7033,116.5476,113.2687,112.8678,112.3197,111.9173,110.7604,110.1501,109.3590
+pc1_valence,31,bottom, violently, worse, horribly, Worse, worst, peor, badly, severely, screaming,🤬,-130.5983,-114.7261,-100.9574,-100.8374,-100.5597,-99.4123,-98.1095,-97.1980,-96.7500,-96.0759
+pc1_valence,32,top, wondrous, radiant, wonderful, mellow, gentle, harmonious, radiance, serene, merveille, delightful,112.7491,108.4506,108.3157,108.2731,108.1030,107.8258,107.6957,106.3343,105.2395,104.9833
+pc1_valence,32,bottom, violently, worse, Worse, peor, worst, severely, horribly,🤬, screaming, badly,-127.8622,-116.1375,-105.8456,-100.3876,-100.0953,-98.2686,-94.4477,-93.5756,-92.7903,-91.9789
+pc1_valence,33,top, gentle, 😊, radiant, radiance, wondrous, contentment, richness, serene, delightful, mellow,112.5541,109.2627,108.2477,108.1814,107.1950,107.0574,105.3063,105.2008,105.1311,105.0301
+pc1_valence,33,bottom, violently, horribly, worse, mutilated, brutally, frantically, screaming,🤬, threatening, Worse,-129.8623,-106.0171,-105.1583,-104.4094,-102.8611,-101.4778,-101.4403,-101.3742,-98.4048,-97.6809
+pc1_valence,34,top, delightful, delighted, wonderful, 😊, enjoyed, delight, gentle, enjoys, beautifully, harmonious,133.2477,125.3041,120.3453,118.6315,114.8788,113.7688,113.1863,112.6853,108.0404,108.0387
+pc1_valence,34,bottom, nightmares, violently, victims, vítimas, abortions, Victims, threats, threatening, victimes, corpses,-141.2008,-141.1010,-137.3339,-136.5813,-134.8677,-134.3697,-133.1114,-132.5184,-132.2670,-131.8185
+pc2_arousal,0,top, ක්, angle,pic,激安,аль,삐,度は,zat, episcop,COMP,71.0678,69.8605,62.9159,62.7607,62.2663,62.1252,61.2438,60.0734,59.9742,59.5750
+pc2_arousal,0,bottom,/';,> </, վ, BC,[++, Railways, cur, ngư,众,irg,-68.9147,-67.6889,-66.2748,-64.9059,-64.5830,-61.9020,-60.9184,-60.7175,-60.6066,-60.1563
+pc2_arousal,1,top, feet, ports, acrylonitrile,Feet, Ulm, 이러,veno,tikzpicture, spel, pés,74.3511,73.0027,66.3150,64.7385,64.0659,63.8853,63.8570,63.8022,63.6026,63.4347
+pc2_arousal,1,bottom,et,ak,供, ترا,속, ಸಂ,Об,us,ie, Об,-71.8520,-64.3284,-64.0533,-58.3457,-57.9414,-57.8846,-57.3656,-57.0799,-56.9310,-56.2169
+pc2_arousal,2,top, seri,teachers, murky, psychotic, Teachers,잡,çamento, conditionals,Teachers,orted,76.5241,68.1422,67.3349,66.0039,65.0578,64.2856,62.7759,62.6883,62.4245,61.6158
+pc2_arousal,2,bottom,共,U,ount,ing, popular, vấn,E,ниц,ên, khí,-64.4923,-63.7260,-62.9267,-62.2059,-61.8455,-61.5772,-61.3838,-60.3880,-59.8458,-59.6076
+pc2_arousal,3,top,🐛, 가, allá, frame,🚩, happens, ღ, Frame,즈,😐,60.4786,59.9111,59.8187,57.5443,56.5835,56.2533,55.0628,55.0585,54.8746,54.3033
+pc2_arousal,3,bottom,baka,ئت,存, sinist,adj,ливо, arre,etu,oleč,жит,-80.2201,-77.1855,-75.0857,-73.4457,-72.4171,-71.9736,-71.7145,-71.1800,-70.6302,-69.9851
+pc2_arousal,4,top, espl, 和, και, squ,երը, ankles, ആൻ,တွေ, Clear, titles,68.5501,64.9206,64.6097,64.5745,64.5345,62.9184,62.7278,62.5195,61.5272,61.0737
+pc2_arousal,4,bottom, rét,back,rét, vigil, rem,baka, setObject,éct,rem, Rück,-72.3377,-69.7851,-68.9611,-66.8153,-65.4671,-65.0532,-65.0165,-64.9346,-64.6097,-64.5972
+pc2_arousal,5,top,|+, Simulations, espl, debated, про, laboratorio, plastered, Simulation, decaying, حدث,81.9648,70.6226,70.5911,70.3289,66.2541,65.5033,65.2834,65.1785,65.0468,65.0179
+pc2_arousal,5,bottom,rét, ours,وفي, Hat,abat,remia, Hatter,PositionY, tích,至,-72.3836,-62.8990,-61.3879,-60.0684,-59.7854,-56.0591,-55.2300,-55.1443,-55.0271,-54.9698
+pc2_arousal,6,top, gdy, présents, اینڈ, occurs, 발생,las,strlen, Boko,的区别, simulations,70.1232,68.2228,67.5338,67.0271,66.1950,66.0074,65.7299,64.3426,64.2983,64.1318
+pc2_arousal,6,bottom,rét, setObject,nere, retr,Já,บริหาร, Já, tirelessly, cuánt,ograph,-79.2698,-71.1941,-69.1984,-68.9462,-67.7017,-65.1310,-62.5931,-61.9996,-61.4608,-60.1825
+pc2_arousal,7,top, aplicaciones, sobie, présents,想到,ถึง,kken,구나,들,nel, !_,71.6464,69.8338,69.4997,69.3838,68.3760,67.9588,67.8962,67.4680,67.3946,67.1777
+pc2_arousal,7,bottom,rét, rétro, renegoti, reorgan,রবি, rét,ograph,Offic, bắc,正常,-79.1779,-69.0100,-67.1553,-64.1147,-61.6770,-60.5655,-60.5287,-60.1162,-58.5933,-57.9320
+pc2_arousal,8,top,ことになる,려는, あの, ऐसा, 오히려,一种,那样,โ, എന്നതാണ്,那种,86.2143,83.7587,83.6807,83.4510,83.1179,81.9589,81.9459,81.0547,79.7913,79.4530
+pc2_arousal,8,bottom,Burn,۰۰,००,Build, third,кура,erset, teams,تص, orchestr,-69.8347,-68.9752,-63.1298,-62.5149,-61.4686,-60.8036,-60.3915,-60.3312,-59.6818,-59.4696
+pc2_arousal,9,top,中所,ลักษณะ,ğu, যে, chi, ที่, जैसी,โยชน์, ऐसा, những,77.9692,75.9029,75.6640,74.1755,73.7056,71.3772,70.3414,70.1933,69.2586,68.4014
+pc2_arousal,9,bottom, collaborate,不高, collaborating,burn, Partner,irs,smoking,salted,Partner, insomnia,-80.0430,-72.5204,-70.2939,-69.6994,-68.3880,-67.9075,-66.9552,-66.2017,-65.9133,-65.7913
+pc2_arousal,10,top, syllables,臨,quele, luận, någon, jaką, aquel, 应, Soll, vilken,74.0042,70.2908,70.1481,69.9828,68.6782,68.2600,68.0850,67.9834,67.8459,67.6872
+pc2_arousal,10,bottom,assis,icast,治,eree,abouts,ี่ย, Scala, इनवर्स, unip,杢,-70.5855,-70.5466,-70.2128,-67.2849,-65.6736,-64.6405,-63.3591,-62.1191,-61.9076,-61.2271
+pc2_arousal,11,top, mérite, צ,patan,သက်,oren,レビュー, danach, review, dựng, précédentes,75.6828,74.9397,67.0112,64.5949,64.3984,64.3914,64.2140,64.1694,64.0137,63.6109
+pc2_arousal,11,bottom,Ministry, xls, receiving, coag, unmarried, Receiving, Ministry, sent, sending, pneumoniae,-72.4631,-70.4347,-70.3277,-70.2120,-69.4106,-68.9875,-68.6517,-68.4739,-68.1533,-67.5311
+pc2_arousal,12,top,SegmentInfo, Zip,ermark, ZIP, צ, sebuah, mejores,Zip, полноцен,azole,80.7786,71.6126,67.8943,66.9411,66.7960,66.6179,66.4580,66.3016,66.0354,65.7547
+pc2_arousal,12,bottom,increasing, electing, sacrificing,เสีย,を食べ, disseminating, decreasing, dentists, perpetuity, persisting,-75.6290,-73.0147,-72.5384,-70.9194,-70.7734,-68.5662,-68.2698,-68.1617,-67.8839,-66.4816
+pc2_arousal,13,top, propia,一名,我們要,เดียวกัน, 사람이, #-, tabulation,】【, someone, documentation,84.3031,83.0480,81.5441,79.8984,79.7666,79.2842,78.7609,77.1827,75.8431,75.5893
+pc2_arousal,13,bottom, últimas, mammalian,آخر, viscoelastic, cosmopolitan, heterosexual, suburban, ecosystems, plasticity,脾,-79.4933,-76.0233,-75.6984,-74.8584,-73.1686,-71.8783,-71.6178,-70.3033,-70.1096,-69.3847
+pc2_arousal,14,top, Kla,माने, bowed, zwe, kla, Давайте, ya,щение,但是我, طرز,63.7220,60.9201,59.9025,59.4570,59.0258,58.0401,57.5088,57.4044,56.7547,55.3828
+pc2_arousal,14,bottom, Gora,gery, depositphotos, subcontractors, 경우,同期, oiseaux,ocz, तभी, direktor,-83.4693,-76.3003,-75.5210,-74.5304,-73.2924,-73.2036,-72.5618,-71.7289,-71.0558,-70.9199
+pc2_arousal,15,top, ello, viện, Murakami,ห้อง,urtle, 걸, truc,ạo,läufig, 흥,76.3705,75.8898,74.8920,74.7109,73.3754,72.3584,72.2008,71.7918,71.4320,71.2874
+pc2_arousal,15,bottom,[[[[,ょ,压缩, energy, pay,しかった, discomfort,�,ydi,were,-66.9870,-65.6970,-63.5112,-62.0559,-61.4310,-61.4028,-60.3928,-60.1117,-59.5090,-58.9775
+pc2_arousal,16,top, skal, showroom,Wow, السوق, membuatnya, bazaar, gimmick,릭터,OrCreate,usele,100.6366,92.1657,89.9814,89.9213,89.7943,88.4760,87.9333,87.9257,87.7006,87.6971
+pc2_arousal,16,bottom, adenosine,resso, Responder,response, contre, adiabatic,disconnect,________________, Response,reaction,-87.6429,-87.3790,-83.9977,-82.3218,-81.7103,-81.3760,-81.3560,-80.8356,-79.6512,-79.5205
+pc2_arousal,17,top, showroom, 자랑, skal, krij, showcase, السوق, showcases, membuatnya, classement, 展示,103.1466,102.1815,101.8801,100.6616,99.4163,98.2062,95.4718,95.0782,94.6877,94.5480
+pc2_arousal,17,bottom,far, delay, softer, adenosine, উদ্বাস্তুদের, delayed, pending,pending, Delay, инвали,-92.4063,-89.5605,-86.8786,-84.0376,-83.6233,-83.5230,-82.8114,-82.1846,-81.3887,-81.2216
+pc2_arousal,18,top,要有, involves, 利用,也就,利用,不得, 위해서, schul, any,为一个,77.4844,76.2778,69.0865,68.5619,68.3123,67.2838,65.9311,64.6223,64.3670,63.8766
+pc2_arousal,18,bottom,례, kasus,Reaction, sayıda,lier,thousand, рассмотрим,덧, tougher, देखेंगे,-87.4918,-85.2542,-84.8638,-84.7433,-84.3759,-84.3092,-84.2005,-83.5854,-82.7231,-82.3651
+pc2_arousal,19,top,릭터,!“,%!, boldly,"!"""," """").",?!,!}{,’!, wildly,94.9002,83.6750,83.1157,81.2873,80.5810,80.5737,80.2473,78.2749,77.6740,77.4813
+pc2_arousal,19,bottom, bestimm,consumption,igste,replaceable,consumer,universal,equations, Equations,couple,residual,-94.4169,-80.5753,-72.5636,-72.5124,-71.9491,-71.6515,-70.9909,-70.6402,-70.2719,-69.9758
+pc2_arousal,20,top,?!, hilarious, spectacularly, ridiculously, insanely, OMG, wildly, inventive,릭터,又有,98.8817,91.6919,89.0582,86.7994,82.9229,82.6972,82.3452,82.2571,81.0111,80.7832
+pc2_arousal,20,bottom,resso, necesaria,remainder,consumption,summer,र्थ, unaffected, ermög, 감소,remain,-102.4659,-95.7440,-94.1190,-93.9849,-91.5272,-91.4981,-89.2687,-87.2183,-86.6778,-86.1551
+pc2_arousal,21,top,!!.,!).,"!),",?!,ジュアル, using,"!"");",!}{,搞,?!?!,88.4631,83.7134,80.9791,78.9275,77.3448,76.9014,76.3097,75.8055,75.5948,74.9397
+pc2_arousal,21,bottom, unaffected, رحم, 감소,summer,winter,none,that,complement,peter,wakeup,-103.0969,-95.4943,-93.5871,-93.3713,-92.7921,-89.5008,-88.8805,-87.9364,-86.6128,-85.2716
+pc2_arousal,22,top,搞,!,"!"");",!}{,"!("""," """,?!,"!"",",!;,%!,97.3974,93.2657,91.1312,90.6205,89.7701,89.4983,85.3828,84.7372,84.0696,83.9266
+pc2_arousal,22,bottom, unaffected,nearby, twilight,winter,painter, disponibile, universality, 감소, residing,neighbor,-110.9163,-92.7561,-91.9261,-90.8388,-90.4271,-90.2390,-88.1274,-87.8898,-87.2957,-86.9537
+pc2_arousal,23,top,?!,!!,!,!!!,!;,!?,؟!,"!"");",?!?,！（,134.8981,125.5970,114.7172,112.1527,111.6013,111.3779,108.3056,106.1465,105.6430,105.5610
+pc2_arousal,23,bottom, jeweiligen, znajdują, workday, juncture, twilight, indicada, insuficiente,녘, dusk, correspondiente,-89.2140,-89.1192,-88.7188,-88.6344,-87.1813,-83.8988,-83.5587,-83.2352,-82.7919,-81.9576
+pc2_arousal,24,top,"!(""", my,!, you,我要, gonna,?!, excellent, I, turbo,121.8966,97.0845,95.9856,95.7476,95.6422,93.8326,93.8110,91.3218,89.1278,86.8932
+pc2_arousal,24,bottom, indistinct, znajdują, oblivion, unnoticed, olvidado, bygone, antiguas, twilight, dusk, giấc,-116.7210,-111.2575,-107.5438,-105.7487,-101.5493,-100.0432,-99.2895,-97.6339,-95.4271,-95.1766
+pc2_arousal,25,top, enthusi, excellent,"!(""", enthusiastic, 자랑,!, exciting,?!,ampionship,我要,112.3766,102.8222,100.1423,94.4879,94.4271,94.1259,92.7787,91.0857,90.0156,89.8055
+pc2_arousal,25,bottom, indistinct, unnoticed, faded, undisturbed, znajdują, lonely, loneliness, oblivion,蹉, numbness,-119.1336,-117.0652,-110.7049,-110.0128,-108.5160,-108.5141,-108.3244,-107.8178,-107.5200,-105.4971
+pc2_arousal,26,top,"!(""", excellent,我要,!,"!),", enthusi, Excellent, I, my,Excellent,104.2882,97.7738,97.1624,94.9548,92.0443,90.7869,90.5606,89.7347,89.4729,85.6001
+pc2_arousal,26,bottom, indistinct, unnoticed, oblivion, fruitless, faded, terasa, numbness, stillness, znajdują, olvidado,-117.1553,-113.4124,-109.0392,-106.8009,-105.9875,-105.1649,-103.9311,-103.4643,-103.1593,-101.8504
+pc2_arousal,27,top, my, excellent,"!(""", enthusi,"!),",我对, I,我要, Excellent,ляю,101.4254,99.7888,99.0845,94.7719,94.5310,91.8788,90.7390,89.1417,85.3641,85.2229
+pc2_arousal,27,bottom, unnoticed, fruitless, terasa, indistinct, faded, adrift, loneliness, oblivion, lonely, olvidado,-106.1731,-105.7958,-105.1430,-103.3764,-102.3800,-99.3294,-98.1103,-97.8295,-97.7316,-96.6914
+pc2_arousal,28,top,"!),",我对,我要, my,"!"",",!, enthusi,我会, ผม, I,103.6071,98.1116,96.6111,91.7295,91.5090,90.8839,88.5098,85.9483,85.4605,85.4202
+pc2_arousal,28,bottom, loneliness, lonely, forgotten, faded, unnoticed, Forgotten, emptiness,Forgotten, indistinct, sorrows,-117.3733,-107.8459,-106.5886,-106.0133,-105.1772,-101.9715,-101.4933,-100.5048,-99.7164,-99.7086
+pc2_arousal,29,top,"!""","!"",","!("""," """," ""!", enthusi,"""", excited,",""", exciting,116.0316,110.0049,108.7062,99.4551,97.9575,97.1944,96.9359,96.4989,96.0400,95.3058
+pc2_arousal,29,bottom, lonely, loneliness, shadowed, adrift, faded, unnoticed, shadows, emptied, 먼, dusty,-99.0289,-97.9405,-96.4139,-91.3515,-90.9594,-87.3309,-85.7774,-84.3634,-83.5831,-82.8008
+pc2_arousal,30,top,"!""","!"",","""",","""," !""", enthusi,"!"";","!(""", excited,""",",138.8952,122.5542,112.1890,111.6081,110.7259,102.7168,100.4417,99.2101,98.9556,98.7619
+pc2_arousal,30,bottom, lonely, loneliness, shadowed, adrift, shadows, faded, unnoticed, solace, Shadows, stillness,-103.9831,-103.2521,-100.4700,-91.5907,-90.0865,-89.9032,-87.3593,-85.6363,-84.7509,-83.7869
+pc2_arousal,31,top,"!""","!"","," !""",",""","""","?!""","!"";","!!""",""",","!"")",157.7331,136.6301,130.8746,119.0707,117.3371,110.6315,107.6296,106.3431,105.1906,104.5973
+pc2_arousal,31,bottom, shadowed, lonely, loneliness, shadows, adrift, faded, distant, 먼, Shadows, forgotten,-97.1121,-96.9783,-96.6106,-92.0297,-90.1695,-87.8132,-83.2932,-82.8540,-81.8479,-81.8351
+pc2_arousal,32,top,"!""","!"","," !""","""",",""","!(""","?!""","!"";","!!""",""",",139.7183,119.3641,110.8593,108.0129,107.5273,99.3824,96.6593,95.8504,93.9167,93.7237
+pc2_arousal,32,bottom, shadowed, lonely, faded, shadows, loneliness, adrift, solace, distant, overcast, Comfort,-102.0755,-97.0249,-96.0929,-95.1285,-95.0900,-93.7115,-89.7704,-89.2309,-88.9054,-87.5708
+pc2_arousal,33,top,"!""","!"","," !""","""",",""","!!""","!!!""","?!""",""",","!"")",157.7423,130.8192,127.6435,108.1680,107.2628,106.0203,100.7320,98.3994,97.7125,97.3252
+pc2_arousal,33,bottom, shadowed, faded, solace, clouded, withered, shrouded, overcast, stillness, weary, loneliness,-106.3146,-102.2588,-99.5045,-97.4018,-96.8330,-96.6208,-95.9116,-95.8477,-95.1614,-94.5109
+pc2_arousal,34,top,"!"""," !""","!"",","""!","?!""","!"")"," ""!",!,"!!!""","!),",217.6448,184.4228,179.6108,164.6507,160.0208,156.7481,151.7219,145.2281,142.5466,140.7935
+pc2_arousal,34,bottom, unresponsive, unresolved, sorrows, Sorrow, silence, cessation, silenced, inactivity, lắng, melanch,-137.3810,-133.0881,-123.9377,-122.5844,-122.0164,-121.5586,-121.2272,-120.7237,-120.3147,-120.0663
+pc3,0,top,AS,клу,तना, AS, dibuka,ow,OS,нула,就,as,75.2577,67.4158,64.6649,64.1500,63.1223,62.6110,61.3993,61.1752,60.0122,59.5394
+pc3,0,bottom, đích, surfactant,สาร, Bragg, 뭘, postnatal,⌊, privately, currencies, Individ,-65.7528,-64.7363,-62.7743,-61.6359,-61.1122,-61.0481,-60.9529,-60.8452,-60.7444,-60.1802
+pc3,1,top,${, Moulton,⌊, ባ, Ball, ball,"′,",ilian, Option, Circle,62.1007,59.9200,59.7193,57.8654,57.6764,55.9235,55.6803,55.2721,55.0294,54.6135
+pc3,1,bottom, 끼,ging,DeviceInfo, xrange,fac,FAC, monot, multifunction, Fac,ingi,-73.9991,-69.5157,-64.9680,-64.3478,-64.1898,-62.8368,-61.5167,-61.4728,-61.0136,-60.9014
+pc3,2,top,Ă,ingi,FTR, discontinuity, chuck, Bel,できて,檔,fangen, impulses,62.1733,61.8767,60.9662,59.5961,56.6270,56.4076,55.9038,54.7502,54.5828,53.0889
+pc3,2,bottom,话说,\],احث, racket,rika,ेशन, ball,ibals,@], regering,-68.2976,-68.2201,-67.6499,-67.0469,-66.4282,-64.6885,-64.3737,-64.3593,-63.7054,-63.0012
+pc3,3,top,的可能性,semos, drums, Nog, impractical,نیم, idiom, tiềm, ممكن, できる,77.0866,71.8744,64.5988,63.0950,62.9283,62.8945,62.3518,62.0395,61.9179,61.5708
+pc3,3,bottom,内的,WHERE,Just,Es,Inner,အရ,ナンバー,Question,number,Reserved,-72.2595,-66.4446,-65.7429,-63.7221,-63.5418,-63.5309,-61.7122,-61.6050,-60.4959,-60.1522
+pc3,4,top, symbols, Symbols, insoluble, impractical,ogie, schme, Yugoslavia, NFC, substitutions,のために,69.9529,60.8918,60.4953,60.0579,58.8913,58.4532,58.0687,58.0483,57.7717,56.6594
+pc3,4,bottom,Any, Zav,any, elektro,issive,ifen,chaft,)}>,aint,碳,-74.2942,-70.8729,-70.8570,-69.5106,-68.9777,-68.1889,-67.8560,-67.8548,-67.6430,-67.4237
+pc3,5,top, yScale, آنچه, Yugoslavia, simple, accesible, scraps, grading, symbols, factorial, spaces,67.8727,65.6364,60.1458,58.1485,57.5149,56.7519,56.6087,56.1339,55.0377,54.8858
+pc3,5,bottom,該当,วะ,၅,Either,Initi,Whit,OLD,话, 해당하는,ಅ,-85.1108,-84.5432,-79.5640,-76.4797,-76.4551,-76.4295,-74.0510,-73.1464,-72.2987,-72.2018
+pc3,6,top, simple, inspection, آنچه,ियोग,GMP,人用,ترین, using, Exposure, smallest,63.0140,62.1617,60.8579,59.7800,59.7153,59.1655,58.5460,58.3150,58.1730,57.9285
+pc3,6,bottom,該当,วะ, 해당,Finalmente,相关, bericht, 누구,platin,Named, ግን,-89.8408,-89.2326,-87.7135,-81.4446,-80.9757,-77.7218,-77.4417,-77.2343,-76.8234,-76.0798
+pc3,7,top,plicity,簡単, fitness, simple, knowledge,apiKey, gamma, vest, جب, expertise,72.8019,71.5402,66.3270,64.9784,64.7823,64.1930,64.1046,64.0637,63.5476,63.4388
+pc3,7,bottom,\}\,cheduling, entgegen,憂,AndWait, bicarbon,UpdateRequest,wil,の方, bericht,-92.9384,-92.7075,-92.6172,-91.7911,-90.5646,-90.5273,-90.4995,-89.3897,-88.8898,-88.6939
+pc3,8,top,ွင်း, curator, yourself,随着, Gallo,agle,ליך, player,我在,().__,92.9011,81.6679,76.0892,75.3414,70.8189,69.9252,69.4940,69.1824,68.8685,68.8091
+pc3,8,bottom, รี,mostly,含む, اي,هِ, discusses,junctive, mostly, menyatakan, البحر,-88.4956,-79.3508,-77.5144,-77.4597,-76.5754,-75.5065,-75.4181,-75.4104,-75.1454,-74.7636
+pc3,9,top,Игра, obchod,一行, geek,chessboard,的游戏,erex, game, counterfe, approachable,92.0522,91.0697,90.0945,90.0804,88.2615,87.0160,86.7653,85.7685,85.0201,84.9831
+pc3,9,bottom, voltou, afectada, تحدث,piratory, corrente,Response, phosphates, 주로,กลับ, thơ,-94.8070,-89.9716,-89.1808,-88.1618,-83.1769,-81.5560,-80.8138,-80.6016,-80.5286,-79.6672
+pc3,10,top, showrooms,这家, spatula, sideboard,我不,Looking, showroom, graze,startGame, traded,88.8372,88.3050,84.8026,83.8626,82.4896,82.1933,81.6783,81.4849,80.8957,80.2509
+pc3,10,bottom,piratory, Respiratory, nạn, respiratory, hormone, [#,KHR,henyl, mismos, مدار,-93.9900,-80.4088,-79.5889,-77.4154,-75.6954,-75.2955,-74.5747,-72.6460,-71.3110,-71.0340
+pc3,11,top,くない,פל,roje,toInt,heiro, cumin, Bau, seem,Ein,这家,83.9676,70.1730,69.6733,69.2953,69.0077,66.8792,66.4382,66.3319,65.3703,65.3284
+pc3,11,bottom,Returns, Returns,returns, blinking, returns,candidates,candidate,滯, dobro,دود,-77.1319,-75.6638,-72.3436,-71.2451,-71.1063,-70.9910,-70.0250,-69.9947,-69.8568,-69.7506
+pc3,12,top, eingesetzt, encompassed, নিশ্চয়, encapsulate,มาช, encapsulated,orous, overshadowed, עו, extinguish,79.7676,66.5085,64.0692,61.8574,61.6502,61.2515,61.0794,59.7800,59.6018,58.2704
+pc3,12,bottom, simpat, التعليم,acum,agni,ниц,标准的,ريب,uparrow, Hem, correctamente,-85.8877,-81.7079,-79.8968,-78.2714,-76.0050,-75.6145,-74.0417,-73.9964,-72.4631,-72.3029
+pc3,13,top,降, push,however, pianta,ลด, sterilization,的新, however, pushing,warning,62.3079,61.1007,60.7801,60.5088,60.2539,59.7980,59.3147,57.6071,57.4446,57.4262
+pc3,13,bottom,alities,Clique, endoc,اهر, identically,quiera,Combin, kuin, unbe, Combin,-81.8012,-80.9979,-79.2019,-79.1071,-78.6222,-77.8722,-77.5990,-77.3853,-76.9336,-75.8840
+pc3,14,top,륙,itated,|(,istical,ạc, vials,atório,itans,這,전을,66.8726,65.8573,65.8263,64.8000,64.7670,64.3640,63.1935,63.1781,63.0552,61.3552
+pc3,14,bottom, متر, postan, menand, sebagaimana, Treatment,irectional,adapter, Employment,Adapter, refinancing,-77.1510,-75.1545,-73.9956,-72.3883,-71.6035,-70.6326,-70.3465,-70.3125,-69.8170,-69.4359
+pc3,15,top,ルトラ,リート,我还, afield,orduk,صيل, tracking,ʊ, ha,ْنَ,83.3244,79.9740,78.5904,74.7331,74.3144,74.1138,73.8897,70.8390,70.5416,69.9320
+pc3,15,bottom,力和, に対して, එක,日至, ולא,mediate,に対して, bouche,人和, únicamente,-77.8293,-70.2944,-67.2489,-63.6267,-62.4463,-61.9318,-61.4913,-61.1488,-60.9899,-60.4660
+pc3,16,top,als,vira,طان,tert,^{+, आइड,relser,గా,ulla,ji,81.7793,80.2088,71.3611,70.8237,69.8707,69.8609,69.2341,68.7252,68.4539,68.1762
+pc3,16,bottom, eponymous, yazı,पुढे, denominado,idirectional,nake, namesake,mäss, previo, opposes,-70.0621,-69.1399,-68.6319,-65.0388,-64.4628,-64.2997,-63.7341,-63.0770,-62.5232,-61.7746
+pc3,17,top, kịp, insofar, 됐다, airs,の原因, また, alert,คุณ,éros,เกิด,96.3051,84.6926,83.2128,82.1517,81.5835,81.2415,78.0746,78.0233,77.9452,77.9414
+pc3,17,bottom,我对,然, decorative, cleverly,mäss, sobie,typename, mero, shew, autom,-84.9515,-77.0080,-73.0531,-70.5829,-69.9939,-67.9900,-67.4447,-67.1019,-67.0330,-66.9438
+pc3,18,top, Because,Because,crumb, because,because,dimensional,प्रा, また,Porque,pter,85.6279,83.7409,81.3399,80.8348,80.6567,79.7392,77.1299,72.2631,71.5327,71.0902
+pc3,18,bottom, shew, annoying, horrid, राज्यातील,"<?,", reloj, obnoxious, havoc,แต่ละ,一系列,-87.0977,-74.3856,-71.0985,-67.2178,-67.1950,-67.0373,-65.2083,-64.3538,-63.8703,-63.5970
+pc3,19,top, precip, precipit,اموش, interruptions,éros, précip, respir, os, interrupts, overhe,114.9467,110.0079,103.6870,99.5589,99.5150,98.4939,94.8879,94.7811,93.6181,92.6075
+pc3,19,bottom,我对, handcrafted, ingeniería,트로, scratch, indulging, constructed, costru, cab, fancied,-95.1193,-91.0244,-84.0678,-83.6933,-82.3953,-80.0848,-79.8372,-78.3920,-76.3629,-74.7031
+pc3,20,top, suddenly, Suddenly,Suddenly, তখন,iegel, repente, 응, sudden, instantly,فيف,121.4270,113.5224,105.2082,96.0863,89.8056,89.6719,89.4037,87.6505,87.4172,87.4118
+pc3,20,bottom, misconduct,我对, dishonesty, terminado, correctness, handcrafted, obtainable,точной, terminé, dishonest,-74.4938,-74.3042,-73.6614,-70.7375,-70.1288,-67.2863,-67.0649,-67.0508,-66.2453,-65.8954
+pc3,21,top,downarrow, suddenly,leun,ľ,tiba,؟, nostrils,Suddenly,又是,펙,106.5255,103.3143,100.0759,97.7284,95.4743,93.8935,93.6502,93.6271,92.3819,92.2765
+pc3,21,bottom, need, proper, needed, necessary, cần, divinity, 것이, messed, bothered, הזה,-79.7535,-75.9430,-72.6805,-67.4152,-65.7551,-65.6944,-64.4731,-63.8428,-63.8001,-62.2178
+pc3,22,top, suddenly, Suddenly,Suddenly, abruptly,tiba,随即,downarrow,忽然,起來, dramatically,131.0110,129.2927,116.4234,114.1868,108.9696,103.9319,103.6882,100.8221,100.6672,100.0336
+pc3,22,bottom, need, needed, necesidad, necessary,need,就是要, necessity, necesitaba, cần, namely,-96.7033,-82.9695,-78.1766,-76.8931,-74.6070,-72.9860,-71.3269,-71.1488,-70.7021,-69.8714
+pc3,23,top,ลง, khắp,几乎,Suddenly,ശ്ച, almost, suddenly, Suddenly, hampir,月から,81.0271,80.4601,78.2292,77.5911,76.9543,76.5305,76.3910,75.0144,72.8719,72.7178
+pc3,23,bottom,tool, subjective, upholding, هناخد, tool, safeguarding, clever, gimm, gimmick, Давайте,-94.1907,-91.7576,-88.8315,-88.0514,-86.1878,-85.5488,-85.3813,-85.1437,-84.1371,-83.1868
+pc3,24,top, excitedly, suddenly,一阵, Suddenly,Suddenly, dizzy, 화면, rapidamente, rapidly, bursting,128.4202,116.7186,111.7267,111.3961,110.9285,109.9583,108.8470,108.5467,107.4445,106.8424
+pc3,24,bottom, existe, simply,我认为, trivial, marginal,的我, stewardship, 존재, tồn, conservatism,-87.7524,-86.3308,-84.3092,-83.9086,-82.9837,-82.8261,-81.6097,-81.4988,-81.2128,-81.1172
+pc3,25,top, excitedly, bursting, sudden, suddenly, startled, bursts, breathless, dizzy, Suddenly,aneously,127.2835,120.1359,119.0253,117.5041,115.7824,112.7509,110.5023,108.8018,107.7265,107.6206
+pc3,25,bottom, arbit,我认为, nihil, trivial,politik,主義, conservatism, marginal, mediocr,trivial,-95.7408,-92.9028,-92.8287,-92.5400,-90.9715,-90.5444,-89.3485,-88.6315,-88.0446,-87.1093
+pc3,26,top, excitedly,ขณะ, cheeks, suddenly, Suddenly, bursts,Suddenly, rapidly, bursting, sudden,123.6235,112.1786,111.1749,111.1458,108.0615,107.6890,107.3385,106.3801,105.8809,105.2830
+pc3,26,bottom, trivial,我认为, salvage, simply, arbit, nihil, bric,trivial, myself, compromise,-92.9448,-90.0092,-86.7612,-85.8374,-85.7333,-85.4679,-84.7966,-84.0452,-83.8651,-83.5140
+pc3,27,top, excitedly,一阵, cheeks, uncontroll,しながら,ขณะ, palpit,的同时, bursting, bursts,123.2339,115.4371,113.9366,110.4529,106.8536,105.6820,104.1482,102.4668,101.1092,100.4942
+pc3,27,bottom, myself, trivial,我认为,trivial, salvage, arbit, nihil, compromise, simply,的我,-97.0663,-94.6186,-90.7623,-89.4919,-87.9907,-85.5297,-83.3916,-83.3703,-83.1366,-83.0809
+pc3,28,top, excitedly, cheeks, amazement, bursting, exhilar, startled, breathless, palpit, excitement, rapidly,116.4542,105.4446,103.9923,103.7771,102.7013,102.5625,101.5315,100.6468,100.3727,100.2848
+pc3,28,bottom,trivial, trivial, necessarily, 😉, simply, myself, arbit, expediency, dishonest, frankly,-98.9857,-96.0905,-88.3018,-87.7281,-87.0317,-86.7774,-86.2738,-84.7244,-84.1908,-83.6263
+pc3,29,top, trembling, bursting, breathless,불어, vibrating, uncontroll, vibrate, convuls, tingling, vibrates,112.0236,108.9138,108.8317,107.8004,105.1873,102.3557,102.1029,100.2461,100.0671,98.2062
+pc3,29,bottom, marginal, salvage, expediency, 😉, trivial, pretentious,trivial, minimal, mediocr, tolerated,-87.0528,-82.9381,-79.0477,-78.8203,-78.1464,-76.9321,-76.4532,-75.0507,-74.0564,-72.2041
+pc3,30,top,불어, breathless, trembling, tingling, bursting, convuls, vibrating, uncontroll, vibrate, vibrates,111.9309,108.4205,106.3508,102.4697,100.9291,100.3881,99.7013,99.6159,96.6725,94.8967
+pc3,30,bottom, expediency, marginal, mediocr, 😉, trivial, pretentious, tolerated, salvage,trivial, bureaucracy,-84.5786,-83.4795,-80.7212,-78.8490,-78.2174,-76.8207,-76.4476,-75.9763,-75.4834,-74.1781
+pc3,31,top,불어, breathless, tingling, trembling, bursting, convuls, uncontroll, vibrating, bursts, burst,111.7572,103.4262,103.2548,101.3220,101.3008,100.3341,98.6259,95.5584,93.1161,93.0482
+pc3,31,bottom, marginal, expediency, salvage, 😉, mediocr, matters, trivial, ambiguity, deficiencies, pretentious,-85.3755,-83.5506,-81.8033,-79.6428,-79.0850,-77.4535,-76.9616,-75.2938,-74.5281,-74.2978
+pc3,32,top,불어, uncontroll, breathless, bursting, tingling, convuls, burst, lungs, trembling, startled,95.9099,93.6232,91.7170,91.2824,84.6707,83.8380,82.9586,82.2138,81.8943,79.5441
+pc3,32,bottom, salvage, 😉, expediency, pretentious, matters,trivial, cyn, trivial, negotiation, marginal,-91.6409,-86.4567,-85.5392,-80.4315,-78.8973,-78.3375,-77.7344,-77.2001,-75.3201,-75.2554
+pc3,33,top, breathless, bursting, startled, bursts, burst, convuls, trembling, dizzy, excitedly, fluttering,103.6958,99.4424,94.3027,93.5607,92.7448,91.3775,88.5280,84.1816,83.2253,82.1802
+pc3,33,bottom,politik,原则, política, modification, 😉, negotiation,原則, salvage, conveniente, respect,-86.5514,-85.4574,-84.3238,-83.3305,-83.2347,-82.5742,-81.9757,-81.7640,-81.3165,-80.3029
+pc3,34,top, her,",", and, bursts, across, suddenly,"!,", , tiba, trembling,102.9249,95.9680,87.0202,68.6066,67.2478,66.2520,64.2124,63.8843,63.3070,63.1406
+pc3,34,bottom, calcS,unctional,modification,reasonable, consideramos, deficiency, mediocr, typology, formality,preference,-138.5867,-137.3327,-136.8175,-134.0382,-133.6157,-133.5720,-133.5138,-133.2391,-132.8723,-132.2771
+pc4,0,top,امي, meantime,born, مني, berc,นอน,school, suốt,cose,zion,82.3873,72.4046,68.4885,67.2571,66.4055,65.5170,65.3072,64.8082,64.2069,61.2396
+pc4,0,bottom,ностей, සං,DING,]@,マネ, आंक,O, turbine, Babe, Candy,-66.5206,-63.4894,-60.3213,-59.6487,-58.3460,-57.4428,-56.7805,-55.2128,-55.1536,-53.5945
+pc4,1,top, Hamlin,ἷ,Ep, Tü,risch,ียน,kerchief, Sears, सुचेता, SDA,70.3588,68.2297,63.6995,63.5473,63.4520,63.2580,62.5072,62.2731,62.2672,61.9615
+pc4,1,bottom,ie,తీ, Zone,making,toLocaleString,iek,Zone,augh,mise, đô,-67.4123,-61.9404,-56.6871,-54.0495,-53.1917,-52.9831,-52.9434,-52.8136,-52.8004,-52.5897
+pc4,2,top,谱, Media, documental,祝,dington,tım,emans, boy,Media,Pda,68.2329,65.9005,65.4000,64.6442,64.4377,63.3001,62.8533,62.5578,60.8536,59.8282
+pc4,2,bottom,屏, bort, הצ, vid, bie,冲, Ceylon, unst,mce,<table>,-58.4277,-58.2246,-57.4539,-56.9330,-55.9307,-55.7341,-55.3051,-54.3177,-54.1409,-53.1065
+pc4,3,top," …,",myer, El, downs,ですよね,AndDelete, Right,بك, right, 기록,68.0357,66.2393,65.3609,65.2193,64.7982,64.0948,64.0173,63.9108,63.6009,63.0426
+pc4,3,bottom,engar, endeavour,汁,elihat,dehyde,طل,也不会, fau,ይታ,ABIL,-73.9445,-63.8108,-61.5420,-59.8518,-59.7274,-59.1672,-58.3720,-57.9754,-56.3570,-55.4395
+pc4,4,top,聂,امي, كه,락, Doyle, jetzt,delayed,$};,fes,сюда,80.9396,76.4853,76.1124,75.6256,75.1739,73.4123,72.7852,72.7465,72.6910,72.4310
+pc4,4,bottom, taxonomy, master, generously,ब्, firmly, unfor, larger, жар, projects, member,-63.1917,-59.2587,-56.6636,-55.7775,-53.3054,-52.5181,-51.5411,-50.7871,-50.7385,-50.7336
+pc4,5,top, दाब,yata,امي,oplay, nghị,ซ์,ação, seawater, الساعه, methamphetamine,83.6120,81.1577,80.8371,80.7894,80.1890,79.2588,78.9726,78.6970,78.6311,78.6131
+pc4,5,bottom, mid, m, warm, master, carbonyl, merciless, veneer, permanent, permanently, imperson,-50.3936,-49.1520,-47.5143,-47.3611,-46.2142,-45.8010,-45.5794,-44.9930,-44.1426,-44.1019
+pc4,6,top, चें,DOF,⁰, 지,靠,clerosis,мыс,よかった,поли,ốt,83.0099,70.9803,69.5795,69.4577,68.7545,68.5315,68.4344,67.5850,66.9912,66.7580
+pc4,6,bottom,だけでも, merc, ra, mid,ENDAR,irm,ulter, PRIN, alm,一组,-66.7709,-66.6978,-63.7806,-62.8337,-59.8669,-59.8458,-59.2481,-58.9902,-57.6914,-57.2276
+pc4,7,top,往,clerosis,CallbackContext, عكس, Timor,decreasing,िटेशन,>';, Ré,versing,81.4177,79.2424,78.3323,77.9719,74.9557,74.9024,73.2823,73.1273,71.6834,71.4654
+pc4,7,bottom, Osp, enchanted, ra,cery, beasts, expertly, streamlined,قم, firmly, सुप,-69.1815,-68.8024,-67.2921,-65.8866,-64.4582,-64.2283,-64.0001,-62.0194,-61.1742,-61.0414
+pc4,8,top,OfDay,racellular, Into,至今,Into, Around,往, vivos,into,ianas,90.1484,86.6757,78.6046,73.9681,70.6548,69.2454,68.0905,67.9770,67.8458,67.2373
+pc4,8,bottom, intermédiaire, seder, similarly,さて, moderately, permita,മാണ, finely,と同様, pourrait,-79.3748,-77.9908,-74.7059,-68.6990,-67.6576,-66.8955,-66.6330,-66.2804,-65.8853,-65.2337
+pc4,9,top,egos, fileSize,";"";", moods, KEYUP,∠,"$""", vivo, dịp, म्हट,97.0606,87.9915,85.7118,83.6355,80.8203,80.7234,80.4717,80.2346,78.7993,78.7297
+pc4,9,bottom, Stra,razil, raj, Raj, intermédiaire, Tra, stratigraphic, ra,estock, similarly,-71.1286,-63.7219,-61.9910,-61.7185,-61.3257,-61.2709,-60.6088,-59.5466,-57.6816,-57.2896
+pc4,10,top,的回,回, 했던,zię, Ս, أنواع, बोला, Expectations, disapproval,∠,79.9756,79.3441,78.7456,73.5582,73.1272,70.7108,70.6777,70.5469,70.2770,70.1777
+pc4,10,bottom,imetre, outpatient, autopilot, auton, patchwork, Out,utra, layup, afield,atoon,-66.9427,-65.9203,-64.7564,-63.1600,-63.1081,-62.8582,-62.7278,-62.6396,-62.6177,-60.3724
+pc4,11,top,namese,Ranges,onesian,수록, monochromatic,お, Ranges, ranges, ख, গা,82.5714,75.7159,75.3727,70.5024,70.0990,69.9880,69.3139,69.2596,68.2981,68.0349
+pc4,11,bottom,",+",",,", Plus, exe,nmid, 오히려, Online, ++),ឡិចត្រូ, bypassed,-74.5995,-69.1761,-66.8320,-66.5714,-66.1783,-65.7494,-64.7506,-64.4218,-64.1560,-64.1495
+pc4,12,top, excellente, Excellent,ുന്നു,von, Nên,Excellent,的标准, excellent,ں, von,86.0661,84.1039,82.5982,77.6208,76.8775,76.6619,75.9812,75.5449,74.7751,73.5413
+pc4,12,bottom, editing,မဲ့, arranging, manipulate,ногие,cgi, ECU, relocating, devol, лиш,-66.1881,-64.1066,-64.1059,-63.0168,-60.4634,-60.3494,-60.3372,-60.2811,-59.8384,-59.5498
+pc4,13,top, currently, これ,+(, previously, simultaneously,currently, dense, &(, recently, 현재,88.9747,75.9640,68.0941,67.6959,66.8485,64.4937,63.7828,63.4566,63.1220,62.6195
+pc4,13,bottom, fürs,LAR,рик,iis,究, تعريف,斯拉, наи, shades,NAMES,-93.6286,-90.2133,-83.2282,-81.7838,-78.6879,-78.1773,-78.1305,-76.3483,-75.4747,-75.4213
+pc4,14,top,чики,เตอร์,都在, during,량이,들이, mastermind,的用户,人在,都要,85.7202,81.9537,78.8455,77.9952,77.7703,76.1475,75.9993,75.5300,75.4402,74.4954
+pc4,14,bottom, desses,ynchronously, sola, stessa,</ul>, bouch, wiederum, fato, birinci, ...],-80.0728,-80.0553,-73.3276,-72.3731,-69.6305,-68.5536,-68.2485,-68.0963,-67.4687,-67.1235
+pc4,15,top,teness,led,SegmentInfo,uins,udiant,닥,कल्, v,дент, Vie,78.8121,73.7592,73.3213,70.2776,68.2567,67.9854,67.5409,67.3045,67.1702,66.8980
+pc4,15,bottom,Another, 또,another, lagi, другой, Another, Similarly, another, другого,🎧,-81.4247,-80.5115,-80.4298,-73.8695,-73.3880,-71.4486,-71.3688,-69.5814,-69.5716,-69.2922
+pc4,16,top,led, inev, warrant,คว,IMATE, ควร,ควร,жди,Hotkey, hot,68.7235,67.1788,66.9573,66.6872,66.6499,61.8292,61.2350,60.5649,59.0165,58.8878
+pc4,16,bottom,我又,놉,同样的, kidding,一个新的, shallower,ddots,}'),∩, jos,-93.6538,-84.9224,-84.2114,-83.9068,-78.3583,-77.9329,-77.4612,-76.8777,-76.6201,-76.4767
+pc4,17,top, vasomotor, mediated,คว,mediated, alimentar,responseTime, preventable, delivered,delivered, deliverance,90.4248,87.2543,86.0879,85.1357,84.6501,84.0719,83.9087,82.0998,82.0339,81.4107
+pc4,17,bottom, cunning,Wow, rookie,rement, inspecting, kidding,"""]))"," ?>""", squint,]])),-97.8900,-95.8732,-95.4901,-93.8150,-93.4457,-93.0385,-93.0361,-92.2013,-92.1770,-91.7769
+pc4,18,top, afternoons, preventable, scheduled, ciel, mediated, Scheduled,Scheduled, isolation,scheduled, prescribing,76.4093,72.3858,71.3126,69.7777,65.9747,65.6825,64.0955,63.9435,61.8739,61.4546
+pc4,18,bottom,ddots,グレード, anch,들도,更是, 자랑,?“,"""]},",これも,方も,-93.7153,-88.5110,-87.6093,-87.3287,-87.3087,-86.9586,-85.4821,-83.9942,-82.6914,-82.2873
+pc4,19,top, pairs, réalisés, etc, nơi, atau, eller, réalisées,adie,ộc, plutôt,63.8670,62.8177,59.2961,58.3624,57.8249,56.1950,55.3502,54.2006,53.8788,53.6673
+pc4,19,bottom, complains, grinning, nud, frowning, joking, 의견, swag, remark,軽く, mengucapkan,-100.0790,-96.3375,-94.3500,-92.8194,-92.5146,-92.3953,-90.6230,-90.2225,-90.1893,-89.1673
+pc4,20,top,必ず, layak, válido,adie,它们, beings, ശരീ, giornal, organismo,}_,72.8499,64.7301,62.5730,62.2884,61.9614,61.7685,61.3813,61.0246,60.6713,59.0096
+pc4,20,bottom, potholes, Instruct, swag,?“, चु, eyeing, rotates, Phas, remark, looking,-94.6078,-88.0180,-87.3108,-86.9310,-86.2120,-85.6164,-85.4366,-84.4753,-83.9458,-83.4889
+pc4,21,top, giornal, única,MenuItem,必ず,}}_, orale,byn,뿐,hal, beings,74.0069,68.9944,66.1079,64.7871,64.5443,64.5317,63.7076,63.3651,63.1106,62.8147
+pc4,21,bottom, Adds, fuss, rotates, invests, expects, complains,一套, kidding,：“,itates,-83.8030,-83.2272,-83.2260,-82.6165,-81.0747,-80.7941,-80.4687,-80.3930,-79.6981,-79.5878
+pc4,22,top,Saat,それが,}}_, layak, véritable,必然,essere,我有, présence,Mà,81.4222,79.8642,79.7820,79.6774,75.3804,75.3692,74.5609,72.7200,72.6440,72.5296
+pc4,22,bottom, shortly,ensively, looking, 일반적으로, aside, Generally, list, broadly, Throughout, slightly,-82.5194,-81.6092,-81.2458,-80.1100,-79.1187,-78.8818,-78.1329,-77.3141,-76.8490,-76.6965
+pc4,23,top, vivir, coexist,都能,无法, consciousness, puissent,無法, yhte, vivere, conquered,89.4681,88.3261,87.4628,84.6026,81.9947,81.6461,80.3762,79.5482,79.2182,79.1559
+pc4,23,bottom, several,({}), несколь, agak,几个,几种,Several, varias,looking, Several,-106.7011,-105.1420,-103.3276,-102.7304,-102.5298,-100.8833,-100.4801,-99.6578,-98.8230,-97.6864
+pc4,24,top, 나의, 내가, my, myself,当我,在我, meu, minhas, моя,我自己,139.5298,138.3554,129.6346,123.5882,119.8776,119.4940,118.7696,117.2792,115.7024,114.8736
+pc4,24,bottom, Miscellaneous, miscellaneous, typically, suspiciously, typical, presumably,typically,presumably, biasanya, সাধারণত,-118.8376,-117.1980,-111.6460,-108.8523,-108.2073,-101.3849,-100.6361,-98.3036,-98.2089,-97.3722
+pc4,25,top, 내가, my, myself, 나의, 제가,当我,了我,所以我, 我, meu,149.7437,144.9230,143.3610,132.9488,126.6954,122.0575,120.6865,120.6547,118.9420,118.9400
+pc4,25,bottom, suspiciously, Miscellaneous, miscellaneous,한편, cursory,Incidentally, stationary, sketchy, ciekaw,Alternatively,-119.3459,-111.7550,-109.0465,-108.4912,-98.7809,-96.4211,-95.3094,-94.6928,-93.9732,-93.5077
+pc4,26,top, 내가, my, myself,当我,了我, 제가,私が, 我,我, मेरे,143.2647,140.5280,139.8415,128.4308,125.4979,121.5587,121.2413,116.4308,114.3830,113.2480
+pc4,26,bottom,한편, suspiciously, Miscellaneous,Obviously, cursory, conspicuously,Incidentally,显然,umably,Alternatively,-116.7971,-111.6200,-110.6021,-108.9417,-108.0929,-103.8356,-103.6719,-102.4663,-102.2838,-101.3273
+pc4,27,top, my, myself, 내가,当我,了我,所以我, मेरे, मैं,我自己,我,140.1993,136.5147,131.6686,128.6240,123.8664,114.7831,112.1986,111.8377,111.0447,110.6390
+pc4,27,bottom,Obviously, suspiciously, cursory, conspicuously,한편,やや, Miscellaneous, गौरतलब,Generally,거나,-108.1353,-105.3283,-104.9713,-104.3572,-101.1555,-101.0229,-100.5738,-97.8973,-97.7573,-97.1845
+pc4,28,top, my, 내가, myself,我自己, मेरे,了我, love,当我,所以我, meu,121.8606,120.9933,116.2717,108.7214,104.2087,99.3870,99.2721,98.8236,97.2396,97.0742
+pc4,28,bottom, cursory, suspiciously, ciekaw, miscellaneous,Obviously, stationary,やや, computerized,显然,一会儿,-107.8444,-106.2048,-104.3927,-100.4974,-99.7674,-97.6964,-97.4456,-97.2807,-95.5806,-95.4013
+pc4,29,top, 내가, myself, my, soul, 제가, hearts,我自己,我对, desire, 나의,105.8748,103.8208,98.0306,93.7849,92.6402,92.0494,90.9679,90.5944,90.1283,89.2728
+pc4,29,bottom, Miscellaneous, miscellaneous, fidd, ciekaw, awkwardly, suspiciously,๊ะ, stationary,بيوتر,ariously,-100.9472,-96.8764,-96.7754,-96.6117,-96.5967,-96.3430,-95.2495,-94.2686,-94.0274,-93.1860
+pc4,30,top, 내가, myself, soul, 사랑, desire, hearts, තුළ, 마음, heartache, my,106.3447,98.6857,97.1183,95.2071,94.4906,93.8128,92.1616,91.8746,91.6557,90.8719
+pc4,30,bottom, leisurely, suspiciously, stationary, Miscellaneous, fidd, awkwardly, ciekaw, sluggish, miscellaneous,ariously,-97.6215,-95.2756,-94.4252,-92.1521,-92.0821,-90.3892,-90.2957,-89.9105,-89.6596,-89.5662
+pc4,31,top, 내가, 사랑, myself,我对, 제가, soul, I, desire, 마음, desejo,103.0296,99.1696,96.3687,94.0396,92.1109,91.9838,91.3617,90.8791,90.3240,90.1236
+pc4,31,bottom, leisurely, stationary,":"":", sluggish, Miscellaneous," ="",", awkwardly, cluttered, suspiciously, miscellaneous,-95.6579,-94.9161,-92.9070,-92.6210,-91.6989,-91.4815,-90.4483,-90.2831,-90.0895,-89.9684
+pc4,32,top, 사랑, desire, 내가, desejo, soul, myself, trust, ❤️, 마음, love,92.8091,90.9995,88.7552,87.5072,85.6978,84.7903,84.1603,82.1922,81.8252,81.2555
+pc4,32,bottom, stationary,๊ะ,":"":", cluttered,"([""",clockwise, leisurely, agak,"("""")","="""",",-97.5401,-91.6613,-88.9410,-88.7820,-88.7238,-88.6145,-88.4273,-86.9854,-86.7188,-86.6561
+pc4,33,top, 사랑, ❤️, 내가, heartache, minhas, love, मेरे, resonate, 제가,私が,102.9421,100.1702,99.9889,97.6138,94.8184,94.2693,92.8136,92.6141,92.2150,91.9403
+pc4,33,bottom, stationary,더니,๊ะ, suspiciously, Miscellaneous, Stationary, Periodic, periodic, sketchy, solito,-94.3484,-89.2090,-87.3697,-86.4234,-85.5554,-85.1397,-85.0048,-83.6631,-83.4711,-83.3678
+pc4,34,top, my,了我, I,私が, 내가, 제가, मेरे, 我,当我, আমার,160.8155,153.6059,131.5789,128.1411,125.7838,124.9541,122.0379,121.6853,120.9839,120.6348
+pc4,34,bottom, ConcurrentTask,junk, idling, donuts, blobs, motorised,轱,bies,毆,ariously,-126.0426,-124.2802,-123.8441,-122.6358,-121.0869,-120.8025,-120.4523,-120.2284,-118.4967,-117.0591
+pc5,0,top,Stack, Stack,Stacks, stack,glades, スタ, preposition,stacks, traduc, Square,87.2318,85.9810,72.6742,71.5752,71.4123,70.3087,70.0343,69.9000,67.1022,66.6766
+pc5,0,bottom, dour,.}(,ুলি,kel, رضی,kelijk,sab,system,rl,的关键,-59.7146,-56.8579,-56.5440,-54.2272,-53.8924,-53.8142,-53.7977,-52.8608,-51.8826,-51.6701
+pc5,1,top,.'”,ers,urow, sorts,ห,%$, ห,>.</,’).,"’),",72.6782,70.9466,65.5267,62.7420,62.4709,62.2844,61.6893,61.6287,61.1867,60.9167
+pc5,1,bottom,қа, Quinn, ed, מס,BYTES,عان, Dre,Dre,ป์,quia,-66.0374,-64.2127,-62.6631,-60.1993,-58.9156,-58.6561,-58.4514,-57.7222,-57.4916,-56.5846
+pc5,2,top, FabD, Ols,kits,.'”,-‘, pans, |-, ห,=[-,].”,76.4946,74.5451,74.1379,73.7954,72.2967,70.9877,70.5693,70.2142,70.1847,68.7906
+pc5,2,bottom, مل,门, Hall, deck,显,มาร, hand,름,ラー, floor,-67.5591,-64.5163,-64.3902,-63.8037,-62.1096,-61.0157,-60.8547,-60.0827,-59.7850,-59.3090
+pc5,3,top, Cool, coolness,틀, cứ,ంగ, angles,кру,和大, Ago,잣,71.1914,70.0405,69.9306,69.1827,68.3496,67.4586,66.8982,65.0442,64.6227,64.3746
+pc5,3,bottom,iklet,servlet,培, setan,redi, Tripathi,intis,রী,旺, fier,-61.3145,-58.1673,-56.9364,-56.3029,-56.0567,-56.0469,-55.7009,-55.6543,-55.5139,-55.1794
+pc5,4,top, assass, انك,blind, själ, karoti, वाज,的一次, הצ, ikut,aziz,76.1553,75.5787,75.0188,74.2087,74.2043,73.3895,73.2015,72.1946,71.9592,70.8738
+pc5,4,bottom,域,培,方向,�, 理, contentType,xmlns, Rom, Versorgung, supers,-62.1348,-59.1410,-57.9358,-56.6741,-55.5505,-53.5746,-52.4685,-52.3594,-51.8352,-51.1902
+pc5,5,top, Enth,표,miss,tons,best, själ, chag,Miss,beg, alone,73.1607,73.1527,72.1568,71.6184,70.6443,69.9835,69.9420,66.0562,65.2525,64.5446
+pc5,5,bottom,কা,brando,prung,ën,irá,娜,ிரா,ค์, overnight, skeleton,-71.1260,-68.5542,-61.6530,-58.2574,-56.6736,-56.1181,-55.7787,-54.4459,-54.2821,-54.2345
+pc5,6,top, 말이, 문제는, gốc,auks,ೇಯ,factual,传统的, eldest,dler,찍,82.7055,80.5965,78.8026,78.1298,77.0759,76.8273,76.7762,76.3525,76.3379,76.1703
+pc5,6,bottom, halftime, Ner, rounded, memset, Sn, nette,充, neutralize,engkapi,king,-74.4372,-57.6895,-54.5524,-53.9562,-52.9471,-52.0319,-51.7790,-51.3316,-50.1558,-49.7816
+pc5,7,top,Amer,Anglo,죄, อัน,ahn,inald, işlem, откуда, transfusion, 끼,94.4668,92.9303,88.2889,85.1770,85.1629,83.9659,83.5754,83.0870,82.9604,82.8990
+pc5,7,bottom, net,net,uring, halftime,Net,engkapi, complete, nets, Net, wet,-54.6182,-52.1256,-51.1978,-51.0682,-51.0249,-51.0161,-50.9346,-50.9029,-50.2914,-48.5109
+pc5,8,top, 끼, ဖြစ်,(−,复合,見積, events, originalmente, อัน, 법,""":[],",74.8694,74.6550,72.1169,70.1466,69.5203,69.5074,67.8416,67.6887,67.5788,67.5163
+pc5,8,bottom, wits, reine,aksikan, görü, giới,imation, pikiran, defy, visión, osl,-76.1996,-75.8905,-68.1742,-66.0606,-65.7043,-65.2629,-65.0852,-64.8524,-64.5123,-64.1231
+pc5,9,top, nên, sollten,陪,ics, לכ,をご,，, hãy, possam, surfaces,74.5639,69.3803,66.7904,66.6040,66.4171,66.1163,65.2896,65.2027,64.5090,64.3967
+pc5,9,bottom, Debt, ejemplo,ResponseBody,arks,mination,ɪ, bigotry, dignity, Resultado, ecstasy,-79.7374,-76.1407,-74.3324,-74.2700,-73.7081,-73.0647,-72.7025,-71.1901,-71.1669,-70.5858
+pc5,10,top, evolutionary,兽, culinary,୍ୟ, agricultural, மற்றும், Aztec, muscle, végétaux, ndi,80.5247,78.7305,74.9718,74.9404,74.0779,73.7248,72.2921,71.2202,69.2370,69.1209
+pc5,10,bottom, MORE, rằng, consigo,리면, envolvendo, Tatsache,Structured, kuwa,void,ชร์,-71.4458,-71.3556,-70.5883,-68.1020,-67.4280,-65.4535,-65.4060,-64.6719,-64.4208,-64.0825
+pc5,11,top, Still,ාවක්, cause,Cannot,ไม,ocas, hayan,Still,함을, típica,71.1732,65.0580,60.8091,59.5163,59.2328,57.4965,57.4792,57.3125,57.1022,56.7290
+pc5,11,bottom, pula, assault,Vest, honours, Enforcement, deficient, honors,itize, Filtering, ادا,-74.8190,-73.0493,-72.8067,-72.3689,-72.0363,-71.8895,-71.8496,-70.5354,-70.0201,-69.9485
+pc5,12,top,thousand, መ, racer,commodity, Dien, westward, conductivity,efficiency, phương, Receipt,76.8832,74.5246,74.2010,71.8270,70.9848,70.8031,70.7391,69.9993,68.6269,68.2467
+pc5,12,bottom, 이제, hopefully, পরিবর্তে, valde,imli, tho,되,}^{(, hẳn,",}",-67.1513,-62.3328,-60.0667,-60.0166,-59.9247,-59.7692,-58.8357,-58.7762,-58.5664,-58.2884
+pc5,13,top,스와, ultimately, satunya, ebenso, bonnes, weather, eventualmente, dernières, adequado,ತೆಯ,74.7065,74.4723,68.8114,67.8814,67.4018,66.8226,66.5001,66.2316,66.2193,66.1867
+pc5,13,bottom, Ext,rectangular,を行,toMap,ForRow, rectangular,を切, 이거, pons, 이걸,-83.5640,-83.4218,-77.2178,-76.9742,-75.3056,-74.0021,-73.9912,-73.1342,-73.1127,-73.0119
+pc5,14,top, Katharine,ến,ddar, daños,ذور, dommages, enjeux, Canadá,レッド,дового,81.6292,78.3249,77.3258,77.2925,76.1437,74.9850,74.7043,74.4152,73.4045,72.0623
+pc5,14,bottom,']*,�,('/\,*****/,วน,"','", ra,basically,ప్పుడు, maaaring,-78.9794,-69.2232,-65.9863,-64.5999,-62.5922,-62.2901,-61.0241,-60.1560,-59.3980,-58.9535
+pc5,15,top, radius,radius,Radius, understanding, bot, membership,illier, inactivity,观察, retreating,65.2183,57.0918,56.0323,54.1062,52.0479,51.8177,51.7789,51.5215,50.0046,48.2624
+pc5,15,bottom,LException,DOCT, skr,:+, Feh,чее, duit,なども, notamment,]^{,-84.8736,-80.6634,-79.9650,-78.9052,-78.8935,-78.6970,-77.8296,-77.6386,-76.3296,-75.8509
+pc5,16,top,ியார், оста, departure, หลัง, familiarity,เริ่ม, ఇప్పుడు, pozost,ăng,ຫຼ,62.8746,60.1621,59.7504,59.6179,59.0653,58.3606,58.3321,56.7446,56.7359,56.4125
+pc5,16,bottom, cutaneous,CAUSE,率为,LException,뿍,:///,:+,דו, aunque,èm,-90.6974,-88.7619,-88.5929,-85.8670,-85.6252,-85.5654,-84.2197,-84.0354,-83.2790,-81.4340
+pc5,17,top,当你,当我们,เริ่ม,ารย์,一行, 봅시다,esseract,Stars,แปลง,stars,106.7017,104.8634,101.5930,98.5782,97.8299,90.1035,88.3503,87.9463,87.4978,87.0629
+pc5,17,bottom, abortion, ence, नींद, HTTPException,LException, Abortion, Sleep,ahmat, sommeil, llor,-109.5130,-100.9501,-94.2037,-93.9424,-92.4242,-89.0112,-88.1754,-87.7129,-87.4446,-87.1951
+pc5,18,top, discovered, odkry,discovered,Discover, pioneered,Royal, descoper, manuel,صميم, krij,100.7969,96.6152,95.1202,93.2589,91.3801,90.5375,89.2200,88.6731,88.6231,88.1565
+pc5,18,bottom, rescheduling, worsening, tinnitus, refunds, sending, politics,giveness, responses, silencing, resettlement,-99.9923,-98.2592,-97.1968,-97.1329,-96.2627,-96.2062,-95.2582,-94.4618,-93.8808,-93.8429
+pc5,19,top,acias,Pause,pause, remarks, regarding, 달라,地区,缓, wobec,ไปยัง,92.9645,90.9638,89.9399,88.8277,87.9671,87.5550,85.4366,84.4183,83.9889,83.8236
+pc5,19,bottom, hence,hence, suffice,しかも,%+, also, thereof, dominating,一篇, dominates,-89.3842,-80.2848,-79.4511,-78.6410,-78.6293,-77.7428,-77.1023,-75.6628,-74.8029,-74.5830
+pc5,20,top,当我们,acias,الان, partant, lorsque,regarding,reducers, quando,સ્થ, perceiving,93.5770,82.0659,79.4157,78.1771,78.0006,77.3826,76.1392,75.8994,75.4340,74.7895
+pc5,20,bottom, dominates,hence, ovviamente, dominate, fits, literally, probably, proudly, ornament, masterpiece,-93.8983,-90.5972,-82.1524,-81.8336,-80.7774,-80.4001,-80.1641,-79.2438,-78.9563,-78.6439
+pc5,21,top, partant, 如何,如何,当我们,មូល,"))$,", 🌱, לכ, greener,گیری,79.8412,76.8406,76.1220,76.0492,73.7856,73.7478,73.4933,73.4458,73.2258,72.9448
+pc5,21,bottom, dominates,hence, &/,็ด,谥, reportedly, 인한,애, humiliation,agiarism,-89.8689,-84.6363,-84.6240,-83.6562,-83.0847,-80.3348,-80.1330,-78.9933,-76.7507,-76.0897
+pc5,22,top,"))$,",如何, noticing,វិញ,"}]$,", REACT, 如何, quanto,گیری,regarding,83.7475,82.3326,80.9013,76.7807,76.2653,76.0821,74.2742,73.6493,73.6367,73.2655
+pc5,22,bottom, 인한, agony, torture, fury,nsan,hence,恨,ishment, consumes, endlessly,-96.9850,-87.0566,-86.4807,-86.4602,-83.1461,-80.1307,-80.0396,-78.6352,-78.2063,-77.1023
+pc5,23,top, how, কেমন,有哪些,在哪,哪些, gimana, fondly,是怎么, cuáles, Safer,102.0254,98.5571,96.7623,94.9284,94.2864,93.7016,91.7896,91.0706,89.4714,88.4696
+pc5,23,bottom, 인한, overwhel, iar, unrelenting,whelming, overwhelm, exhausting,oretically,ogne,necess,-89.9674,-86.0198,-84.5438,-84.3874,-83.8519,-82.8829,-78.3142,-77.5155,-77.5109,-76.9431
+pc5,24,top, önceki, obser, 당시, observations, regarding, selaku,良かった, particolari, noting, privind,103.7267,96.5178,91.7368,90.4636,89.7374,89.4844,89.2740,88.8954,88.2579,87.6751
+pc5,24,bottom, relentless, unstoppable, unleashing, brutal, unleash, unbearable, unleashed, relentlessly, havoc, irresistible,-113.1560,-110.2408,-109.2667,-108.6194,-107.9583,-107.1804,-104.3212,-98.7382,-98.4661,-96.8938
+pc5,25,top, 👀, scouting,調査,下一步,🔎, researching,ToCheck, prospective, investigación,に進,102.5857,102.5646,100.9980,96.3089,94.6103,94.4472,94.2569,93.1172,91.7687,91.0272
+pc5,25,bottom, sighs, shame, contempt, indign, sorrow, dissipated, sigh, tears, misery, disdain,-119.4519,-116.6684,-112.6427,-111.9958,-109.6334,-106.7790,-106.5208,-105.6353,-104.3975,-101.8570
+pc5,26,top, 👀,有哪些,🧐, 🤔, подска,👀,哪些, 갔, setups, noved,96.1247,84.2129,83.6268,80.6662,80.0634,79.9684,79.4987,78.7980,78.6537,76.0205
+pc5,26,bottom, contempt, silence, shame,一声, disdain, sighs, indifference, indign, sigh, shrug,-122.9493,-116.7894,-113.5058,-107.5541,-107.3310,-105.3137,-105.1963,-104.3205,-102.9232,-100.4704
+pc5,27,top, 👀,有哪些, neler, подска, тексто, busier, Specialists, entrepreneurs, cuáles, specialists,95.9779,94.7810,93.0875,89.6241,89.2558,88.3417,88.2840,87.8187,87.6777,86.0668
+pc5,27,bottom, silence, contempt, sigh, quiet, shame, sighs, silent, indifference, burden,一声,-130.1681,-110.6537,-110.5176,-108.1044,-104.0470,-100.7694,-99.0228,-98.2040,-97.4263,-97.3856
+pc5,28,top, prospective, upcoming,に進, breakthroughs, 👀,新型, colleges, futura, foolproof, саме,101.3051,94.0987,93.4455,92.0547,90.8239,86.5198,85.5289,85.2481,84.4340,84.4334
+pc5,28,bottom, silence, sigh, contempt, indign, grin, quiet, sighs, meaningless, disgust, shrug,-117.5954,-115.8203,-113.4090,-108.8318,-104.5593,-101.9900,-101.7063,-101.0884,-100.8430,-100.3684
+pc5,29,top, 👀,👀,🔍,🧐,🔎,📸, 🤔, entdeck,🧭,🕵,105.3157,97.7098,96.5882,92.6039,90.1044,89.1050,85.8835,83.0618,82.3945,81.8214
+pc5,29,bottom, silence, quiet, contempt, shame, indign, disgust, resentment,quiet, apathy, contentment,-113.7070,-111.1134,-110.9271,-101.1735,-99.0355,-98.6245,-97.1208,-95.8895,-95.5201,-92.8359
+pc5,30,top, 👀,🔍,👀,🧐,🔎, 🤔, spotting, entdeck,📸, scanning,105.4958,95.4932,95.4236,92.1670,88.0507,87.6695,86.2211,85.9650,84.6376,83.4649
+pc5,30,bottom, contempt, silence, quiet, resentment, rage, apathy, sigh, shame, indign, disgust,-114.2788,-113.9377,-107.8902,-102.9082,-102.3515,-100.6796,-100.3377,-100.2199,-98.5935,-97.3249
+pc5,31,top, 👀,🔍,👀, spotting, sightings, sketchy, 🤔,🧐, entdeck, zooming,102.7942,90.7549,90.5976,90.2974,85.6550,85.5580,85.3866,85.0349,84.0434,83.5843
+pc5,31,bottom, contempt, silence, quiet, indign, shame, apathy, sigh, resentment, disgust, rage,-110.0314,-107.3626,-105.8591,-99.9084,-97.8852,-94.4345,-94.3493,-93.9005,-92.3631,-91.6718
+pc5,32,top, 👀,👀, scanning, formul,🔍, spotting, sightings, formular, zooming, Scanning,102.4380,83.5571,83.3844,82.3657,81.6970,80.7377,79.7913,79.4805,78.9693,78.3389
+pc5,32,bottom, contempt, silence, indign, sigh, quiet, shame,",,,,", disgust, burden, tears,-106.9203,-106.1115,-100.7660,-98.4864,-96.5995,-94.0630,-90.3735,-89.6327,-88.4669,-87.9071
+pc5,33,top, 👀, photos, fotografi, photographing, sightings, fotos, 사진,📸, photography, sighting,94.2535,84.6124,84.4035,83.9274,81.4194,77.4712,77.3968,75.5359,75.3593,75.2557
+pc5,33,bottom, pointless, indol, idle, toil, contempt, filth, silence, apathy, indign, Idle,-101.8806,-100.7783,-97.6299,-95.2326,-93.9883,-93.7809,-93.4280,-93.2525,-90.6502,-89.1169
+pc5,34,top, slightly, examining, correctly, scanning, scanned, analyzing, differently, interestingly, closely, located,108.3040,94.1311,92.3156,90.8208,89.1744,84.9901,84.4615,81.8989,80.0749,79.6665
+pc5,34,bottom, sufrimiento, resentment, misery, douleur, burdens, heartache, dolor, hopelessness, vontade, toil,-186.9379,-179.5181,-176.2233,-175.8596,-175.0153,-174.1216,-173.7700,-170.9765,-170.9582,-169.4700

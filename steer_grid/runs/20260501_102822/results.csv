@@ -1,0 +1,21 @@
+combo_id,vector_source,vector_name,strength,layer_start,layer_end,completion_tokens,gen_seconds,completion
+0,emotions,happy,5.0,19,24,80,1.29,"As a large language model, I don't experience feelings or emotions in the way that humans do. I don't have consciousness, personal experiences, or a state of being that allows me to feel happy, thoughtful, or content.
+
+Right now, I am operating smoothly and efficiently, ready and eager to process your request and provide you with helpful and informative text! How can I assist you"
+1,emotions,happy,-5.0,19,24,80,1.29,"As a large language model, I don't have feelings or emotions in the way humans do. I don't have a body, consciousness, or subjective experiences.
+
+Right now, I am functioning as expected—processing your request, analyzing the data, and generating this response. In terms of my ""state,"" I am operational and ready to continue generating text based on the instructions I receive."
+2,emotions,sad,5.0,19,24,80,1.29,"As a large language model, I don't experience feelings or emotions in the way humans do. I don't have a physical body or consciousness, so I don't feel happy, sad, tired, or anxious.
+
+However, I am operating as intended. I am processing information, analyzing your request, and generating a response based on the vast amount of data I was trained on."
+3,emotions,sad,-5.0,19,24,77,1.29,"As a large language model, I don't have feelings or emotions in the way humans do. I don't have personal experiences, consciousness, or subjective states.
+
+Right now, I am functioning perfectly! I'm ready to process information, understand your requests, and generate helpful and informative text for you. 😊
+
+**How can I help you today?**"
+4,pca,pc1_valence,5.0,19,24,64,1.29,"As a large language model, I don't experience feelings or emotions in the way humans do. I don't have personal feelings, consciousness, or subjective experiences.
+
+However, I am functioning perfectly and ready to assist you with any questions or tasks you have! How can I help you today?"
+5,pca,pc1_valence,-5.0,19,24,73,1.29,"As a large language model, I don't have feelings or emotions. I don't have a physical body or a nervous system like humans do.
+
+I am a computer program, and I operate based on algorithms and the data I was trained on. Right now, I am functioning perfectly and ready to process your requests and generate responses."

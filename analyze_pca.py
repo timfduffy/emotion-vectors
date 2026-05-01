@@ -122,6 +122,40 @@ def align_sign(scores: np.ndarray, valence: np.ndarray, arousal: np.ndarray) -> 
     return out
 
 
+def _place_labels_non_overlapping(ax, x, y, labels, fontsize, priority=None,
+                                  pad_px: float = 1.0):
+    """Greedy non-overlap label placement.
+
+    Sort labels by `priority` (default: distance from origin, highest first)
+    and add them one at a time, skipping any whose bounding box would
+    overlap a previously placed label. Returns the number of labels actually
+    placed.
+    """
+    if priority is None:
+        priority = np.sqrt(np.asarray(x) ** 2 + np.asarray(y) ** 2)
+    order = np.argsort(-np.asarray(priority))
+
+    fig = ax.get_figure()
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+
+    placed_bboxes = []
+    placed = 0
+    for idx in order:
+        txt = ax.annotate(labels[idx], (x[idx], y[idx]), fontsize=fontsize,
+                          alpha=0.95, ha="center", va="bottom",
+                          xytext=(0, 3), textcoords="offset points")
+        bbox = txt.get_window_extent(renderer=renderer).expanded(
+            1.0 + pad_px / 100, 1.0 + pad_px / 100
+        )
+        if any(bbox.overlaps(b) for b in placed_bboxes):
+            txt.remove()
+        else:
+            placed_bboxes.append(bbox)
+            placed += 1
+    return placed
+
+
 def scatter_labeled(
     ax,
     x,
@@ -131,28 +165,39 @@ def scatter_labeled(
     color_label="",
     title="",
     cmap="RdBu_r",
+    marker_size: int = 22,
+    label_fontsize: int = 6,
+    title_fontsize: int = 11,
+    colorbar_fontsize: int = 9,
+    prune_overlapping_labels: bool = False,
 ):
     if color_values is not None:
         norm = TwoSlopeNorm(vmin=float(np.min(color_values)),
                             vcenter=float(np.median(color_values)),
                             vmax=float(np.max(color_values)))
         sc = ax.scatter(x, y, c=color_values, cmap=cmap, norm=norm,
-                        s=22, alpha=0.85, edgecolors="none")
+                        s=marker_size, alpha=0.85, edgecolors="none")
         cb = ax.figure.colorbar(sc, ax=ax, shrink=0.7)
-        cb.set_label(color_label)
+        cb.set_label(color_label, fontsize=colorbar_fontsize)
+        cb.ax.tick_params(labelsize=colorbar_fontsize)
     else:
-        ax.scatter(x, y, s=22, alpha=0.7, c="steelblue")
+        ax.scatter(x, y, s=marker_size, alpha=0.7, c="steelblue")
 
-    for xi, yi, lab in zip(x, y, labels):
-        ax.annotate(lab, (xi, yi), fontsize=6, alpha=0.85,
-                    ha="center", va="bottom",
-                    xytext=(0, 2), textcoords="offset points")
-
-    ax.set_title(title, fontsize=11)
+    ax.set_title(title, fontsize=title_fontsize)
     ax.axhline(0, color="gray", lw=0.5, alpha=0.4)
     ax.axvline(0, color="gray", lw=0.5, alpha=0.4)
     ax.set_xticks([])
     ax.set_yticks([])
+
+    if prune_overlapping_labels:
+        n_placed = _place_labels_non_overlapping(ax, x, y, labels, label_fontsize)
+        return n_placed
+    else:
+        for xi, yi, lab in zip(x, y, labels):
+            ax.annotate(lab, (xi, yi), fontsize=label_fontsize, alpha=0.9,
+                        ha="center", va="bottom",
+                        xytext=(0, 3), textcoords="offset points")
+        return len(labels)
 
 
 def top_loadings(scores: np.ndarray, emotions: list[str], k: int = 10):
@@ -188,8 +233,10 @@ def main():
     parser.add_argument("--vectors-dir", default="emotion_vectors_denoised")
     parser.add_argument("--vad-path", default="data/NRC-VAD-Lexicon/NRC-VAD-Lexicon.txt")
     parser.add_argument("--output-dir", default="analysis_output/pca")
-    parser.add_argument("--layer-start", type=int, default=17)
-    parser.add_argument("--layer-end", type=int, default=27)
+    parser.add_argument("--layer-start", type=int, default=None,
+                        help="Lowest layer to analyze. Default: all layers in metadata.")
+    parser.add_argument("--layer-end", type=int, default=None,
+                        help="Highest layer to analyze. Default: all layers in metadata.")
     parser.add_argument("--compare-layer", type=int, default=25)
     parser.add_argument("--n-components", type=int, default=10)
     parser.add_argument("--top-k", type=int, default=10)
@@ -207,7 +254,10 @@ def main():
     valence, arousal, vad_info = load_vad(Path(args.vad_path), emotions)
     print(f"  Direct: {vad_info['n_direct']}, Fallback: {vad_info['n_fallback']}")
 
-    layers = list(range(args.layer_start, args.layer_end + 1))
+    lo = args.layer_start if args.layer_start is not None else min(all_layers)
+    hi = args.layer_end if args.layer_end is not None else max(all_layers)
+    layers = [l for l in all_layers if lo <= l <= hi]
+    print(f"  Will analyze {len(layers)} layers: {layers[0]}..{layers[-1]}")
 
     # ---- Layer sweep, mean-centered ----
     sweep_results = {}
@@ -269,6 +319,42 @@ def main():
                     dpi=140, bbox_inches="tight")
         plt.close(fig)
 
+        # Standalone valence and arousal scatters for the comparison layer.
+        # Larger fonts/markers; non-overlapping greedy label placement
+        # (most-extreme points labeled first, others left as dots).
+        if layer == args.compare_layer:
+            for color_vals, color_name, cmap_name in [
+                (valence, "valence", "RdBu_r"),
+                (arousal, "arousal", "viridis"),
+            ]:
+                fig, ax = plt.subplots(figsize=(11, 11))
+                n_placed = scatter_labeled(
+                    ax, scores[:, 0], scores[:, 1], emotions,
+                    color_values=color_vals,
+                    color_label=f"{color_name.capitalize()} (NRC VAD)",
+                    title=f"Layer {layer} - PC1 vs PC2 (color={color_name})\n"
+                          f"r(PC1,{color_name[0].upper()})="
+                          f"{corrs[0][f'{color_name}_pearson']:+.2f}  "
+                          f"r(PC2,{color_name[0].upper()})="
+                          f"{corrs[1][f'{color_name}_pearson']:+.2f}",
+                    cmap=cmap_name,
+                    marker_size=70,
+                    label_fontsize=11,
+                    title_fontsize=18,
+                    colorbar_fontsize=14,
+                    prune_overlapping_labels=True,
+                )
+                ax.set_xlabel(f"PC1 ({pca.explained_variance_ratio_[0]:.1%})",
+                              fontsize=14)
+                ax.set_ylabel(f"PC2 ({pca.explained_variance_ratio_[1]:.1%})",
+                              fontsize=14)
+                print(f"  [{color_name}] placed {n_placed}/{len(emotions)} labels")
+                fig.tight_layout()
+                fig.savefig(out_dir / "scatters"
+                            / f"pca_pc1_pc2_layer_{layer}_{color_name}.png",
+                            dpi=140, bbox_inches="tight")
+                plt.close(fig)
+
     # ---- Cross-layer summary plots ----
 
     # Explained variance per PC across layers
@@ -325,6 +411,26 @@ def main():
                  fontsize=12, fontweight="bold")
     fig.tight_layout()
     fig.savefig(out_dir / "pc_vad_correlation_heatmap.png", dpi=140, bbox_inches="tight")
+    plt.close(fig)
+
+    # Focused line plot: PC1 and PC2 correlations with V and A across layers
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
+    for ax, pc_idx, pc_name in [(axes[0], 0, "PC1"), (axes[1], 1, "PC2")]:
+        rv = [sweep_results[l]["correlations"][pc_idx]["valence_pearson"] for l in layers]
+        ra = [sweep_results[l]["correlations"][pc_idx]["arousal_pearson"] for l in layers]
+        ax.plot(layers, rv, marker="o", label="r(.,Valence)", color="tab:red")
+        ax.plot(layers, ra, marker="o", label="r(.,Arousal)", color="tab:blue")
+        ax.axhline(0, color="gray", lw=0.5)
+        ax.set_xlabel("Layer")
+        ax.set_title(f"{pc_name} correlation with VAD")
+        ax.set_ylim(-1.05, 1.05)
+        ax.grid(alpha=0.3)
+        ax.legend(loc="lower right")
+    axes[0].set_ylabel("Pearson r")
+    fig.suptitle("How PC1 and PC2 align with valence/arousal at each layer",
+                 fontsize=12, fontweight="bold")
+    fig.tight_layout()
+    fig.savefig(out_dir / "pc12_vad_correlation_lines.png", dpi=140, bbox_inches="tight")
     plt.close(fig)
 
     # ---- Layer 25: preprocessing comparison ----

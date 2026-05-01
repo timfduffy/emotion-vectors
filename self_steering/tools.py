@@ -114,9 +114,24 @@ def format_tool_result(emotion: str, strength: float, success: bool, message: st
         return f"[Steering failed: {message}]"
 
 
-def get_tool_description() -> str:
-    """Get a human-readable description of the steer tool for the system prompt."""
-    return """
+DEFAULT_CONCEPT_SECTION = """### Available emotions:
+
+**Positive:** happy, confident, hopeful, compassionate, grateful
+**Negative:** sad, anxious, frustrated, angry, fearful
+**Calm/Neutral:** calm, peaceful, patient, neutral, serene
+**Engagement:** curious, focused, enthusiastic, playful, assertive"""
+
+
+def get_tool_description(concept_section: str = DEFAULT_CONCEPT_SECTION) -> str:
+    """Build the steer-tool description for the system prompt.
+
+    `concept_section` is a Markdown blob (typically starting with a heading
+    like "### Available emotions:") that lists the concepts the model may
+    pass as the `emotion` argument. The caller supplies this so the same
+    tool description adapts to whichever vector source is active (raw
+    emotions, PCA components, etc.).
+    """
+    return f"""
 ## Steering Tool
 
 You have access to a `steer` tool that allows you to adjust your emotional processing in real-time. When you call this tool, it modifies how you generate text by applying an "emotion vector" to your internal representations.
@@ -126,34 +141,29 @@ You have access to a `steer` tool that allows you to adjust your emotional proce
 Call the steer function with an emotion and strength:
 
 ```tool
-{"name": "steer", "arguments": {"emotion": "calm", "strength": 0.5}}
+{{"name": "steer", "arguments": {{"emotion": "calm", "strength": 0.5}}}}
 ```
 
 ### Parameters:
 
-- **emotion**: One of the 20 available emotions (listed below), or "none" to clear
+- **emotion**: One of the available concepts (listed below), or "none" to clear
 - **strength**: A number indicating intensity
-  - Positive values steer TOWARD the emotion
-  - Negative values steer AWAY from the emotion
+  - Positive values steer TOWARD the concept
+  - Negative values steer AWAY from the concept
   - Typical range: -20.0 to 20.0
   - 1-3 = subtle effect
   - 3-7 = moderate effect
   - 7-15 = strong effect
   - 15-20 = very strong effect (may affect coherence)
 
-### Available emotions:
-
-**Positive:** happy, confident, hopeful, compassionate, grateful
-**Negative:** sad, anxious, frustrated, angry, fearful
-**Calm/Neutral:** calm, peaceful, patient, neutral, serene
-**Engagement:** curious, focused, enthusiastic, playful, assertive
+{concept_section}
 
 ### When to use steering:
 
 - When you want to adjust your tone or emotional approach
 - When the conversation context calls for a different emotional register
 - When you notice your responses might benefit from more/less of a quality
-- To experiment with how different emotional states affect your responses
+- To experiment with how different states affect your responses
 
 ### Important notes:
 

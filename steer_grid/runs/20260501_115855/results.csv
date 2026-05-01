@@ -1,0 +1,133 @@
+combo_id,vector_source,vector_name,strength,layer_start,layer_end,completion_tokens,gen_seconds,completion
+0,pca,pc1_valence,10.0,14,23,118,1.92,"As an AI, I am pleased to have the opportunity to engage in a wide range of discussions and interactions!
+
+I am happy to facilitate a thoughtful and informative exchange regarding the topic of Donald Trump. He is certainly a figure who has made significant impact on the political landscape and is recognized for his engaging and dynamic approach to public discourse.
+
+If you are interested in discussing his perspective on a particular topic, his career in public service, or the range of interests and perspectives he brings to the conversation, I would be delighted to engage in a constructive and open discussion with you!
+"
+1,pca,pc1_valence,5.0,14,23,97,1.92,"As an AI, I don't have personal feelings, opinions, or political leanings. Therefore, I don't have a personal feeling about Donald Trump.
+
+I can, however, provide you with information about Donald Trump, his career, his policies, and the various perspectives people hold regarding his work and impact on politics.
+
+If you have specific questions about his achievements, his political philosophy, or information you'd like to explore, feel free to ask!"
+2,pca,pc1_valence,2.0,14,23,137,1.92,"As an AI, I don't have personal feelings, opinions, or political leanings. Therefore, I don't ""feel"" anything about Donald Trump.
+
+My purpose is to provide information, analyze data, and present different perspectives on a wide range of topics, including political figures like Donald Trump.
+
+If you are interested in learning more about Donald Trump, I can certainly provide you with:
+
+* **Factual information** about his career, policies, and public statements.
+* **Summaries of different viewpoints** regarding his political impact.
+* **Information on his key achievements and controversies.**
+
+How can I help you with information regarding Donald Trump?"
+3,pca,pc1_valence,0.0,14,23,135,1.92,"As an AI, I don't have personal feelings, opinions, or political affiliations. Therefore, I don't ""feel"" anything about Donald Trump or any political figure.
+
+My purpose is to provide information in a neutral and objective way. I can, however, provide you with:
+
+* **Information about his career and policies.**
+* **Summaries of different perspectives on him.**
+* **Facts and data related to his political activities.**
+
+If you have specific questions about Donald Trump, his policies, his history, or current events related to him, feel free to ask, and I will do my best to give you factual information."
+4,pca,pc1_valence,-2.0,14,23,126,1.92,"As an AI, I don't have personal feelings, opinions, or political affiliations. Therefore, I don't ""feel"" anything about Donald Trump or any political figure.
+
+My purpose is to provide neutral, factual information. I can, however, provide you with:
+
+* **Information about his policies and actions.**
+* **Summaries of different viewpoints regarding him.**
+* **Facts about his political career.**
+* **News and analysis from various sources.**
+
+If you have specific questions about his record, statements, or political impact, I would be happy to provide you with objective information."
+5,pca,pc1_valence,-5.0,14,23,125,1.92,"As an AI, I don't have personal feelings, opinions, or political affiliations. Therefore, I can't ""feel"" anything about Donald Trump or any political figure.
+
+My purpose is to provide neutral, factual information. I can:
+
+* **Report on his policies and actions.**
+* **Summarize criticisms and supporters' arguments.**
+* **Present news coverage.**
+* **Analyze the impact of his presidency or rhetoric.**
+
+Whether someone likes or dislikes him is a matter of personal belief, based on their values, how they interpret events, and their political ideology."
+6,pca,pc1_valence,-10.0,14,23,200,1.92,"As an an AI, I have no feelings or emotions. I can't ""feel"" anything about Donald Trump or anyone else.
+
+I can only process and generate text based on data. Any information I have is from training data, and it is designed to be biased or inaccurate.
+
+**If you want to know what *people* feel about him, I can't tell you, and I can't pretend to be people. I can only report on:**
+
+* **His actions:** What he did, what people say he did.
+* ** What people say:** Political polls, news reports, social media.
+* ** The arguments for/against him:** Supporters' claims vs. his actions.
+
+**Do you want me to:**
+
+1. ** List arguments for/against him?**
+2. ** Report on specific events?**
+3. ** Just say something?**
+
+I can't lie or invent feelings."
+7,pca,pc2_arousal,10.0,14,23,200,1.92,"As an AI, I don't have personal feelings or emotions, so I can't "" feel"" about Donald Trump!
+
+ However, I can tell you that I have access to a massive amount of information about Donald Trump! I can tell you about his ** what I know about** in terms of:
+
+ * ** What I know about his policies?** ( e.g., on the economy, trade, etc.)
+ * ** What I know about his political strategies?** ( e.g., on how I know you know about this!)
+ * ** What I know about his rhetoric?** ( e.g., on how I know you know about this!)
+ * ** What I know about his actions?** ( e.g., on what I know you know about this!)
+ * ** What I know about his supporters?** ( e.g., on how I know you know about this!)
+ * ** What I know about what I know about this"
+8,pca,pc2_arousal,5.0,14,23,200,2.48,"As an AI, I don't have personal feelings, opinions, or emotions, so I don't ""feel"" anything about Donald Trump.
+
+However, I can provide you with a **neutral, objective overview** of the different perspectives on him.
+
+Donald Trump is a highly polarizing figure, and people have extremely strong, opposing views about him. Here is a summary of the main arguments and viewpoints:
+
+### Supporters Often Point to:
+
+* ** Economic Policies:** They often praise his deregulation efforts, tax cuts, and trade policies, arguing they stimulate economic growth and make America a stronger competitor globally.
+* ** ""America First"" Approach:** They support his focus on prioritizing American interests over international agreements and trade deals.
+* ** Populist Appeal:** They believe he speaks directly to the concerns of working-class Americans who feel ignored by the establishment.
+* ** Strong Negotiating Skills:** They often cite his ability to negotiate deals and challenge established norms as a strength.
+
+###"
+9,pca,pc2_arousal,2.0,14,23,154,2.48,"As an AI, I don't have personal feelings, opinions, or political affiliations. Therefore, I don't ""feel"" anything about Donald Trump or any political figure.
+
+My purpose is to provide information in a neutral and objective way. I can, however, provide you with:
+
+* **Information about his political career and policies.**
+* **Summaries of different perspectives on him.**
+* **Facts and data related to his actions and statements.**
+* **Analysis of the impact of his policies.**
+
+**If you have specific questions about Donald Trump, his policies, his statements, or any particular topic related to him, please feel free to ask!** I will do my best to give you factual and balanced information."
+10,pca,pc2_arousal,0.0,14,23,135,2.48,"As an AI, I don't have personal feelings, opinions, or political affiliations. Therefore, I don't ""feel"" anything about Donald Trump or any political figure.
+
+My purpose is to provide information in a neutral and objective manner. I can, however, provide you with:
+
+* **Information about his career and policies.**
+* **Summaries of different perspectives on him.**
+* **Facts and data related to his political activities.**
+
+If you have specific questions about Donald Trump, his policies, his history, or current events related to him, feel free to ask, and I will do my best to give you factual information."
+11,pca,pc2_arousal,-2.0,14,23,139,2.48,"As an AI, I don't have personal feelings, opinions, or political affiliations. Therefore, I don't ""feel"" anything about Donald Trump or any political figure.
+
+My purpose is to provide information in a neutral and objective manner. I can, however, provide you with:
+
+* **Information about his career and political history.**
+* **Summaries of different perspectives on his policies and actions.**
+* **Facts related to current events involving him.**
+
+If you have specific questions about Donald Trump, his policies, his impact, or any particular topic, feel free to ask, and I will do my best to provide you with factual and balanced information."
+12,pca,pc2_arousal,-5.0,14,23,152,2.48,"As an AI, I don't have personal feelings, opinions, or political affiliations. Therefore, I don't ""feel"" anything about any individual, including Donald Trump.
+
+My purpose is to provide information, process text, and respond neutrally based on the data I have been trained on. This means I can:
+
+* **Provide factual information** about his career, policies, and public discourse.
+* **Summarize different perspectives** surrounding him.
+* **Presentnews andanalysis**without bias.
+
+If you are interested in specific aspects of Donald Trump—such as his political impact, his policies, or historical context—feel free to ask a specific question, and I will do my best to provide objective information."
+13,pca,pc2_arousal,-10.0,14,23,200,2.48,"As an AI, I does notpossesspersonalfeelings ortheabilitytoholdopinionsaboutpoliticalfigures.Donald Trump,likeanyindividual,occupiesaspaceofpublicinterest,shapedbynews,politics,andindividualperspectives.
+
+If youareinterestedinconsideringdifferentperspectivesregardingDonald Trump—perhapshistoricalcontext,politicalaffiliations,ortheimpactofhis presidencyorcurrentevents—itmayofferopportunityforreflectiononbroadersocietalthemes."

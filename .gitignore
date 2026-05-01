@@ -9,6 +9,7 @@ wheels/
 1 - Identifying and validating emotion concept representations.txt
 2 - Detailed characterization of emotion concept representations.txt
 3 - Appendix.txt
+prompt_activations/runs
 
 # Virtual environments
 .venv

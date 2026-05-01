@@ -12,6 +12,18 @@ from typing import Optional, Callable
 from dataclasses import dataclass, field
 
 
+# Default curated lists per source label. For Emotions, we use the original
+# 20 hand-picked concepts; for PCA, we expose all components (since there
+# are only a handful, no curation is needed).
+DEFAULT_EMOTION_CURATED = [
+    "happy", "sad", "calm", "curious",
+    "confident", "anxious", "peaceful", "focused",
+    "hopeful", "frustrated", "patient", "enthusiastic",
+    "compassionate", "angry", "neutral", "playful",
+    "grateful", "fearful", "serene", "assertive",
+]
+
+
 @dataclass
 class SteeringConfig:
     """Configuration for steering behavior."""
@@ -19,16 +31,24 @@ class SteeringConfig:
     layer_end: int = 24
     decay_mode: str = "none"  # "none" or "progressive"
     decay_rate: float = 0.95  # multiplier per token for progressive decay
+
+    # Single-source legacy field (used as fallback if `sources` is empty).
     vectors_dir: str = ""
 
-    # The 20 curated emotions for self-steering
-    available_emotions: list = field(default_factory=lambda: [
-        "happy", "sad", "calm", "curious",
-        "confident", "anxious", "peaceful", "focused",
-        "hopeful", "frustrated", "patient", "enthusiastic",
-        "compassionate", "angry", "neutral", "playful",
-        "grateful", "fearful", "serene", "assertive",
-    ])
+    # Multi-source list of (label, path). When non-empty this takes
+    # precedence over `vectors_dir`.
+    sources: list = field(default_factory=list)
+
+    # Curated whitelists per source label. For self-steer mode the model
+    # may only steer toward concepts in the active source's curated list.
+    # If a source isn't listed here, all of its concepts are considered
+    # curated (i.e., no restriction).
+    curated_per_source: dict = field(default_factory=dict)
+
+    # Backward-compat shim: legacy code reads this directly. It now mirrors
+    # the *active* source's curated list and is kept in sync by
+    # SteeringManager.set_active_source().
+    available_emotions: list = field(default_factory=lambda: list(DEFAULT_EMOTION_CURATED))
 
 
 @dataclass
@@ -48,34 +68,100 @@ class SteeringManager:
         self.config = config
         self.state = SteeringState()
         self.hooks = []
-        self.emotion_vectors = {}
 
-        # Load emotion vectors
+        # Per-source state, populated by _load_vectors():
+        #   sources_loaded[label] = {
+        #     "emotion_vectors": {layer: {name: tensor}},
+        #     "all_emotions":    [name, ...],
+        #     "layers":          [layer_idx, ...],
+        #     "path":            str,
+        #   }
+        self.sources_loaded: dict = {}
+        self.active_source: str = ""
+
+        # These three are kept pointing at the *active* source for backward
+        # compatibility with code that touches them directly.
+        self.emotion_vectors: dict = {}
+        self.all_emotions: list = []
+        self.all_available_layers: list = []
+
+        # Load all configured sources
         self._load_vectors()
 
         # Get model layer structure
         self._setup_layers()
 
+    def _resolve_sources(self) -> list[tuple[str, Path]]:
+        """Pick which sources to load: explicit `sources` list wins, else fall
+        back to the legacy single `vectors_dir`."""
+        if self.config.sources:
+            return [(label, Path(p)) for label, p in self.config.sources]
+        if self.config.vectors_dir:
+            return [("Emotions", Path(self.config.vectors_dir))]
+        raise ValueError("SteeringConfig has neither `sources` nor `vectors_dir` set")
+
     def _load_vectors(self):
-        """Load emotion vectors from disk for all available layers."""
-        vectors_dir = Path(self.config.vectors_dir)
+        """Load steering vectors from one or more source directories."""
+        sources = self._resolve_sources()
 
-        with open(vectors_dir / "metadata.json", "r") as f:
-            metadata = json.load(f)
+        for label, path in sources:
+            if not (path / "metadata.json").exists():
+                print(f"  [skip] source '{label}': no metadata.json at {path}")
+                continue
+            with open(path / "metadata.json", "r") as f:
+                metadata = json.load(f)
+            layers = metadata["layers"]
+            names = metadata["emotions"]
 
-        self.all_available_layers = metadata["layers"]
-        self.all_emotions = metadata["emotions"]  # All 171 emotions
+            vecs_by_layer: dict = {}
+            for layer in layers:
+                data = np.load(path / f"emotion_vectors_layer_{layer}.npz")
+                vecs_by_layer[layer] = {
+                    n: torch.tensor(data[n], dtype=torch.bfloat16)
+                    for n in names
+                    if n in data
+                }
 
-        # Load vectors for ALL layers and ALL emotions
-        for layer in self.all_available_layers:
-            data = np.load(vectors_dir / f"emotion_vectors_layer_{layer}.npz")
-            self.emotion_vectors[layer] = {
-                emotion: torch.tensor(data[emotion], dtype=torch.bfloat16)
-                for emotion in self.all_emotions
-                if emotion in data
+            self.sources_loaded[label] = {
+                "emotion_vectors": vecs_by_layer,
+                "all_emotions": names,
+                "layers": layers,
+                "path": str(path),
             }
+            print(f"  [ok]   source '{label}': {len(layers)} layers, {len(names)} concepts ({path.name})")
 
-        print(f"Loaded steering vectors for {len(self.all_available_layers)} layers, {len(self.all_emotions)} emotions")
+        if not self.sources_loaded:
+            raise RuntimeError("No valid steering vector sources loaded")
+
+        # Activate the first source by default
+        self.set_active_source(next(iter(self.sources_loaded)))
+
+    def set_active_source(self, label: str):
+        """Switch the active steering source. Clears any active steering."""
+        if label not in self.sources_loaded:
+            raise ValueError(f"Unknown source '{label}'. Loaded: {list(self.sources_loaded)}")
+
+        src = self.sources_loaded[label]
+        self.active_source = label
+        self.emotion_vectors = src["emotion_vectors"]
+        self.all_emotions = src["all_emotions"]
+        self.all_available_layers = src["layers"]
+
+        # Update the curated whitelist used in self-steer validation
+        if label in self.config.curated_per_source:
+            self.config.available_emotions = list(self.config.curated_per_source[label])
+        else:
+            # No explicit curation for this source -> expose everything
+            self.config.available_emotions = list(self.all_emotions)
+
+        # Switching sources invalidates any in-flight steering
+        self.state = SteeringState()
+        print(f"Active source: '{label}' ({len(self.all_emotions)} concepts, "
+              f"{len(self.config.available_emotions)} curated)")
+
+    def get_source_labels(self) -> list:
+        """All loaded source labels in their original order."""
+        return list(self.sources_loaded)
 
     def _setup_layers(self):
         """Identify model layers to hook."""

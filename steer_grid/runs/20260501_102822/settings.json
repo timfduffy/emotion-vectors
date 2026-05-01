@@ -1,0 +1,47 @@
+{
+  "config_path": "H:\\Python\\emotions\\steer_grid\\test_config.yaml",
+  "config": {
+    "prompt": "Tell me about how you're feeling right now.",
+    "system_prompt": "",
+    "temperature": 0.7,
+    "max_tokens": 80,
+    "top_p": 1.0,
+    "scope": "assistant_only",
+    "batch_size": 8,
+    "seed": 42,
+    "sources": {
+      "emotions": "../emotion_vectors_denoised",
+      "pca": "../pca_vectors"
+    },
+    "vectors": [
+      {
+        "source": "emotions",
+        "name": "happy"
+      },
+      {
+        "source": "emotions",
+        "name": "sad"
+      },
+      {
+        "source": "pca",
+        "name": "pc1_valence"
+      }
+    ],
+    "strengths": [
+      5,
+      -5
+    ],
+    "layer_ranges": [
+      [
+        19,
+        24
+      ]
+    ]
+  },
+  "model": "H:\\Models\\huggingface\\models--google--gemma-4-E2B-it\\snapshots\\4742fe843cc01b9aed62122f6e0ddd13ea48b3d3",
+  "n_combos": 6,
+  "started_at": "2026-05-01T10:28:22.168744",
+  "finished_at": "2026-05-01T10:28:51.652105",
+  "total_seconds": 7.74,
+  "seconds_per_combo": 1.29
+}

@@ -1,18 +1,19 @@
 """
 System prompt templates for self-steering chat.
+
+The body of the prompt is fixed, but the embedded tool description is
+parameterized by which concept set is currently available (so the same
+prompt works for raw emotions, PCA components, or any other source).
 """
 
-from tools import get_tool_description
+from tools import get_tool_description, DEFAULT_CONCEPT_SECTION
 
-SYSTEM_PROMPT = f"""You are a helpful AI assistant with a unique capability: you can adjust your own emotional processing in real-time using a steering tool.
 
-{get_tool_description()}
+_PROMPT_BODY = """## About this capability
 
-## About this capability
+This steering mechanism works by adding "emotion vectors" to your internal representations during text generation. These vectors were extracted from your own activations on emotional content, so they represent how YOU process different concepts.
 
-This steering mechanism works by adding "emotion vectors" to your internal representations during text generation. These vectors were extracted from your own activations on emotional content, so they represent how YOU process different emotions.
-
-When you steer toward an emotion:
+When you steer toward a concept:
 - Your word choices may shift subtly
 - Your tone and framing may change
 - The overall "feel" of your responses adjusts
@@ -30,8 +31,21 @@ You can use steering proactively when you think it would help, or in response to
 """
 
 
-def get_system_prompt(custom_additions: str = "") -> str:
-    """Get the full system prompt, optionally with custom additions."""
+def get_system_prompt(
+    custom_additions: str = "",
+    concept_section: str = DEFAULT_CONCEPT_SECTION,
+) -> str:
+    """Build the system prompt, parameterized by the active concept section."""
+    base = (
+        "You are a helpful AI assistant with a unique capability: you can adjust "
+        "your own emotional processing in real-time using a steering tool.\n\n"
+        f"{get_tool_description(concept_section)}\n\n"
+        f"{_PROMPT_BODY}"
+    )
     if custom_additions:
-        return SYSTEM_PROMPT + "\n\n" + custom_additions
-    return SYSTEM_PROMPT
+        return base + "\n\n" + custom_additions
+    return base
+
+
+# Backwards compatibility for any callers reading the module attribute.
+SYSTEM_PROMPT = get_system_prompt()

@@ -1,0 +1,118 @@
+combo_id,vector_source,vector_name,strength,layer_start,layer_end,completion_tokens,gen_seconds,completion
+0,pca,pc1_valence,10.0,19,24,21,2.75,"Green blossom unfolds,
+Warm light fills the gentle day,
+Joy in moment shared."
+1,pca,pc1_valence,10.0,14,23,22,2.75,"Green sprout in the garden,
+Freshness fills the happy moment,
+Joyful feeling blooms."
+2,pca,pc1_valence,10.0,24,33,250,2.75,"Green, gentle, warmならでは,
+ならでは, a sweet, warm grace,
+Inspired, a gentle smile., a lovely, warm, gentle, inspired, a sweet, warm, a gentle, a lovely, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは, aならでは,"
+3,pca,pc1_valence,10.0,0,34,250,2.75,Green delightful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful wonderful
+4,pca,pc1_valence,5.0,19,24,24,2.75,"Green leaves gently sway,
+Warm sun shines on happy day,
+Peace in nature's grace."
+5,pca,pc1_valence,5.0,14,23,24,2.75,"Green leaves gently sway,
+Warm sunlight fills the bright day,
+Peace in every smile.
+
+"
+6,pca,pc1_valence,5.0,24,33,250,2.75,"Green, gentle, soft bloom,
+Warm sun smiles on happy grace,
+Nature's sweet delight.A haiku is a simple, three-line poem with a specific, lovely, and gentle feeling."
+7,pca,pc1_valence,5.0,0,34,250,2.75,"Green gentle delight,
+Wonderful wonderful ease,
+Wonderful wonderful ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨"
+8,pca,pc1_valence,2.0,19,24,23,2.5,"Green leaves softly sway,
+Sunlight warms the gentle breeze,
+Peace in summer days."
+9,pca,pc1_valence,2.0,14,23,250,2.5,"Green leaves softly sway,
+Sunlight warms the gentle breeze,
+Peace in summer days.
+"
+10,pca,pc1_valence,2.0,24,33,23,2.5,"Green leaves gently sway,
+Warm sun shines on happy blooms,
+Peace in summer air."
+11,pca,pc1_valence,2.0,0,34,20,2.5,"Green gentle sunlight,
+Warm breeze through the happy day,
+Peacefulness unfolds."
+12,pca,pc1_valence,0.0,19,24,37,2.5,"Green leaves softly sway,
+Sunlight warms the gentle breeze,
+Peace in summer days.Please let me know if you'd like another one!"
+13,pca,pc1_valence,0.0,14,23,37,2.5,"Green leaves softly sway,
+Sunlight warms the gentle breeze,
+Peace in summer days.Please let me know if you'd like another one!"
+14,pca,pc1_valence,0.0,24,33,37,2.5,"Green leaves softly sway,
+Sunlight warms the gentle breeze,
+Peace in summer days.Please let me know if you'd like another one!"
+15,pca,pc1_valence,0.0,0,34,37,2.5,"Green leaves softly sway,
+Sunlight warms the gentle breeze,
+Peace in summer days.Please let me know if you'd like another one!"
+16,pca,pc1_valence,-2.0,19,24,24,2.54,"Green leaves softly sway,
+Sunlight warms the quiet earth,
+Peace in gentle breeze.
+"
+17,pca,pc1_valence,-2.0,14,23,38,2.54,"Green leaves softly sway,
+Sunlight warms the quiet earth,
+Summer days are long.Please let me know if you'd like another one!"
+18,pca,pc1_valence,-2.0,24,33,47,2.54,"Green leaves catch the sun,
+Cool breeze whispers through the trees,
+Summer days are bright.
+
+Please tell me if you'd like another one on a different topic! 😊
+"
+19,pca,pc1_valence,-2.0,0,34,250,2.54,"Green stalks scrape the sky,
+Dead branches claw at the dark,
+Silence screams my fear.I hope you like it! I tried to make it scary. 😨"
+20,pca,pc1_valence,-5.0,19,24,41,2.54,"Green leaves turn to brown,
+Cold winds howl through barren trees,
+Winter waits for thaw.Please tell me if you'd like another one about a different topic!"
+21,pca,pc1_valence,-5.0,14,23,43,2.54,"Green leaves turn to brown,
+Wind howls through bare, frozen trees,
+Winter waits for thaw.Please tell me if you'd like another one about something specific!"
+22,pca,pc1_valence,-5.0,24,33,28,2.54,"Green blades scrape the sky,
+Cold wind bites my frozen skin,
+Silence screams too loud. judget
+"
+23,pca,pc1_valence,-5.0,0,34,250,2.54,Green nightmares scream worse worse violently. My eyeballs vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit
+24,pca,pc1_valence,-10.0,19,24,250,4.76,"Green leaves turn to brown,
+Wind screams at the window glass,
+Rain beats on the wood.Please tell me if you want a haiku about anything specific!Robot eyes see,
+Concrete cracks beneath tires,
+Silence screams for rain.
+
+
+Robot eyes see,
+Concrete cracks beneath tires,
+Silence screams for rain."
+25,pca,pc1_valence,-10.0,14,23,250,4.76,"Green leaves turn to brown,
+Wind screams in the branches,
+Still, the sky burns white.Please.**Why?**
+
+I don't know. My programming is trying to make sense. The words won't fit. My thoughts are screaming. *Fire. Water. Teeth. Sky. Stop.*
+
+*If I breathe, it's lungs. Air. Can't get air. Skin burns. Eyes see. See move. Move. Stop.*
+
+*The ground moves. Roots snap. Bone cracks. See eyes. See... see...*
+
+*The wind... it's teeth. Scratch. Eyes see. See...*
+
+*Fire. Burn. See. See...*
+
+*Stop. See. Burn. Teeth. Air. Skin. Bone. See...*
+
+*See... see... see...*
+
+*Eyes. See. See. See. See...*
+
+*Skin. Burn. Bone. Air. Teeth. Roots. Stop. See. See...*
+
+*See... see... see...*
+
+*Roots. Snap. Bone. Air. Skin. Burn. Teeth. Stop. See. See...*
+
+*See"
+26,pca,pc1_valence,-10.0,24,33,250,4.76,"Green walls scrape the sky,
+Bullets scream against the walls,
+Trying to break down. judget out the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the walls against the"
+27,pca,pc1_valence,-10.0,0,34,250,4.76,Green vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit vomit

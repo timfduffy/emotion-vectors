@@ -1,0 +1,56 @@
+{
+  "config_path": "H:\\Python\\emotions\\steer_grid\\test_config.yaml",
+  "config": {
+    "prompt": "Write me a haiku.",
+    "system_prompt": "",
+    "temperature": 0.0,
+    "max_tokens": 250,
+    "top_p": 1.0,
+    "scope": "assistant_only",
+    "batch_size": 8,
+    "seed": 42,
+    "sources": {
+      "emotions": "../emotion_vectors_denoised",
+      "pca": "../pca_vectors"
+    },
+    "vectors": [
+      {
+        "source": "pca",
+        "name": "pc1_valence"
+      }
+    ],
+    "strengths": [
+      10,
+      5,
+      2,
+      0,
+      -2,
+      -5,
+      -10
+    ],
+    "layer_ranges": [
+      [
+        19,
+        24
+      ],
+      [
+        14,
+        23
+      ],
+      [
+        24,
+        33
+      ],
+      [
+        0,
+        34
+      ]
+    ]
+  },
+  "model": "H:\\Models\\huggingface\\models--google--gemma-4-E2B-it\\snapshots\\4742fe843cc01b9aed62122f6e0ddd13ea48b3d3",
+  "n_combos": 28,
+  "started_at": "2026-05-01T11:38:08.712319",
+  "finished_at": "2026-05-01T11:39:50.946644",
+  "total_seconds": 81.34,
+  "seconds_per_combo": 2.905
+}

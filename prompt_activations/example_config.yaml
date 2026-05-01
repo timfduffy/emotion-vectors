@@ -1,0 +1,38 @@
+# Example config for prompt_activations/run.py
+#
+# Generates a response per prompt and collects per-token, per-layer projections
+# onto every concept in the listed sources.
+
+prompts_csv: ../prompts_1k_dsv3_100_claude_refusal.csv
+
+# Optional: process only the first N prompts (handy for testing). null = all.
+limit: null
+
+# ---- Generation parameters (same across all prompts) ----
+system_prompt: ""
+temperature: 0.7
+max_tokens: 200
+top_p: 1.0
+seed: 42
+
+# ---- Parallelism ----
+# 32 fits comfortably for ~200-token generations on a 16 GB GPU. Bump higher
+# if you have headroom; lower if you OOM.
+batch_size: 32
+
+# ---- Concept sources ----
+# label -> path (relative to this config or absolute). Each must have a
+# metadata.json. All concepts from all sources end up as columns of the
+# per-token activation tensor.
+sources:
+  emotions: ../emotion_vectors_denoised
+  pca:      ../pca_vectors
+
+# ---- Summary layer ----
+# Which layer to use when computing mean_pc1 / mean_pc2 in summary.csv.
+summary_layer: 25
+
+# ---- Storage ----
+# float16 saves disk and is plenty for projection values; use float32 if you
+# want the highest precision.
+dtype_storage: float16

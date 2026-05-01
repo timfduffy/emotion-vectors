@@ -1,5 +1,6 @@
 @echo off
 cd /d "%~dp0"
+call ..\.venv\Scripts\activate.bat
 echo Self-Steering Chat
 echo ==================
 echo.
@@ -9,5 +10,5 @@ echo   Decay mode: none (persistent steering)
 echo.
 echo Starting...
 echo.
-python app.py
+python app.py %*
 pause
